@@ -47,6 +47,9 @@ $(document).ready(function(e) {
 				$("#primary_insuredfname").val(data.data.InsuranceData[0].InsuredFirstName).attr('data-id',1);
 				$("#primary_insuredlname").val(data.data.InsuranceData[0].InsuredLastName).attr('data-id',1);
 				$("#primary_insureddob").val(data.data.InsuranceData[0].Dob).attr('data-id',1);
+				$('#primary_relationship option[value='+data.data.InsuranceData[0].RelationshipId+']').attr('selected','selected');
+				$('#primary_relationship').attr('data-id',1);
+				$("#ins_rel").val($('#primary_relationship option[value="'+data.data.InsuranceData[0].RelationshipId+'"]').text());
 				$("#ins_gen").val(data.data.InsuranceData[0].InsuredGender);
 				$("input[name=primary_insuredgender][value=" + data.data.InsuranceData[0].InsuredGender + "]").prop('checked', true);
 				if($("input[name=primary_insuredgender]:checked"))$("input[name=primary_insuredgender]").attr('data-id',1);
@@ -68,6 +71,8 @@ $(document).ready(function(e) {
 					$("#sec_insuredfname").val(data.data.InsuranceData[1].InsuredFirstName);
 					$("#sec_insuredlname").val(data.data.InsuranceData[1].InsuredLastName);
 					$("#sec_insureddob").val(data.data.InsuranceData[1].Dob);
+					$('#sec_relationship option[value='+data.data.InsuranceData[1].RelationshipId+']').attr('selected','selected');
+					$("#secins_rel").val($('#primary_relationship option[value="'+data.data.InsuranceData[1].RelationshipId+'"]').text());
 					$("#ins_gen").val(data.data.InsuranceData[1].InsuredGender);
 					$("input[name=sec_insuredgender][value=" + data.data.PersonalData.InsuredGender + "]").prop('checked', true);
 					$("#sec_insuranceid").val(data.data.InsuranceData[1].Id);
