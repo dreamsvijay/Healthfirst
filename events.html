@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Health First</title>
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!--<link href="css/bootstrap-datepicker.css" rel="stylesheet">-->
+	<link href="css/theme.css?v=1.9" rel="stylesheet">
+	<!--<link href="css/bootstrap-fileupload.css" rel="stylesheet">-->
+</head>
+<body class="event-page">
+	<header id="pageheader">
+		<div class="header">
+			<div class="panel-control-left"><a href="#"><img alt="Back" src="img/menu2.png" width="21" height="19"></a></div>
+			<div class="site-title"><h4>Events</h4></div>
+			<div class="panel-control-right dropdown"><a href="#"class="dropdown-toggle" data-toggle="dropdown"><img alt="Menu" src="img/menu-icon.png" width="4" height="16"></a>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="index.html">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+    <main id="pagecontent">
+        <div id="htmlContent">
+			<div id="events_html">
+				<div class="calendar-bottom">
+					<div class="calendar-year"><div class="calendar-month-year-text">2016</div></div>
+					<a id="scrollRight" href="#" class="navigate month-left"></a>
+					<ul class="month-list">
+						<li class="month-block">JAN</li><li class="month-block">FEB</li><li class="month-block current">MAR</li><li class="month-block">APR</li><li class="month-block">MAY</li><li class="month-block">JUN</li><li class="month-block">JUL</li><li class="month-block">AUG</li><li class="month-block">SEP</li><li class="month-block">OCT</li><li class="month-block">NOV</li><li class="month-block">DEC</li>
+					</ul>
+					<a id="scrollLeft" class="navigate text-right month-right" href="#"></a>
+				</div>
+				<div class="cal-year">
+					<a href="#" id="backyear" class="cal-left"></a>
+					<ul class="year-list">
+						<li class="">2014</li>
+						<li class="">2015</li>
+						<li class="">2016</li>
+						<li class="current">2017</li>
+						<li class="">2018</li>
+						<li class="">2019</li>
+						<li class="">2020</li>
+						<li class="">2021</li>
+						<li class="">2022</li>
+					</ul>
+					<a href="#" id="frontyear" class="cal-right"></a>
+				</div>
+				<ul class="media-list media-list-linked event-list">
+				</ul>
+			</div>
+            <div id="confirmation_html" style="display:none;">
+
+            <div class="md-modal md-effect-1 " id="non_appoinmentSuccess" >
+           
+					<div class="md-content">
+						<div class="success_body">
+							<div class="success_content">
+								<img src="img/success_tick.png" alt="tickmark" width="46" height="46">
+													<h4>You are now checked-in for your visit with <span></span></h4>
+								<a class="successdonebtn" id="successlink" href="home.html">ok</a>
+							</div>
+							<div class="success_container">
+								<h4>Download our FREE app and manage your health in one place</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+            
+            
+		</div>
+    </main>
+    <footer id="pagefooter"> </footer>
+    <div id="loading" style="text-align: center; ">
+        <img src="img/AcuantWebServices/ring.gif" alt="loading" width="66" height="66">
+    </div>
+    <div class="md-overlay md-show"></div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+    <script type='text/javascript' src='js/select2.js'></script>
+    <script src="plugins/jSignature/jSignature.min.noconflict.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+   
+</body>
+</html>
