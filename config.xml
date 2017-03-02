@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="com.healthfirst.yosi" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Healthfirst</name>
+<widget id="com.healthyvillage.yosi" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Healthy Village</name>
     <description>
-        Healthy First is an intermediate app that connects doctors and patient.
+        Healthy Village is an intermediate app that connects doctors and patient.
     </description>
     <author email="dreamguystech@gmail.com" href="http://dreamguys.co.in/">
         DreamGuy's
@@ -14,7 +14,7 @@
         <param name="android-package" value="org.apache.cordova.SplashScreen" />
         <param name="ios-package" value="CDVSplashScreen" />
         <param name="onload" value="true" />
-</feature>
+	</feature>
 
 	<preference name="phonegap-version" value="cli-6.3.0" />
     <preference name="permissions" value="none" />

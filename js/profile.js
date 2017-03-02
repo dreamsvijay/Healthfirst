@@ -49,7 +49,7 @@ $(document).ready(function(e) {
 				$("#primary_insureddob").val(data.data.InsuranceData[0].Dob).attr('data-id',1);
 				$('#primary_relationship option[value='+data.data.InsuranceData[0].RelationshipId+']').attr('selected','selected');
 				$('#primary_relationship').attr('data-id',1);
-				$("#ins_rel").val($('#primary_relationship option[value="'+data.data.InsuranceData[0].RelationshipId+'"]').text());
+				$("#ins_rel").val(data.data.InsuranceData[0].Relationship);
 				$("#ins_gen").val(data.data.InsuranceData[0].InsuredGender);
 				$("input[name=primary_insuredgender][value=" + data.data.InsuranceData[0].InsuredGender + "]").prop('checked', true);
 				if($("input[name=primary_insuredgender]:checked"))$("input[name=primary_insuredgender]").attr('data-id',1);
@@ -78,6 +78,7 @@ $(document).ready(function(e) {
 					$("#sec_insuranceid").val(data.data.InsuranceData[1].Id);
 					$("#sec_policynumber").val(data.data.InsuranceData[1].MemberId);
 				}
+				$("#primary_relationship, #sec_relationship").trigger('change');
 			}
 			}else{
 				$(".primaryInsuranceColumn").hide();
@@ -91,6 +92,7 @@ $(document).ready(function(e) {
 			$("#employed_company").val(data.data.GeneralData.CompanyName);
 			if(data.data.GeneralData.MaritalStatus.length > 0)
 			$('#select_maritalstatus option[value='+data.data.GeneralData.MaritalStatus+']').attr('selected','selected');
+			if(data.data.GeneralData.MaritalStatus)
 			$("#dem_mar_sts").val($('#select_maritalstatus option[value="'+data.data.GeneralData.MaritalStatus+'"]').text());
 			if(data.data.GeneralData.Employed.length > 0)
 			$("input[name=select_employed][value=" + data.data.GeneralData.Employed + "]").prop('checked', true);
@@ -109,6 +111,7 @@ $(document).ready(function(e) {
 			$("#pcpcontactnumber").val(data.data.PcpandEmergencyData.PcpPhone);
 			if(data.data.PcpandEmergencyData.EmerRelationshipId.length > 0)
 			$('#select_emc_relationship option[value="'+data.data.PcpandEmergencyData.EmerRelationshipId+'"]').attr('selected','selected');
+			if(data.data.PcpandEmergencyData.EmerRelationshipId)
 			$("#rel_pcp").val($('#select_emc_relationship option:selected').text());
 			$("#select_emc_relationship").trigger('change');
 			//lifestyle //
@@ -310,7 +313,9 @@ function getLifestyle(){
 			for(var i=0;i<data.data.alcohol.length;i++){
 				$("#select_drink").append('<option value="'+data.data.alcohol[i]['Id']+'">'+data.data.alcohol[i]['Name']+'</option>');
 			}
-			
+			for(var i=0;i<data.data.drugs.length;i++){
+				$("#select_drugs").append('<option value="'+data.data.drugs[i]['Id']+'">'+data.data.drugs[i]['Name']+'</option>');
+			}
 		}
 	},"json");
 	

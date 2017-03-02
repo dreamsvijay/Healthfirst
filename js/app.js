@@ -78,11 +78,9 @@ $(document).ready(function(e) {
 						window.localStorage.setItem("pat_dob", data.data.Dob);
 						window.localStorage.setItem("pat_reftok", data.data.practice.refresh_token);
 						window.localStorage.setItem("pat_acctok", data.data.practice.access_token);
-						if($("#form_typ").val() == "u"){
+						if($("#form_typ").val() == "u")
 							window.localStorage.setItem("pat_form", 'new');
-							location.href = "profile.html";
-						}
-						else
+						
 						location.href = "home.html";
 					}else{
 						$('#password').parent().addClass("has-error");
@@ -186,11 +184,21 @@ $(document).ready(function(e) {
 			}else{
 				$(".md-modal").addClass('md-show');
 				$(".md-overlay").addClass('md-show');
-				$(".md-modal .success_content").find('p').remove();
-				if($("#ccphone:checked").val())
-				$(".md-modal .success_content").append('<p>&#10004; Phone consent confirmed</p>');
-				if($("#ccemail:checked").val())
-				$(".md-modal .success_content").append('<p>&#10004; Email consent confirmed</p>');
+				$(".md-modal .success_content").find('p').remove(); 
+				if(typeof $("#ccphone:checked").val() != "undefined" || typeof $("#ccemail:checked").val() != "undefined"){
+					var cons_cong = 'I hereby agree to receive ';
+					var cons_con = '';
+					if($("#ccphone:checked").val()){
+					cons_cong += 'text';
+					cons_con = ' and ';
+					}
+					if($("#ccemail:checked").val()){
+						cons_cong += cons_con + 'email';
+						//$(".md-modal .success_content").append('<p>&#10004; Email consent confirmed</p>');
+					}
+					cons_cong +=  ' messages regarding the use of Healthy Village app ';
+					$(".md-modal .success_content").append('<p>'+cons_cong+'</p>');
+				}
 			}
 		}
 		return false;

@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>Health First</title>
+	<title>Healthy Village</title>
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/theme.css?v=1.9" rel="stylesheet">
@@ -107,10 +107,10 @@
     	<form method="post" autocomplete="off" name="consent" id="consent" style="display:none;">
         <input type="hidden" name="cconf" id="cconf" value="" />
             <div class="form-group">
-                    <input class="form-control" type="text" name="fname" id="fname" placeholder="Firstname">
+                    <input class="form-control" type="text" name="fname" id="fname" placeholder="First Name">
             </div>
             <div class="form-group">
-                    <input class="form-control" type="text" name="lname" id="lname" placeholder="Lastname">
+                    <input class="form-control" type="text" name="lname" id="lname" placeholder="Last Name">
             </div>
 			<div class="form-group">
 				<div class="row row-sm">
@@ -129,21 +129,20 @@
             <!--<div class="form-group" >
                     <input class="form-control" type="text" name="dob" id="dob" placeholder="DOB (MM/DD/YYYY)"><div id="date-error-custom"></div>
             </div>-->
+             <div class="form-group" >
+                    <input class="form-control" type="email" name="cemail" id="cemail" placeholder="Email">
+                    <div class="checkbox">
+						<label><input type="checkbox" name="ccemail" id="ccemail" value="Y">Agree to receive emails</label>
+					</div>
+            </div>
             <div class="form-group" >
                     <input class="form-control" type="tel" name="cphone" id="cphone" placeholder="Phone (XXX) XXX-XXXX" maxlength="14">
                     <div class="checkbox">
-						<label><input type="checkbox" name="ccphone" id="ccphone" value="Y">Consent</label>
+						<label><input type="checkbox" name="ccphone" id="ccphone" value="Y">Agree to receive text messages</label>
                 </div>
             </div>
-            <div class="form-group" >
-                    <input class="form-control" type="email" name="cemail" id="cemail" placeholder="Email">
-                    <div class="checkbox">
-						<label><input type="checkbox" name="ccemail" id="ccemail" value="Y">Consent</label>
-					</div>
-            </div>
-            
-             <div class="form-group">
-                <input value="Sign Up" class="yc-button primary large" name="submit" type="submit">
+            <div class="form-group">
+                <input value="Create your free account" class="yc-button primary large" name="submit" type="submit">
             </div>
             <div class="form-group text-center" id="show_signin">
   				<a href="" style="color:#fff;">Login</a>
