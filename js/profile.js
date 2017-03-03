@@ -2175,7 +2175,7 @@ var acOptions_insurance = {
 		scrollHeight: 150,
 		
 	};
-$(document).on('click',"#refsource",function(){
+$(document).on('change',"#refsource",function(){
 	$("#referaldoctor, #referalothers").hide();
 	if($(this).val() == 1) $("#referaldoctor").show();
 	if($(this).val() == 6) $("#referalothers").show();
