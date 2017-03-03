@@ -399,7 +399,7 @@ $(document).on('click',".vp_header a, .btn-cancel",function(){
 	}
 	if(cur_form.attr('id') == "general-info_html"){
 		 $("#gi_submit").parent().show(); $("#dem_mar_sts, #dem_emp").hide(); $("#select_maritalstatus_wrap").show(); $("#radio1").parent().parent().show();
-		 if($("input[name='select_employed']:checked").val() == "Y") $("#empcmpy").show();
+		 if($("input[name='select_employed']:checked").val() == "Y") $("#empcmpy").show(); else $("#empcmpy").hide();
 	}
 	if(cur_form.attr('id') == "pcp-info_html"){
 		 $("#pcpsubmit").parent().show(); $("#relpcp").hide(); $("#select_emc_relationship_wrap").show(); 
@@ -734,6 +734,7 @@ $('#form_minsurance_info').submit(function(){
                                 $(this).removeClass('current');
 								if($(this).attr('data-id') == $("#frm_step").attr('data-step')) $(this).addClass('current');
                             });
+							if($("input[name='select_employed']:checked").val() == "Y") $("#empcmpy").show(); else $("#empcmpy").hide();
 							$(".site-title h4").empty().append($(".dotstyle").find('ul li.current a').text());
 							$("#"+$("#frm_step").attr('data-step')).prev().hide();
 							$("#"+$("#frm_step").attr('data-step')).find('.mobilevp').hide();
@@ -741,7 +742,7 @@ $('#form_minsurance_info').submit(function(){
 							$("#"+$("#frm_step").attr('data-step')).find('input, select').removeAttr('readonly');
 							$("#gi_submit").parent().show();
 							$("#dem_emp, #dem_mar_sts").hide();
-							$("#radio1").parent().parent().show(); $("#empcmpy, #select_maritalstatus_wrap").show();
+							$("#radio1").parent().parent().show(); $("#select_maritalstatus_wrap").show();
 					}
 				}
 			});
@@ -2234,7 +2235,7 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 	$(".vp_header a").each(function(index, element) {
         $(this).parent().parent().parent().parent().show();
     });
-	if(typeof $('input[name="primary_areyouinsured"]:checked') != "undefined") $("#no_insurance").hide();
+	if(typeof $('input[name="primary_areyouinsured"]:checked') != "undefined") $('input[name="primary_areyouinsured"]:checked').parent().parent().parent().hide();
 	/*var cur_form = $(this).parent().parent().parent().parent(); cur_form.show();
 	$(".dotstyle li").each(function(index, element) {
 		$(this).removeClass('current');
