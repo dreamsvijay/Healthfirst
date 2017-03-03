@@ -1,6 +1,7 @@
 var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";
 $("#pagecontent").hide();
 $(document).ready(function(e) {
+	
 	if(!window.localStorage.getItem("pat_id")){ window.location.href="index.html"; }
 	maritalList();
 	if(window.localStorage.getItem("prac_id")){ demographicList(); $("#app_submit").parent().show();}
@@ -19,7 +20,8 @@ $(document).ready(function(e) {
 			$("#address1").val(data.data.PersonalData.Address1);
 			$("#address2").val(data.data.PersonalData.Address2);
 			$("#zipcode").val(data.data.PersonalData.Zip);
-			if(window.localStorage.getItem("pat_form") == "new"){ window.localStorage.removeItem("pat_form");
+			if(window.localStorage.getItem("pat_form") == "new" || $("#app_submit").attr('data-step') <= 5){ window.localStorage.removeItem("pat_form");
+			if(window.localStorage.getItem("prac_id")){
 				$(".vp_header a").each(function(index, element) {
 					$(this).parent().parent().parent().parent().hide();
 				});
@@ -30,7 +32,8 @@ $(document).ready(function(e) {
 				$("#form_mpersonal_info").find('input, select').removeAttr('readonly');
 				$("#form_mpersonal_info").find('.mobilevp').hide();
 				$("#frm_step").attr('data-step',$("#view-profile_html").next().attr('id'));
-				$("#pgender, .mobilevp").hide(); $("#select_gender_wrap").show(); $("#submitpinfo").parent().show();
+				$("#pgender, .mobilevp").hide(); $("#select_gender_wrap").show(); $("#submitpinfo").parent().show(); $("#app_submit").parent().hide();
+			}
 			}
 			if(data.data.InsuranceData){
 			if(data.data.InsuranceData[0]){
@@ -47,15 +50,17 @@ $(document).ready(function(e) {
 				$("#primary_insuredfname").val(data.data.InsuranceData[0].InsuredFirstName).attr('data-id',1);
 				$("#primary_insuredlname").val(data.data.InsuranceData[0].InsuredLastName).attr('data-id',1);
 				$("#primary_insureddob").val(data.data.InsuranceData[0].Dob).attr('data-id',1);
+				if(data.data.InsuranceData[0].RelationshipId){
 				$('#primary_relationship option[value='+data.data.InsuranceData[0].RelationshipId+']').attr('selected','selected');
-				$('#primary_relationship').attr('data-id',1);
+				$('#primary_relationship').attr('data-id',1);}
 				$("#ins_rel").val(data.data.InsuranceData[0].Relationship);
 				$("#ins_gen").val(data.data.InsuranceData[0].InsuredGender);
+				if(data.data.InsuranceData[0].InsuredGender)
 				$("input[name=primary_insuredgender][value=" + data.data.InsuranceData[0].InsuredGender + "]").prop('checked', true);
 				if($("input[name=primary_insuredgender]:checked"))$("input[name=primary_insuredgender]").attr('data-id',1);
 				$("#primary_insuranceid").val(data.data.InsuranceData[0].Id).attr('data-id',1);
 				$("#primary_policynumber").val(data.data.InsuranceData[0].MemberId).attr('data-id',1); $(".addInsurance").hide();
-				if(data.data.InsuranceData[1]){
+				if(data.data.InsuranceData[1]){ $("a.addInsurance").text('another insurance');
 					var dep='D';
 					if(data.data.InsuranceData[1].InsuranceHolderType == "secondary") dep='N';
 					if(data.data.InsuranceData[1].InsuranceHolderType == "primary") dep='Y';
@@ -71,14 +76,15 @@ $(document).ready(function(e) {
 					$("#sec_insuredfname").val(data.data.InsuranceData[1].InsuredFirstName);
 					$("#sec_insuredlname").val(data.data.InsuranceData[1].InsuredLastName);
 					$("#sec_insureddob").val(data.data.InsuranceData[1].Dob);
+					if(data.data.InsuranceData[1].RelationshipId){
 					$('#sec_relationship option[value='+data.data.InsuranceData[1].RelationshipId+']').attr('selected','selected');
-					$("#secins_rel").val($('#primary_relationship option[value="'+data.data.InsuranceData[1].RelationshipId+'"]').text());
+					$("#secins_rel").val($('#primary_relationship option[value="'+data.data.InsuranceData[1].RelationshipId+'"]').text());}
 					$("#ins_gen").val(data.data.InsuranceData[1].InsuredGender);
 					$("input[name=sec_insuredgender][value=" + data.data.PersonalData.InsuredGender + "]").prop('checked', true);
 					$("#sec_insuranceid").val(data.data.InsuranceData[1].Id);
 					$("#sec_policynumber").val(data.data.InsuranceData[1].MemberId);
 				}
-				$("#primary_relationship, #sec_relationship").trigger('change');
+				$("#primary_relationship").trigger('change'); $("#sec_relationship").trigger('change');
 			}
 			}else{
 				$(".primaryInsuranceColumn").hide();
@@ -387,7 +393,8 @@ $(document).on('click',".vp_header a, .btn-cancel",function(){
 		$("#pgender").hide(); $("#select_gender_wrap").show(); $("#submitpinfo").parent().show();
 	} 
 	if(cur_form.attr('id') == "insurance-card_html"){
-		$("#no_insurance, #ins_secdep, #ins_gen, #ins_secgen, #ins_rel").hide(); $(".dep_fd, .genterradio, .sec_insuredgender, #primary_relationship_wrap, .primaryInsuranceColumn").show(); $("#ins_submit").parent().show(); $("#ins_secdep").next('div').show(); $("#primary_companyname_wrap, #sec_companyname_wrap").addClass('searchInput');
+		$("a.addInsurance").text('Add another insurance');
+		$("#no_insurance, #ins_secdep, #ins_gen, #ins_secgen, #ins_rel, .secInsuranceColumn").hide(); $(".dep_fd, .genterradio, .sec_insuredgender, #primary_relationship_wrap, .primaryInsuranceColumn").show(); $("#ins_submit").parent().show(); $("#ins_secdep").next('div').show(); $("#primary_companyname_wrap, #sec_companyname_wrap").addClass('searchInput');
 	}
 	if(cur_form.attr('id') == "general-info_html"){
 		 $("#gi_submit").parent().show(); $("#dem_mar_sts, #dem_emp").hide(); $("#select_maritalstatus_wrap").show(); $("#radio1").parent().parent().show();
@@ -429,20 +436,22 @@ $(document).on('click',".vp_header a, .btn-cancel",function(){
 				$("#loading").show();
 				$.post(base_url+"mobile-app?page=updateProfile",{firstname:firstname.val(),lastname:lastname.val(),pdob:pdob.val(),gender:$('input[name="select_gender"]:checked').val(),address1:address1.val(),zipcode:zipcode.val(),address2:$("#address2").val(),pat_id:window.localStorage.getItem("pat_id"),pat_acctok:window.localStorage.getItem("pat_acctok"),pat_reftok:window.localStorage.getItem("pat_reftok"),pat_type:'clinic'},function(data){
 						if(data.success=="Y"){
+							$("a.addInsurance").text('Add another insurance');
 							$(".dotstyle li").each(function(index, element) {
                                 $(this).removeClass('current');
 								if($(this).attr('data-id') == $("#frm_step").attr('data-step')) $(this).addClass('current');
                             });
+							if(typeof $('input[name="primary_areyouinsured"]:checked').val() == "undefined") $("#firstIns_dependent").hide();
 							$("#"+$("#frm_step").attr('data-step')).find('input, select').removeAttr('readonly');
 							$(".site-title h4").empty().append($(".dotstyle").find('ul li.current a').text());
 							$("#"+$("#frm_step").attr('data-step')).prev().hide();
 							$("#"+$("#frm_step").attr('data-step')).find('.mobilevp').hide();
 							$("#"+$("#frm_step").attr('data-step')).show();
-							$("#loading").hide();
+							$("#loading, #ins_rel, #ins_secgen").hide();
 							$("#no_insurance, #ins_gen, #ins_secdep").hide(); $(".primaryInsuranceColumn, .dep_fd, .genterradio").show();
-							if($("#sec_insuranceid").val()){ $(".secInsuranceColumn").show(); $("#sec_areyouinsured").parent().parent().show();}
+							//if($("#sec_insuranceid").val()){ $(".secInsuranceColumn").show(); $("#sec_areyouinsured").parent().parent().show();}
 							$("#ins_submit").parent().show();
-							$("#primary_companyname_wrap, #sec_companyname_wrap").addClass('searchInput');
+							$("#primary_companyname_wrap, #sec_companyname_wrap").addClass('searchInput').show();
 						}
 					},"json");
 			
@@ -610,9 +619,20 @@ $(document).on('click',".vp_header a, .btn-cancel",function(){
 
 /* Insurance Form */
 
-$("a.addInsurance").click(function(){
+$("a.addInsurance").click(function(){ if($("#htmlContent").attr('class') != "view-pro-det"){
 	$(this).hide();
-	$(".primaryInsuranceColumn").hide(); $(".secInsuranceColumn").show(); $("#sec_areyouinsured").parent().parent().show();
+	$('html, body').animate({ scrollTop: 0 }, 600);
+	var sec_areyouinsured  = $('input[name="sec_areyouinsured"]:checked').val();
+	$(".secInsuranceColumn .dependent-no, #secIns_dependent").hide();	
+	if(sec_areyouinsured == "N"){
+		$("#secIns_dependent").hide(); $(".secInsuranceColumn .dependent-no, .secInsuranceColumn").show();
+	}
+	if(sec_areyouinsured == "Y"){
+		 $("#secIns_dependent, .secInsuranceColumn .dependent-no, .secInsuranceColumn").show();
+	}
+	
+	$(".primaryInsuranceColumn").hide(); $(".secInsuranceColumn").show(); $("#sec_areyouinsured_Y").parent().parent().show();
+}
 });
 
 $('#primary_companyname').autocomplete(base_url+"mobile-app?page=searchInsurance", acOptions_insurance)
@@ -689,7 +709,7 @@ var pri_insurad = $('input[name="primary_areyouinsured"]'), pri_insuredfname = $
 	pri_insuredgender.on('blur keyup',validatePgender);
 	pri_relationship.on('blur keyup change',validatePrel);
 	pri_policynumber.on('blur keyup',validatePpolicy);
-	sec_areyouinsured.on('blur keyup',validateSinsured);
+	sec_areyouinsured.on('blur keyup click',validateSinsured);
 	sec_insuredfname.on('blur keyup',validateSfname);
 	sec_insuredlname.on('blur keyup',validateSlname);
 	sec_insureddob.on('blur keyup',validateSdob);
@@ -734,18 +754,25 @@ $('#form_minsurance_info').submit(function(){
 		{   $('input[name="primary_areyouinsured"]').attr('data-id',0);
 			$('input[name="primary_areyouinsured"]').next().css("border","1px solid #a94442");				
 			return false;
-		}  
-		if(pri_areyouinsured == "D"){
-			$('#primary_insuredfname, #primary_insuredlname, #primary_relationship, #primary_insureddob').val('').attr('data-id',0);
-			$("#firstIns_dependent, .primaryInsuranceColumn .dependent-no, .secInsuranceColumn, .addInsurance").hide();
-			//$("input[name='sec_areyouinsured']").attr('checked',false);
+		} 
+		if($(".primaryInsuranceColumn ").css('display') == "block"){
+			if(pri_areyouinsured == "D"){
+				$('#primary_insuredfname, #primary_insuredlname, #primary_relationship, #primary_insureddob').val('').attr('data-id',0);
+				$('input[name="primary_insuredgender"]').attr('data-id',0);
+				$("#firstIns_dependent, .primaryInsuranceColumn .dependent-no, .secInsuranceColumn, .addInsurance").hide();
+				//$("input[name='sec_areyouinsured']").attr('checked',false);
+			}
+			if(pri_areyouinsured == "N"){
+				$('#primary_insuredfname, #primary_insuredlname, #primary_relationship, #primary_insureddob').val('').attr('data-id',1);
+				$('input[name="primary_insuredgender"]').attr('data-id',1);
+				$("#firstIns_dependent").hide(); $(".primaryInsuranceColumn .dependent-no, .primaryInsuranceColumn").show();
+			}
+			if(pri_areyouinsured == "Y"){
+				 $("#firstIns_dependent, .primaryInsuranceColumn .dependent-no, .primaryInsuranceColumn, #primary_relationship_wrap").show();
+				 $('#primary_insuredfname, #primary_insuredlname, #primary_relationship, #primary_insureddob').val('').attr('data-id',0);
+				$('input[name="primary_insuredgender"]').attr('data-id',0);
+			} $('input[name="primary_areyouinsured"]').attr('data-id',1); secins();
 		}
-		if(pri_areyouinsured == "N"){
-			$("#firstIns_dependent").hide(); $(".primaryInsuranceColumn .dependent-no, .primaryInsuranceColumn").show();
-		}
-		if(pri_areyouinsured == "Y"){
-			 $("#firstIns_dependent, .primaryInsuranceColumn .dependent-no, .primaryInsuranceColumn").show();
-		} $('input[name="primary_areyouinsured"]').attr('data-id',1); secins();
 		$('input[name="primary_areyouinsured"]').next().css("border",""); return true;	
 	}
 	
@@ -823,17 +850,18 @@ $('#form_minsurance_info').submit(function(){
 	}
 	function secins(){
 		var chk_secins =1;
-		var pri_areyouinsured  = $('input[name="primary_areyouinsured"]:checked').val();
-		if(pri_areyouinsured == "Y" || pri_areyouinsured == "N"){
-			$("#form_minsurance_info input, #form_minsurance_info select").each(function(index, element) {
-				if($(this).attr('data-id')){ 
-				 if($(this).attr('data-id')==0){ //$("#no_insurance").append($(this).attr('id'));
-				  chk_secins =0; }
-				} 
-			});
-		} if(pri_areyouinsured == "D" || typeof pri_areyouinsured === "undefined") chk_secins =0; 
-			if(chk_secins == 1) $(".addInsurance").show(); else $(".addInsurance").hide();
-		
+		if($(".primaryInsuranceColumn ").css('display') == "block"){
+			var pri_areyouinsured  = $('input[name="primary_areyouinsured"]:checked').val();
+			if(pri_areyouinsured == "Y" || pri_areyouinsured == "N"){
+				$("#form_minsurance_info input, #form_minsurance_info select").each(function(index, element) {
+					if($(this).attr('data-id')){ 
+					 if($(this).attr('data-id')==0){ //$("#no_insurance").append($(this).attr('id'));
+					   chk_secins =0; }
+					} 
+				});
+			} if(pri_areyouinsured == "D" || typeof pri_areyouinsured === "undefined") chk_secins =0;  
+				if(chk_secins == 1) $(".addInsurance").show(); else $(".addInsurance").hide();
+		}
 	}
 	function validateSinsured(){ 
 		var sec_areyouinsured  = $('input[name="sec_areyouinsured"]:checked').val();

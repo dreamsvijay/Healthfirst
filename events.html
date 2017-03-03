@@ -14,7 +14,7 @@
 <body class="event-page">
 	<header id="pageheader">
 		<div class="header">
-			<div class="panel-control-left"><a href="#"><img alt="Back" src="img/menu2.png" width="21" height="19"></a></div>
+			<div class="panel-control-left"><a href="#"><img alt="Back" src="img/menu2.png" ></a></div>
 			<div class="site-title"><h4>Events</h4></div>
 			<div class="panel-control-right dropdown"><a href="#"class="dropdown-toggle" data-toggle="dropdown"><img alt="Menu" src="img/menu-icon.png" width="4" height="16"></a>
 				<ul class="dropdown-menu dropdown-menu-right">
@@ -27,40 +27,56 @@
         <div id="htmlContent">
 			<div id="events_html">
 				<div class="calendar-bottom">
-					<div class="calendar-year"><div class="calendar-month-year-text">2016</div></div>
-					<a id="scrollRight" href="#" class="navigate month-left"></a>
-					<ul class="month-list">
-						<li class="month-block">JAN</li><li class="month-block">FEB</li><li class="month-block current">MAR</li><li class="month-block">APR</li><li class="month-block">MAY</li><li class="month-block">JUN</li><li class="month-block">JUL</li><li class="month-block">AUG</li><li class="month-block">SEP</li><li class="month-block">OCT</li><li class="month-block">NOV</li><li class="month-block">DEC</li>
-					</ul>
-					<a id="scrollLeft" class="navigate text-right month-right" href="#"></a>
+					<div class="tab-menu">
+						<ul>
+							<li class="first-tab"><a href="#">Previous</a></li>
+							<li><a href="#" class="active">Today</a></li>
+							<li class="last-tab"><a href="#">Next</a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="cal-year">
-					<a href="#" id="backyear" class="cal-left"></a>
-					<ul class="year-list">
-						<li class="">2014</li>
-						<li class="">2015</li>
-						<li class="">2016</li>
-						<li class="current">2017</li>
-						<li class="">2018</li>
-						<li class="">2019</li>
-						<li class="">2020</li>
-						<li class="">2021</li>
-						<li class="">2022</li>
-					</ul>
-					<a href="#" id="frontyear" class="cal-right"></a>
-				</div>
+				
 				<ul class="media-list media-list-linked event-list">
 				</ul>
 			</div>
             <div id="confirmation_html" style="display:none;">
-
+			<div class="profile-tab2">
+	
+                <div class="tab-content">
+                    
+                    <div id="confirmation2" class="tab-pane active">
+                        <form autocomplete="off" class="yc-form" name="addappointment" id="addappointment" method="post" >
+                                        <input name="event_id" id="event_id" value="" type="hidden">
+                                        <input name="event_date" id="event_date" value="" type="hidden">
+                                        <div class="docteraddress">
+                                            <div class="docteraddressdiv">
+                                                <h2 class="reach-title"></h2>
+                                                <div class="reach-subtitle" style="text-decoration:underline;"></div>
+                                                <div class="address_row"></div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="login-from">
+                                            <div class="yc_submit">
+                                                    <input class="yc-button primary large" value="Check In" name="non_cli_conf" id="non_cli_conf" type="submit">
+                                            </div>
+                                        </div>
+                                    </form>
+                    </div>									
+                </div>
+                <div class="container">
+                    <div id="map" style="width: 100%; height: 300px;"></div>
+                </div>
+                </div>
+            
+            
             <div class="md-modal md-effect-1 " id="non_appoinmentSuccess" >
            
 					<div class="md-content">
 						<div class="success_body">
 							<div class="success_content">
 								<img src="img/success_tick.png" alt="tickmark" width="46" height="46">
-													<h4>You are now checked-in for your visit with <span></span></h4>
+								<h4>You are now checked-in for your visit with <span></span></h4>
 								<a class="successdonebtn" id="successlink" href="home.html">ok</a>
 							</div>
 							<div class="success_container">
@@ -83,7 +99,8 @@
     <script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
     <script type='text/javascript' src='js/select2.js'></script>
-    <script src="plugins/jSignature/jSignature.min.noconflict.js"></script>
+    <!--<script src="plugins/jSignature/jSignature.min.noconflict.js"></script>-->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWRfo3Xtlj926B7XS0E-i2l0ss8Tv-vjI&callback=" type="text/javascript"></script>
     <script src="js/events.js"></script>
     <script src="js/bootstrap-datepicker.min.js"></script>
    

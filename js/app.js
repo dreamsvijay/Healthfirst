@@ -17,6 +17,14 @@ $('#privacy-box').niceScroll({
 	});
 	//$("#privacy_html").css('display','none');
 $(document).ready(function(e) {
+	
+	$("#dob").datepicker({
+			format: 'mm/dd/yyyy',
+			//container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	
 	window.localStorage.removeItem("pat_id");
 	window.localStorage.removeItem("pat_name");
 	window.localStorage.removeItem("pat_phone");
@@ -25,7 +33,7 @@ $(document).ready(function(e) {
 	window.localStorage.removeItem("pat_acctok");
 	window.localStorage.removeItem("pre_page");
 	window.localStorage.removeItem("prac_id");
-	if(window.localStorage.getItem("hf_app")){ $(".loginlogotext .login").empty().append('Sign Up Now'); $("#emailcheck_html, #privacy_html").hide(); $("#consent, .loginlogoheader").show();}
+	if(window.localStorage.getItem("hf_app")){ $(".loginlogotext .login").empty().append('Create Your Free Account'); $("#emailcheck_html, #privacy_html").hide(); $("#consent, .loginlogoheader").show();}
 	if(!window.localStorage.getItem("hf_app")) window.localStorage.setItem("hf_app",1)
     setTimeout(function(){ $("#loading").hide(); $("#privacy_html").css('display','none');},2000);
 	$(".walkthrough-item .yc-button").click(function(){
@@ -231,25 +239,8 @@ $(document).ready(function(e) {
 			$('#dob').parent().addClass("has-error");				
 			return false;
 		}
-		if(e){
-		if (e.keyCode != 8)
-		{
-				if ($('#dob').val().length == 2 || $('#dob').val().length == 5){
-					$('#dob').val($('#dob').val() + "/");
-				}
-		}else{ var get_date = $('#dob').val();
-			if($('#dob').val().length < 7){  
-				if($('#dob').val().length == 3 || $('#dob').val().length == 6 || $('#dob').val().length == 4 ){
-					$("#dob").val(get_date.substr(0,get_date.length));
-					
-				}
-				else{
-					$("#dob").val(get_date.slice(0,-1));
-				} 
-			}
-		}
-		}
-		return isDate($('#dob'));
+		$('#dob').parent().removeClass("has-error");				
+		return true;
 	}
 	
 	function validateCphone(e){
@@ -311,100 +302,7 @@ $(document).ready(function(e) {
 				}
 			}
 	}
-	var dtCh = "/";
-	var minYear = 1875;
-	var maxYear = new Date().getFullYear();
-	function isDate(element) {
-		
-    var dtStr = element.val();
-    
-    var daysInMonth = DaysArray(12)
-    var pos1 = dtStr.indexOf(dtCh)
-    var pos2 = dtStr.indexOf(dtCh, pos1 + 1)
 	
-    var strMonth = dtStr.substring(0, pos1)
-    var strDay = dtStr.substring(pos1 + 1, pos2)
-    var strYear = dtStr.substring(pos2 + 1)
-    strYr = strYear
-    if (strDay.charAt(0) == "0" && strDay.length > 1)
-        strDay = strDay.substring(1)
-    if (strMonth.charAt(0) == "0" && strMonth.length > 1)
-        strMonth = strMonth.substring(1)
-    for (var i = 1; i <= 3; i++) {
-        if (strYr.charAt(0) == "0" && strYr.length > 1)
-            strYr = strYr.substring(1)
-    }
-    month = parseInt(strMonth)
-    day = parseInt(strDay)
-    year = parseInt(strYr)
-    if (pos1 == -1 || pos2 == -1) {
-        $('#'+element.attr('id')).parent().addClass("has-error");
-        //$('#date-error-custom').show().text("The date format should be : mm/dd/yyyy");
-        return false
-    }
-    if (strMonth.length < 1 || month < 1 || month > 12) {
-        $('#'+element.attr('id')).parent().addClass("has-error");
-        $('#date-error-custom').show().text("Please enter a valid month");
-        return false
-    }
-    if (strDay.length < 1 || day < 1 || day > 31 || (month == 2 && day > daysInFebruary(year)) || day > daysInMonth[month]) {
-        $('#'+element.attr('id')).parent().addClass("has-error");
-        $('#date-error-custom').show().text("Please enter a valid day");
-        return false
-    }
-    if (strYear.length != 4 || year == 0 || year < minYear || year > maxYear) {
-        $('#'+element.attr('id')).parent().addClass("has-error"); 
-        $('#date-error-custom').show().text("Please enter a valid 4 digit year between " + minYear + " and " + maxYear);
-        return false
-    }
-    if (dtStr.indexOf(dtCh, pos2 + 1) != -1 || isInteger(stripCharsInBag(dtStr, dtCh)) == false) {
-        $('#'+element.attr('id')).parent().addClass("has-error"); 
-        $('#date-error-custom').show().text("Please enter a valid date");
-        return false
-    }
-    $('#date-error-custom').hide(); $('#'+element.attr('id')).parent().removeClass("has-error")
-    return true
-}
-
-	function DaysArray(n) {
-		for (var i = 1; i <= n; i++) {
-			this[i] = 31
-			if (i == 4 || i == 6 || i == 9 || i == 11) {
-				this[i] = 30
-			}
-			if (i == 2) {
-				this[i] = 29
-			}
-		}
-		return this
-	}
-	
-	function daysInFebruary(year) {
-		return (((year % 4 == 0) && ((!(year % 100 == 0)) || (year % 400 == 0))) ? 29 : 28);
-	}
-	
-	function isInteger(s) {
-		var i;
-		for (i = 0; i < s.length; i++) {
-			 
-			var c = s.charAt(i);
-			if (((c < "0") || (c > "9")))
-				return false;
-		}
-		return true;
-	}
-	
-	function stripCharsInBag(s, bag) {
-		var i;
-		var returnString = "";
-		 
-		for (i = 0; i < s.length; i++) {
-			var c = s.charAt(i);
-			if (bag.indexOf(c) == -1)
-				returnString += c;
-		}
-		return returnString;
-	}
 	/* End Consent form validation */
 });
 
@@ -429,7 +327,7 @@ $(document).on('click',"a.skip",function(){
 $(document).on('click',"#privacy_html a",function(){
 	$("#loading").show();
 	$('body').removeClass('privacy-page').addClass('signup-page');
-	$(".loginlogotext .login").empty().append('Sign Up Now');
+	$(".loginlogotext .login").empty().append('Create Your Free Account');
 	$(".loginlogoheader").show();
 	$("#privacy_html").hide();
 	$("#consent").show();
