@@ -996,6 +996,7 @@ $('#generalinfo').submit(function(){
 							$("#pcpsubmit").parent().show();
 							$("#select_emc_relationship_wrap").show();
 							$("#relpcp").hide();
+							$("#mycontact").find('input, select').removeAttr('readonly');
 					}
 				}
 			});

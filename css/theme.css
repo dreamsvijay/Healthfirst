@@ -936,13 +936,13 @@ body.signup-page #pagecontent{padding:30px !important;}
 #consent .checkbox{margin-left:10px;}
 .has-error .input-group-addon{background-color:#f1f5f9;}
 .mycare-list .speciality{display:block;overflow:hidden;text-overflow:ellipsis;white-space:normal;width:100%;}
-/*.view-pro-det #emc_firstname::-webkit-input-placeholder, .view-pro-det #emc_lastname::-webkit-input-placeholder, .view-pro-det #emc_number::-webkit-input-placeholder, .view-pro-det #pcpcontactnumber::-webkit-input-placeholder { font-weight: 600;}
+.view-pro-det #emc_firstname::-webkit-input-placeholder, .view-pro-det #emc_lastname::-webkit-input-placeholder, .view-pro-det #emc_number::-webkit-input-placeholder, .view-pro-det #pcpcontactnumber::-webkit-input-placeholder { font-weight: 600;}
 .view-pro-det #emc_firstname::-moz-placeholder, .view-pro-det #emc_lastname::-moz-placeholder, .view-pro-det #emc_number::-moz-placeholder, .view-pro-det #pcpcontactnumber::-moz-placeholder {  font-weight: 600;}
 .view-pro-det #emc_firstname:-ms-input-placeholder, .view-pro-det #emc_lastname:-ms-input-placeholder, .view-pro-det #emc_number:-ms-input-placeholder, .view-pro-det #pcpcontactnumber:-ms-input-placeholder {  font-weight: 600;}
 .view-pro-det #emc_firstname:-moz-placeholder, .view-pro-det #emc_lastname:-moz-placeholder, .view-pro-det #emc_number:-moz-placeholder, .view-pro-det #pcpcontactnumber:-moz-placeholder {  font-weight: 600;}
 
 .view-pro-det #pcp::-moz-placeholder {  opacity:0;}
-.view-pro-det #primary_companyname::-moz-placeholder, .view-pro-det #sec_companyname::-moz-placeholder{  opacity:0;}*/
+.view-pro-det #primary_companyname::-moz-placeholder, .view-pro-det #sec_companyname::-moz-placeholder{  opacity:0;}
 @media (max-width:991px){#pagecontent .mobile-first-card p{text-align:center;}
 #pagecontent .mobile-first-card .fileupload-new{display:inherit;}
 }
