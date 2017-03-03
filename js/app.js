@@ -18,13 +18,13 @@ $('#privacy-box').niceScroll({
 	//$("#privacy_html").css('display','none');
 $(document).ready(function(e) {
 	
-	$("#dob").datepicker({
+	/*$("#dob").datepicker({
 			format: 'mm/dd/yyyy',
 			//container: container,
 			todayHighlight: true,
 			autoclose: true,
 			endDate: '+0d',
-		}).attr('readonly','readonly');
+		}).attr('readonly','readonly');*/
 	
 	window.localStorage.removeItem("pat_id");
 	window.localStorage.removeItem("pat_name");
