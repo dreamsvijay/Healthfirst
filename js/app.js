@@ -20,10 +20,11 @@ $(document).ready(function(e) {
 	
 	$("#dob").datepicker({
 			format: 'mm/dd/yyyy',
-			//container: container,
+			ignoreReadonly: true,
 			todayHighlight: true,
 			autoclose: true,
 			endDate: '+0d',
+			allowInputToggle: true
 		})
 	
 	window.localStorage.removeItem("pat_id");
