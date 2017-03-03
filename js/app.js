@@ -23,6 +23,7 @@ $(document).ready(function(e) {
 			//container: container,
 			todayHighlight: true,
 			autoclose: true,
+			endDate: '+0d',
 		})
 	
 	window.localStorage.removeItem("pat_id");
