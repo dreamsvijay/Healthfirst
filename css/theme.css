@@ -998,3 +998,9 @@ body.profile-signup .form-container{margin:20px 2% 20px 2%;}
 .medical-info .select2-container .select2-search--inline {width: 100%;}
 .gender-select .select2-container .select2-selection--single .select2-selection__rendered {font-size: 15px;line-height: 32px;}
 .mb-10 {margin-bottom:10px;}
+.event-search {padding: 0 18px 10px;}
+.event-search .form-control {background-color: #3d4797;border: 1px solid #3d438c;border-radius: 50px;color: #fff;height: 32px;}
+.event-search .form-control::-moz-placeholder{color:#fff;opacity:1;}
+.event-search .form-control:-ms-input-placeholder{color:#fff;}
+.event-search .form-control::-webkit-input-placeholder{color:#fff;}
+.event-page .header {height:auto;}

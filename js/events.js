@@ -168,4 +168,9 @@ function initMap(mapaddress,lat,lng) {
 	}
 }
 
+$(document).on('click',".search-icon a",function(){
+	$(".event-search input").val('');
+	$(".event-search").toggle();
+	return false;
+});
 /*$("#pageheader .panel-control-left a").on('click',function(){ $("#loading").show(); $("#events_html").show(); $("#confirmation_html").hide(); $(".site-title h4").empty().append('Events'); setTimeout(function(){ $("#loading").hide(); },300); return false; });*/
