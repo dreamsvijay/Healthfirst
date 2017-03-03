@@ -20,12 +20,11 @@ $(document).ready(function(e) {
 	
 	$("#dob").datepicker({
 			format: 'mm/dd/yyyy',
-			ignoreReadonly: true,
+			//container: container,
 			todayHighlight: true,
 			autoclose: true,
 			endDate: '+0d',
-			allowInputToggle: true
-		})
+		}).attr('readonly','readonly');
 	
 	window.localStorage.removeItem("pat_id");
 	window.localStorage.removeItem("pat_name");
