@@ -81,6 +81,7 @@ $(document).on('click', '.event-list .select_event', function(e) {
 			$(".site-title h4").empty().append($(this).find('.event-location').html());
 			$(".panel-control-left img").attr('src','img/left_arrow.png');
 			var action = 'eventselect';
+			$(".search-icon").hide();
 			var id = $(this).data('eventid'); $("#event_id").val($(this).data('eventid'));
 			var val =$(this).data('event'); $("#event_date").val($(this).data('event'));
 			var eventname =$(this).data('eventname'); $(".success_content h4 span").empty().append($(this).data('eventname'));
@@ -124,7 +125,7 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 	if($(".site-title h4").text() != "Events")
 	{ 	$(".header").removeClass('doc-page-header');
 		$(".panel-control-left img").attr('src','img/menu2.png');
-		$("#loading").show(); $("#events_html").show(); $("#confirmation_html").hide(); $(".site-title h4").empty().append('Events'); setTimeout(function(){ $("#loading").hide(); },300);	
+		$("#loading, .search-icon").show(); $("#events_html").show(); $("#confirmation_html").hide(); $(".site-title h4").empty().append('Events'); setTimeout(function(){ $("#loading").hide(); },300);	
 	}else
 	window.location.href= "home.html";
 });
