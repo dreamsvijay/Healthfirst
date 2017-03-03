@@ -93,6 +93,7 @@ $(document).ready(function(e) {
 			}
 			// Demographics // 
 			$("#dem_emp").val(data.data.GeneralData.Employed);
+			if(data.data.GeneralData.Employed == "N" || data.data.GeneralData.Employed == "") $("#empcmpy").hide();
 			/*$("#ssn").val(data.data.GeneralData.Ssn);*/
 			$("#mobilenumber").val(data.data.GeneralData.MobileNumber);
 			$("#employed_company").val(data.data.GeneralData.CompanyName);
@@ -202,7 +203,7 @@ $(document).ready(function(e) {
 			if(data.data.MedicationsData){
 				var medichist = new Array;var medicationArr = new Array;
 				for(var i=0;i<data.data.MedicationsData.length;i++){
-					pasthist.push(data.data.MedicationsData[i]['Name']);
+					medichist.push(data.data.MedicationsData[i]['Name']);
 					$("#addedMedicationList").append('<li id="addedMedi_'+data.data.MedicationsData[i]['RefId']+'"><p><span>'+data.data.MedicationsData[i]['Name']+", "+data.data.MedicationsData[i]['Dosage']+", "+$("#select_medication_freq1 option[value="+data.data.MedicationsData[i]['Frequency']+"]").text()+'</span></p><a href="javascript:;" class="removelist" data-id="'+data.data.MedicationsData[i]['RefId']+'"></a></li>');
 					medicationArr.push({
                     "Id": data.data.MedicationsData[i]['RefId'],
@@ -2233,6 +2234,7 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 	$(".vp_header a").each(function(index, element) {
         $(this).parent().parent().parent().parent().show();
     });
+	if(typeof $('input[name="primary_areyouinsured"]:checked') != "undefined") $("#no_insurance").hide();
 	/*var cur_form = $(this).parent().parent().parent().parent(); cur_form.show();
 	$(".dotstyle li").each(function(index, element) {
 		$(this).removeClass('current');
