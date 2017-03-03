@@ -235,6 +235,7 @@ $(document).ready(function(e) {
 	
 	function validateDob(e){ 
 		var dob  = $('#dob').val();
+		window.KeyBoard.hideKeyBoard();
 		if(dob == '')
 		{
 			$('#dob').parent().addClass("has-error");				
