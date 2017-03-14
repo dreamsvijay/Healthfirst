@@ -17,7 +17,12 @@ $('#privacy-box').niceScroll({
 	});
 	//$("#privacy_html").css('display','none');
 $(document).ready(function(e) {
-	
+	$("#dob").datepicker({
+    format: "mm/dd/yyyy",
+    autoclose: true,
+    disableTouchKeyboard: true,
+    Readonly: true
+}).attr("readonly", "readonly");
 	/*$("#dob").datepicker({
 			format: 'mm/dd/yyyy',
 			//container: container,
@@ -25,7 +30,7 @@ $(document).ready(function(e) {
 			autoclose: true,
 			endDate: '+0d',
 		});*/
-	
+	//$("#dob").readonlyDatepicker(true);
 	window.localStorage.removeItem("pat_id");
 	window.localStorage.removeItem("pat_name");
 	window.localStorage.removeItem("pat_phone");

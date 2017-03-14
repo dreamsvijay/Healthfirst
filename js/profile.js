@@ -219,7 +219,7 @@ $(document).ready(function(e) {
 				$("#ph_det, #pharmacy_hname").val(data.data.PharmacyData.PharmacyName);
 				$("#pharmacyzipcode").val(data.data.PharmacyData.PharmacyZip);
 				$("#pharmacy_hid").val(data.data.PharmacyData.PharmacyId);
-				if(data.data.PharmacyData.PharmacyId.length > 0)
+				if(data.data.PharmacyData.PharmacyName.length > 0)
 				$('#select_pharmacyaddress').append("<option value='"+data.data.PharmacyData.PharmacyId+"' data-address='"+data.data.PharmacyData.PharmacyAddress+"' selected>"+data.data.PharmacyData.PharmacyName+"</option>");
 				$("#select_pharmacyaddress").trigger('change');
 			}
@@ -750,7 +750,7 @@ $('#form_minsurance_info').submit(function(){
 		return false;
 	});
 	
-	function validatePinsured(){ 
+	function validatePinsured(e){  
 		var pri_areyouinsured  = $('input[name="primary_areyouinsured"]:checked').val();
 		if(typeof pri_areyouinsured === "undefined" || pri_areyouinsured.length == 0)
 		{   $('input[name="primary_areyouinsured"]').attr('data-id',0);
@@ -758,6 +758,7 @@ $('#form_minsurance_info').submit(function(){
 			return false;
 		} 
 		if($(".primaryInsuranceColumn ").css('display') == "block"){
+			if(typeof e != "undefined"){
 			if(pri_areyouinsured == "D"){
 				$('#primary_insuredfname, #primary_insuredlname, #primary_relationship, #primary_insureddob').val('').attr('data-id',0);
 				$('input[name="primary_insuredgender"]').attr('data-id',0);
@@ -773,7 +774,7 @@ $('#form_minsurance_info').submit(function(){
 				 $("#firstIns_dependent, .primaryInsuranceColumn .dependent-no, .primaryInsuranceColumn, #primary_relationship_wrap").show();
 				 $('#primary_insuredfname, #primary_insuredlname, #primary_relationship, #primary_insureddob').val('').attr('data-id',0);
 				$('input[name="primary_insuredgender"]').attr('data-id',0);
-			} $('input[name="primary_areyouinsured"]').attr('data-id',1); secins();
+			}} $('input[name="primary_areyouinsured"]').attr('data-id',1); secins();
 		}
 		$('input[name="primary_areyouinsured"]').next().css("border",""); return true;	
 	}
