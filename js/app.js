@@ -1,5 +1,95 @@
-//var base_url = "https://dev.yosicare.com/healthyvillage-app/";
 var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";
+
+$(document).on('click','#ccemail',function(){ 
+	$("#cemail").toggle();
+});
+
+$(document).on('click','#ccphone',function(){ 
+	$("#cphone").toggle();
+});
+
+var cemail = $("#cemail"), cphone = $("#cphone");
+
+cphone.on('blur keyup focus',validateCphone);
+cemail.on('blur keyup',validateCemail);
+
+$("#consent").submit(function(){
+	if(validateCphone() & validateCemail()){
+		window.location.href="home.html";
+	}
+	return false;
+});
+
+function validateCphone(e){
+	var phonechk = $("input[name='ccphone']:checked").val();
+	if(typeof phonechk != "undefined"){
+		var cphone  = $('#cphone').val();
+		if ($('#cphone').val().length === 0) {
+			$('#cphone').val('(');
+		} var key =0;
+		if(e) key = e.keyCode;
+		//var key = e.keyCode || 0;
+		if (key !== 8 && key !== 9) {
+			if ($('#cphone').val().length === 4) {
+				$('#cphone').val($('#cphone').val() + ')');
+			}
+			if ($('#cphone').val().length === 5) {
+				$('#cphone').val($('#cphone').val() + ' ');
+			}			
+			if ($('#cphone').val().length === 9) {
+				$('#cphone').val($('#cphone').val() + '-');
+			}
+		}
+		var regexp = /\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}/; 
+		if(regexp.test(cphone)){
+			$("#cphone").parent().removeClass("has-error");
+			return true;
+		}
+		else{
+			$('#cphone').parent().addClass("has-error");
+			return false;
+		}
+	}
+	$("#cphone").parent().removeClass("has-error");
+			return true;
+	}
+
+
+
+function validateCemail(){
+	var phonechk = $("input[name='ccemail']:checked").val();
+	if(typeof phonechk != "undefined"){
+		var cemail  = $('#cemail').val();
+		var filter = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
+		if(cemail == '')
+		{
+			$('#cemail').parent().addClass("has-error");				
+			return false;
+		}else
+			{
+				if(filter.test(cemail)){
+					$("#cemail").parent().removeClass("has-error");
+					return true;
+				}
+				else{
+					$('#cemail').parent().addClass("has-error");
+					return false;
+				}
+			}
+	}
+	$("#cemail").parent().removeClass("has-error");
+					return true;
+	}
+
+
+
+
+
+
+
+
+
+
 
 $("a.forgot-password").click(function(){ 
 	$(this).parent().parent().hide();
@@ -17,20 +107,7 @@ $('#privacy-box').niceScroll({
 	});
 	//$("#privacy_html").css('display','none');
 $(document).ready(function(e) {
-	$("#dob").datepicker({
-    format: "mm/dd/yyyy",
-    autoclose: true,
-    disableTouchKeyboard: true,
-    Readonly: true
-}).attr("readonly", "readonly");
-	/*$("#dob").datepicker({
-			format: 'mm/dd/yyyy',
-			//container: container,
-			todayHighlight: true,
-			autoclose: true,
-			endDate: '+0d',
-		});*/
-	//$("#dob").readonlyDatepicker(true);
+	
 	window.localStorage.removeItem("pat_id");
 	window.localStorage.removeItem("pat_name");
 	window.localStorage.removeItem("pat_phone");
@@ -39,7 +116,7 @@ $(document).ready(function(e) {
 	window.localStorage.removeItem("pat_acctok");
 	window.localStorage.removeItem("pre_page");
 	window.localStorage.removeItem("prac_id");
-	if(window.localStorage.getItem("hf_app")){ $(".loginlogotext .login").empty().append('Create Your Free Account'); $("#emailcheck_html, #privacy_html").hide(); $("#consent, .loginlogoheader").show();}
+	if(window.localStorage.getItem("hf_app")){ $(".loginlogotext .login").empty().append('We would love to communicate with you'); $("#emailcheck_html, #privacy_html").hide(); $("#consent, .loginlogoheader").show();}
 	if(!window.localStorage.getItem("hf_app")) window.localStorage.setItem("hf_app",1)
     setTimeout(function(){ $("#loading").hide(); $("#privacy_html").css('display','none');},2000);
 	$(".walkthrough-item .yc-button").click(function(){
@@ -171,7 +248,7 @@ $(document).ready(function(e) {
 	cemail.on('blur keyup',validateCemail);
 	fm_gender.on('blur keyup change',validateCgender);
 	
-	$("#consent").submit(function(){ 
+	$("#consent").submit(function(){/* 
 		if(validateFname() & validateLname() & validateDob() & validateCphone() & validateCemail() & validateCgender()){ 
 			if($("#cconf").val() == 1){
 				$("#loading").show();
@@ -216,7 +293,7 @@ $(document).ready(function(e) {
 			}
 		}
 		return false;
-	});
+	*/});
 	
 	function validateFname(){
 		var fname  = $('#fname').val();
@@ -267,7 +344,7 @@ $(document).ready(function(e) {
 		return isDate($('#dob'));
 	}
 	
-	function validateCphone(e){
+	/*function validateCphone(e){
 		var cphone  = $('#cphone').val();
 		if ($('#cphone').val().length === 0) {
 			$('#cphone').val('(');
@@ -295,7 +372,7 @@ $(document).ready(function(e) {
 			return false;
 		}
 		
-	}
+	}*/
 	function validateCgender(){
 		var fm_gender  = $('#fm_gender').val();
 		if(fm_gender == '')
@@ -307,7 +384,7 @@ $(document).ready(function(e) {
 		$("#fm_gender").next().find('.selection span.select2-selection').removeClass('has-error'); return true;	
 	}
 	
-	function validateCemail(){
+	/*function validateCemail(){
 		var cemail  = $('#cemail').val();
 		var filter = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
 		if(cemail == '')
@@ -325,7 +402,7 @@ $(document).ready(function(e) {
 					return false;
 				}
 			}
-	}
+	}*/
 	
 	var dtCh = "/";
 	var minYear = 1875;
@@ -446,7 +523,7 @@ $(document).on('click',"a.skip",function(){
 $(document).on('click',"#privacy_html a",function(){
 	$("#loading").show();
 	$('body').removeClass('privacy-page').addClass('signup-page');
-	$(".loginlogotext .login").empty().append('Create Your Free Account');
+	$(".loginlogotext .login").empty().append('We would love to communicate with you');
 	$(".loginlogoheader").show();
 	$("#privacy_html").hide();
 	$("#consent").show();

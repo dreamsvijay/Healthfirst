@@ -1,7 +1,13 @@
 var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";
 $("#pagecontent").hide();
 $(document).ready(function(e) {
-	
+	$("#pdob, #primary_insureddob, #sec_insureddob").datepicker({
+    format: "mm/dd/yyyy",
+    autoclose: true,
+    disableTouchKeyboard: true,
+    Readonly: true,
+	endDate: '+0d'
+}).attr("readonly", "readonly");
 	if(!window.localStorage.getItem("pat_id")){ window.location.href="index.html"; }
 	maritalList();
 	if(window.localStorage.getItem("prac_id")){ demographicList(); $("#app_submit").parent().show();}
@@ -487,7 +493,8 @@ $(document).on('click',".vp_header a, .btn-cancel",function(){
 			$('#pdob').parent().addClass("has-error");				
 			return false;
 		}
-		return isDate($('#pdob'));
+		$('#pdob').parent().removeClass("has-error");				
+			return true;
 		//$("#dob").parent().removeClass('has-error'); return true;	
 	}
 	
@@ -974,7 +981,7 @@ $('#generalinfo').submit(function(){
 		
 	dem_emp.on('blur keyup',validateEmp);
 	//ssn.on('blur keyup',validateSsn);
-	mobilenumber.on('blur keyup',validateMobilenumber);
+	mobilenumber.on('blur keyup focus',validateMobilenumber);
 	select_maritalstatus.on('blur keyup',validateMaritalsts);
 
 		if(validateEmp() & validateMobilenumber() & validateMaritalsts())
@@ -1027,14 +1034,46 @@ $('#generalinfo').submit(function(){
 		$("#ssn").parent().removeClass('has-error'); return true;	
 	}*/
 	
-	function validateMobilenumber(){
+	function validateMobilenumber(e){
 		var mobilenumber  = $('#mobilenumber').val();
-		if(mobilenumber == '')
-		{
-			$('#mobilenumber').parent().addClass("has-error");				
+		
+		if ($('#mobilenumber').val().length === 0) {
+			$('#mobilenumber').val('(');
+		} 
+		var regexp = /\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}/; 
+		if(regexp.test(mobilenumber)){
+			$("#mobilenumber").parent().removeClass("has-error");
+			return true;
+		}
+		else{
+			$('#mobilenumber').parent().addClass("has-error");
 			return false;
 		}
-		$("#mobilenumber").parent().removeClass('has-error'); return true;	
+		
+		/*var key =0;
+		if(e) key = e.keyCode;
+		//var key = e.keyCode || 0;
+		if (key !== 8 && key !== 9) {
+			if ($('#mobilenumber').val().length === 4) {
+				$('#mobilenumber').val($('#mobilenumber').val() + ')');
+			}
+			if ($('#mobilenumber').val().length === 5) {
+				$('#mobilenumber').val($('#mobilenumber').val() + ' ');
+			}			
+			if ($('#mobilenumber').val().length === 9) {
+				$('#mobilenumber').val($('#mobilenumber').val() + '-');
+			}
+		}
+		var regexp = /\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}/; 
+		if(regexp.test(mobilenumber)){
+			$("#mobilenumber").parent().removeClass("has-error");
+			return true;
+		}
+		else{
+			$('#mobilenumber').parent().addClass("has-error");
+			return false;
+		}*/
+		return false;
 	}
 	
 	function validateMaritalsts(){

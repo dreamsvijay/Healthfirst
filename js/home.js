@@ -11,7 +11,7 @@ if(window.localStorage.getItem("pre_page")){
 	window.localStorage.removeItem("pre_page");
 }
 $(document).ready(function(e) {
-	if(!window.localStorage.getItem("pat_id")){ window.location.href="index.html"; }
+	//if(!window.localStorage.getItem("pat_id")){ window.location.href="index.html"; }
     setTimeout(function(){ $("#loading").hide(); },1000);
    var height = $(window).height();        
    var headr_height = $("#pageheader").height();
