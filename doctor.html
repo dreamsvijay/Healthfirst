@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Health First</title>
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+     <link href="css/bootstrap-datepicker.css" rel="stylesheet">
+	<link href="css/theme.css" rel="stylesheet">
+</head>
+<body class="provider-page">
+	<header id="pageheader">
+		<div class="header">
+			<div class="panel-control-left"><a href="javascript:void(0);"><img alt="Back" src="img/menu2.png" width="21" height="19"></a></div>
+			<div class="site-title"><h4>Network Provider</h4></div>
+			<div class="panel-control-right dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Menu" src="img/menu-icon.png" width="4" height="16"></a>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="header-search">
+			<input type="text" class="form-control" placeholder="Search...">
+		</div>
+	</header>
+    <main id="pagecontent">
+        <div id="htmlContent">
+			<div class="menu-link myprofile-list">
+                <ul class="media-list provider-list" id="doctorlist">
+                    
+                </ul>
+            </div>
+            
+            <div class="reqform" style="display:none;">
+            <form method="post" autocomplete="off" name="apprequest" id="apprequest" >
+                <div class="md-input">
+                    <input class="md-form-control" name="rfname" id="rfname" required type="text">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>First Name</label>
+                </div>
+                <div class="md-input">
+                    <input class="md-form-control" name="rlname" id="rlname" type="text">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Last Name</label>
+                </div>
+                <div class="md-input">
+                    <input class="md-form-control" name="remail" id="remail" type="text">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Email</label>
+                </div>
+                <div class="md-input">
+                    <input class="md-form-control" name="rphone" id="rphone" type="text">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Phone (XXX) XXX-XXXX</label>
+                </div>
+                <div class="md-input">
+                    <input class="md-form-control cal-icon2" name="rdob" id="rdob" type="text">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Date & Time</label>
+                </div>
+                <div class="footer-con-space"></div>
+                <div class="form-group footer-fixed-group mb-0">
+                    <div class="footer-fixed-group-inner">
+                        <div class="actions">
+                            <input type="submit" value="Submit Request" class="yc-button">
+                        </div>
+                    </div>
+                </div>
+                </form>
+		</div>
+		</div>
+        <div class="" style="display:none;">
+        	<div id="map" style="width: 100%; height: 300px;"></div>
+            <div class="footer-con-space"></div>
+			<div class="form-group footer-fixed-group mb-0">
+				<div class="footer-fixed-group-inner">
+					<div class="actions">
+                    	<form action="" method="post" class="yc-form form_mdocdet" id="form_mdoctordetail_info" data-track="Doctor Details">
+                            <input type="hidden" name="dpracticeid" id="dpracticeid" value="" />
+                            <input type="hidden" name="did" id="did" value="" />
+                            <input type="hidden" name="dname" id="dname" value="" />
+                            <input type="submit" value="Request Appointment" class="yc-button primary large" id="doc_submit" name="doc_submit">
+                        </form>
+					</div>
+				</div>
+			</div>
+    	</div>
+    
+    </main>
+    <footer id="pagefooter"> </footer>
+    <div id="loading" style="display: none;">
+        <img src="img/ring.gif" alt="loading" width="66" height="66">
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWRfo3Xtlj926B7XS0E-i2l0ss8Tv-vjI&callback=" type="text/javascript"></script>
+    <script type='text/javascript' src='js/bootstrap-datepicker.min.js'></script>
+    <script src="js/doctor.js"></script>
+</body>
+</html>

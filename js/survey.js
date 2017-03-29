@@ -3,7 +3,7 @@ $(".user-name").empty().append(window.localStorage.getItem("pat_name"));
 $(".user-number").empty().append(window.localStorage.getItem("pat_phone"));
 $(".user-dob").empty().append(window.localStorage.getItem("pat_dob"));
 $(document).ready(function(e) {
-	if(!window.localStorage.getItem("pat_id")){ window.location.href="index.html"; }
+	$("#loading").show();
 	$.post(base_url+"mobile-app?page=getQuestions",{pat_id:window.localStorage.getItem("pat_id"),pat_acctok:window.localStorage.getItem("pat_acctok"),pat_reftok:window.localStorage.getItem("pat_reftok")},
 	function(data){ $("#loading").hide();
 		if(data.success == "Y"){

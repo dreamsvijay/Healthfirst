@@ -3,85 +3,177 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Health First</title>
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/theme.css?v=1.9" rel="stylesheet">
+	<link href="css/theme.css" rel="stylesheet">
 </head>
-<body class="profile-page2">
+<body class="subpagebody walkthrough-page">
 	<header id="pageheader" style="display:none;">
 		<div class="header">
-			<div class="panel-control-left"><a href="#"><img alt="Back" src="img/menu2.png" width="21" height="19"></a></div>
-			<div class="site-title"><h4>My profile</h4></div>
-			<div class="panel-control-right dropdown"><a href="#"class="dropdown-toggle" data-toggle="dropdown"><img alt="Menu" src="img/menu-icon.png" width="4" height="16"></a>
+			<div class="panel-control-left"><a href="javascript:void(0);"><img alt="Back" src="img/menu2.png" width="21" height="19"></a></div>
+			<div class="site-title"><img src="img/logo.png" alt="" width="228" height="56"></div>
+			<div class="panel-control-right dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Menu" src="img/menu-icon.png" width="4" height="16"></a>
 				<ul class="dropdown-menu dropdown-menu-right">
-					<li><a href="index.html">Logout</a></li>
+					<li><a href="#">Logout</a></li>
 				</ul>
 			</div>
 		</div>
 	</header>
-	<div class="loginlogoheader logo-header profile-header">
-        <div class="margin-top-30">
-			<a href="profile.html"><img src="img/profile-img.png" alt="user" class="" width="65" height="65"></a>
-        </div>
-        <div class="user-name"></div>
-        <div class="user-number"></div>
-        <div class="user-dob"></div>
-    </div>
-    
-	<main id="pagecontent" class="mobile-wrapper">
-    	<div id="htmlContent">
-			<div id="user-profile_html">
-				<div class="dr-search">
-					<div class="dr-search-input" id="doctorsearch_wrap">
-						<input class="yc-input form-control acInput" name="doctorsearch" id="doctorsearch" value="" placeholder="Search Doctor" autocomplete="off" type="text">
+    <main id="pagecontent">
+        <div id="htmlContent">
+        <div id="emailcheck_html">
+				<div class="text-right">
+					<a href="javascript:void(0);" class="skip">Skip</a>
+				</div>
+				<div id="walkthrough-items">
+					<div class="walkthrough-item">
+						<div class="walkthrough-img"><img src="img/icon-01.png" alt="" width="134" height="134"></div>
+						<p class="walkthrough-text">
+							Praesent mauris orci, viverra a tempor eget, sagittis sed nulla. Praesent rutrum sem eget mi feugiat, sit amet viverra dolor tempor.  Morbi sem quam, lobortis et nunc ac, pretium lacinia arcu. Integer nulla dui, porttitor at leo eu, pulvinar aliquam odio.
+						</p>
+						<div class="walkthrough-btn">
+							<input type="submit" value="Next" class="yc-button primary large">
+						</div>
+					</div>
+					<div class="walkthrough-item" style="display:none;">
+						<div class="walkthrough-img"><img src="img/icon-02.png" alt="" width="134" height="134"></div>
+						<p class="walkthrough-text">
+							Praesent mauris orci, viverra a tempor eget, sagittis sed nulla. Praesent rutrum sem eget mi feugiat, sit amet viverra dolor tempor.  Morbi sem quam, lobortis et nunc ac, pretium lacinia arcu. Integer nulla dui, porttitor at leo eu, pulvinar aliquam odio.
+						</p>
+						<div class="walkthrough-btn">
+							<input type="submit" value="Next" class="yc-button primary large">
+						</div>
+					</div>
+					<div class="walkthrough-item" style="display:none;">
+						<div class="walkthrough-img"><img src="img/icon-03.png" alt="" width="134" height="134"></div>
+						<p class="walkthrough-text">
+							Praesent mauris orci, viverra a tempor eget, sagittis sed nulla. Praesent rutrum sem eget mi feugiat, sit amet viverra dolor tempor.  Morbi sem quam, lobortis et nunc ac, pretium lacinia arcu. Integer nulla dui, porttitor at leo eu, pulvinar aliquam odio.
+						</p>
+						<div class="walkthrough-btn">
+							<input type="submit" value="Next" class="yc-button primary large">
+						</div>
+					</div>
+					<div class="walkthrough-item" style="display:none;">
+						<div class="walkthrough-img"><img src="img/icon-04.png" alt="" width="134" height="134"></div>
+						<p class="walkthrough-text">
+							Praesent mauris orci, viverra a tempor eget, sagittis sed nulla. Praesent rutrum sem eget mi feugiat, sit amet viverra dolor tempor.  Morbi sem quam, lobortis et nunc ac, pretium lacinia arcu. Integer nulla dui, porttitor at leo eu, pulvinar aliquam odio.
+						</p>
+						<div class="walkthrough-btn">
+							<input type="submit" value="Done" class="yc-button primary large">
+						</div>
 					</div>
 				</div>
-				<div class="menu-link">
-					<ul class="media-list media-list-linked">
-						<li class="media">
-							<a href="events.html" class="media-link">
-								<div class="media-body media-middle text-nowrap">
-									<div class="menu-title">Calendar Events</div>
-								</div>
-								<div class="media-right media-middle text-nowrap">
-									<img src="img/calendar.png" alt="" width="20" height="20">
-								</div>
-							</a>
-						</li>
-						<li class="media">
-							<a href="javascript:void(0);" class="media-link">
-								<div class="media-body media-middle text-nowrap">
-									<div class="menu-title">My Profile</div>
-								</div>
-								<div class="media-right media-middle text-nowrap">
-									<img src="img/pro-icon.png" alt="" width="20" height="20">
-								</div>
-							</a>
-						</li>
-						<li class="media">
-							<a href="#" class="media-link">
-								<div class="media-body media-middle text-nowrap">
-									<div class="menu-title">Resource Finder</div>
-								</div>
-								<div class="media-right media-middle text-nowrap">
-									<img src="img/finder.png" alt="" width="20" height="20">
-								</div>
-							</a>
-						</li>
-                        <li class="media">
-                               <a class="media-link" href="index.html" id="yclogout">
-                                       <div class="media-body media-middle text-nowrap">
-                                               <div class="menu-title">Logout</div>
-                                       </div>
-                                       <div class="media-right media-middle text-nowrap">
-                                               <img width="20" height="20" alt="" src="img/logout.png">
-                                       </div>
-                               </a>
-                       </li>
+                <div class="dotstyle dotstyle-smalldotstroke" >
+					<ul>
+						<li class="current"><a href="javascript:;">Step 1</a></li>
+						<li><a href="javascript:;">Step 2</a></li>
+						<li><a href="javascript:;">Step 3</a></li>
+						<li><a href="javascript:;">Step 4</a></li>
 					</ul>
-                </div>
+				</div>
+			</div>
+        	
+            <div id="privacy_html" style="display:none;">
+				<div class="privacy-title">
+				Privacy Policy
+				</div>
+				<div class="panel privacy-wrap main">
+					<div class="panel-body">
+					  <div id="privacy-box" class="privacy-box slimscrollleft">
+						<div class="privacy-cont">
+							<h5>Privacy Practices Acknowledgement and Release of Information</h5>
+							<p>Due to the Health Insurance Portability and Accountability Act (HIPAA) of 1996, the following information must be completed and updated annually by each patient.</p>
+							<p>This release authorizes River Place Ob/Gyn to discuss medical information regarding my care, condition, treatment or diagnosis with the parties listed below.</p>
+							<p>By initialing below, I acknowledge that I have been provided a copy of this facility's Notice of Privacy Practices for River Place Ob/Gyn.</p>
+							<h5>Prescription Medication Policy & Agreement</h5> 
+							<p>The following is an outline of our prescription medication refill policy for River Place 0B/GYN, PA</p>
+							<p>If you need a refill on your medication, please, call your pharmacy first. The pharmacy will then</p>
+						</div>
+					  </div>
+					</div>
+					<div class="panel-footer ">
+						<div class="btn-group btn-group-footer btn-group-justified privacy-footer">
+							<a href="#" class="btn">Cancel</a>
+							<a href="#" class="btn">I Agree</a>
+						</div>
+					</div>
+				</div>
+			</div>
+        
+        
+			<div class="menu-link home-menu" style="display:none;">
+				<div class="page-title">
+					<h4>What would you like to do?</h4>
+				</div>
+				<ul class="media-list menu-list">
+					<li class="media">
+						<a href="doctor.html" class="media-link">
+							<div class="media-left media-middle">
+								<img src="img/search-network.png" alt="" width="33" height="32">
+							</div>
+							<div class="media-body media-middle">
+								<div class="menu-title">Search Network Provider</div>
+							</div>
+							<div class="media-right media-middle text-nowrap">
+								<img width="9" height="16" src="img/arrow-right2.png" alt="">
+							</div>
+						</a>
+					</li>
+					<li class="media">
+						<a href="#" class="media-link">
+							<div class="media-left media-middle text-nowrap">
+								<img src="img/calendar-event.png" alt="" width="31" height="31">
+							</div>
+							<div class="media-body media-middle">
+								<div class="menu-title">Search Calender Event</div>
+							</div>
+							<div class="media-right media-middle text-nowrap">
+								<img width="9" height="16" src="img/arrow-right2.png" alt="">
+							</div>
+						</a>
+					</li>
+					<li class="media">
+						<a href="#" class="media-link">
+							<div class="media-left media-middle text-nowrap">
+								<img src="img/resource-finder.png" alt="" width="30" height="29">
+							</div>
+							<div class="media-body media-middle">
+								<div class="menu-title">Go to Resource Finder</div>
+							</div>
+							<div class="media-right media-middle text-nowrap">
+								<img width="9" height="16" src="img/arrow-right2.png" alt="">
+							</div>
+						</a>
+					</li>
+					<li class="media">
+						<a href="event-recom.html" class="media-link">
+							<div class="media-left media-middle text-nowrap">
+								<img src="img/event-rec.png" alt="" width="27" height="29">
+							</div>
+							<div class="media-body media-middle">
+								<div class="menu-title">Event Recommendation</div>
+							</div>
+							<div class="media-right media-middle text-nowrap">
+								<img width="9" height="16" src="img/arrow-right2.png" alt="">
+							</div>
+						</a>
+					</li>
+                    <li class="media">
+						<a href="#" class="media-link">
+							<div class="media-left media-middle text-nowrap">
+								<img src="img/myinfo.png" alt="" width="25" height="29">
+							</div>
+							<div class="media-body media-middle">
+								<div class="menu-title">My Info</div>
+							</div>
+							<div class="media-right media-middle text-nowrap">
+								<img width="9" height="16" src="img/arrow-right2.png" alt="">
+							</div>
+						</a>
+					</li>
+				</ul>
 			</div>
             
             <div id="myprofile_html" class="grid-view" style="display:none;">
@@ -90,67 +182,71 @@
 						<a href="mycare-team.html"><img src="img/mycare-team.png" alt="" width="35" height="24"> <span class="menu-title2">My Care Team</span></a>
 					</li>
 					<li class="top right">
-						<a href="profile.html"><img src="img/my-info.png" alt="" width="22" height="25"> <span class="menu-title2">My Info</span></a>
+						<a href=""><img src="img/my-info.png" alt="" width="22" height="25"> <span class="menu-title2">My Info</span></a>
 					</li>
 					<li class="bottom left">
-						<a href="survey.html"><img src="img/survey-question.png" alt="" width="34" height="23"> <span class="menu-title2">Survey Questions</span></a>
+						<a href="javascript:void(0);"><img src="img/survey-question.png" alt="" width="34" height="23"> <span class="menu-title2">Communication Preference</span></a>
 					</li>
 					<li class="bottom right">
-						<a href="myactivity.html"><img src="img/activity-history.png" alt="" width="19" height="23"> <span class="menu-title2">Activity History</span></a>
+						<a href="page-myactivity.html"><img src="img/activity-history.png" alt="" width="19" height="23"> <span class="menu-title2">Activity History</span></a>
 					</li>
 				</ul>
 			</div>
-		</div>
-    
-    <div id="doctordetail_html" style="display:none;">
- 	 <form action="" method="post" class="yc-form form_mdocdet" id="form_mdoctordetail_info" data-track="Doctor Details">
-            <input type="hidden" name="action" value="ajaxmdoctordetailinfo" />
-            <input type="hidden" name="dpracticeid" id="dpracticeid" value="" />
-            <input type="hidden" name="did" id="did" value="" />
-            <input type="hidden" name="dname" id="dname" value="" />
             
-            <input type="hidden" name="mapaddress" id="mapaddress" value="" />
-            <input type="hidden" name="lat" id="lat" value="" />
-            <input type="hidden" name="lng" id="lng" value="" />
-            <div class="docteraddress">
-                <div class="docteraddressdiv">
-                    <h2 class="reach-title"></h2>
-                    <h4 class="reach-subtitle"></h4>
-                    <div class="speciality_row">
-                            <span></span>
+            <div id="consent" style="display:none;">
+            	<div class="consent">
+                    <div class="consent-icon"><img src="img/edit.png" alt="" width="78" height="78"></div>
+                    <p>We could love to communicate with you regarding Healthy Village.</p>
+                </div>
+                <div class="consent-content">
+                    <h4>Please choose your consent below:</h4>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input name="unstyled-radio-left" checked="checked" type="checkbox">
+                                I like to Receive Text Message from Healthy Village
+                            </label>
+                        </div>
+                        <div class="md-input">
+                            <input class="md-form-control" required type="text">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Enter Phone Number</label>
+                        </div>
                     </div>
-                    <div class="address_row"></div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <span class="checked"><input name="stacked-radio-left" class="styled" checked="checked" type="checkbox"></span>
+                                I like to receive Email from Healthy Village
+                            </label>
+                        </div>
+                        <div class="md-input">
+                            <input class="md-form-control" required type="text">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Enter Phone Number</label>
+                        </div>
+                    </div>
+                    <div class="form-group"><br /></div>
+                    <div class="form-group footer-fixed-group mb-0">
+                        <div class="footer-fixed-group-inner">
+                            <div class="actions">
+                                <input type="submit" value="Next" class="yc-button primary large">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="calbutton">
-                    <a href="tel://"><img src="img/call-icon.png" width="39" height="39"  alt=""/></a> </div>
             </div>
-
-            <div class="login-from">
-                <div class="form-group">
-                    <input type="submit" id="doc_submit" name="doc_submit" value="Proceed" class="yc-button primary large">
-                </div>
-            </div>
-        </form>
-        <div class="container">
-        <div id="map" style="width: 100%; height: 300px;"></div>
-    </div>
-         
- </div>
-    
-    
-	</main>
-    
+		</div>
+    </main>
     <footer id="pagefooter"> </footer>
-    <div id="loading" style="text-align: center;">
-        <img src="img/AcuantWebServices/ring.gif" alt="loading" width="66" height="66">
+    <div id="loading" style="display: none;">
+        <img src="img/ring.gif" alt="loading" width="66" height="66">
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
-    <script type='text/javascript' src='js/select2.js'></script>
-    <script src="js/maskedinput-1.2.2.min.js"></script>
-    <script src="js/autocomplete.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWRfo3Xtlj926B7XS0E-i2l0ss8Tv-vjI&callback=" type="text/javascript"></script>
-    <script src="js/home.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
