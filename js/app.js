@@ -16,9 +16,9 @@ $(".walkthrough-item .yc-button").click(function(){
 	$(".dotstyle ul").find('li.current').removeClass('current').next('li').addClass('current');
 });
 
-if(window.localStorage.getItem("hf_app")){ //$(".loginlogotext .login").empty().append('Create Your Free Account'); 
+/*if(window.localStorage.getItem("hf_app")){ //$(".loginlogotext .login").empty().append('Create Your Free Account'); 
 $("#emailcheck_html, #privacy_html").hide(); $('body').removeClass('privacy-page').addClass('home-page'); $("#pageheader .header").addClass('logo-center'); $(".home-menu, #pageheader").show();}
-	if(!window.localStorage.getItem("hf_app")) window.localStorage.setItem("hf_app",1)
+	if(!window.localStorage.getItem("hf_app")) window.localStorage.setItem("hf_app",1)*/
 
 $('#privacy-box').niceScroll({
 		cursorcolor: "#2f185c",
@@ -40,8 +40,8 @@ $(document).on('click',"a.skip",function(){
 $(document).on('click',"#privacy_html a",function(){
 	$("#loading").show();
 	$('body').removeClass('privacy-page').addClass('home-page');
-	$(".loginlogotext .login").empty().append('Create Your Free Account');
-	$(".loginlogoheader, #pageheader").show();
+	$("#pageheader .header").addClass('logo-center');
+	$("#pageheader").show();
 	$("#privacy_html").hide();
 	$(".home-menu").show();
 	setTimeout(function(){ $("#loading").hide(); },500);

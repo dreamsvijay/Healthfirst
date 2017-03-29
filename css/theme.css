@@ -202,7 +202,7 @@ border-color: none;color: #fff;}
 .page-title > h4 {color: #fff;font-size: 15px;font-weight: normal;margin: 0;text-align: center;}
 .menu-list .media{border:0;margin:0;border-radius:inherit;background-color:#fff;min-height: 80px;}
 .home-page #pagecontent{padding:0;}
-.menu-list .media-link{color:#818181;display:block;padding:37px 30px;outline:none;}
+.menu-list .media-link{color:#818181;display:block;padding:33px 30px;outline:none;}
 .menu-list{margin-bottom:0;}
 .menu-list .media-left{padding-right:25px;}
 .menu-list .media:first-child {background-color: #0099cd;}
@@ -212,8 +212,8 @@ border-color: none;color: #fff;}
 .menu-list .media:last-child {background-color: #082673;}
 .menu-title {color:#fff;}
 .logo-center .site-title {display: block;margin: 0;position: absolute;text-align: center;width: 100%;}
-.header.logo-center {height: 104px;}
-.logo-center .site-title > img {margin-top: 25px;}
+.header.logo-center {height: 86px;}
+.logo-center .site-title > img {height: auto;margin-top: 20px;width: 183px;}
 
 /* My profile */
 
