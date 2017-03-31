@@ -101,7 +101,7 @@ $("#form_mdoctordetail_info").submit(function(){
 });
  
 $(document).ready(function(e) {
-		$("#rdob").datetimepicker({
+		/*$("#rdob").datetimepicker({
 		format: "mm/dd/yyyy hh:ii",
 		autoclose: true,
 		disableTouchKeyboard: true,
@@ -118,6 +118,41 @@ $(document).ready(function(e) {
 		$('#time-start').datetimepicker('setDate', TimeZoned);
 		$('#start-time-adjusted').html(TimeZoned); // Log
 	}).attr("readonly", "readonly");
+*/
+
+
+	var logic = function( currentDateTime ){
+	var now = new Date();
+        var _d_date = currentDateTime.getDate();
+        var _date = now.getDate();
+        if (_date === _d_date) {
+            this.setOptions({
+                minTime: 0,
+				maxTime:'6:00 PM'
+            });
+        } else {
+            this.setOptions({
+                minTime: '8:00 AM',
+				maxTime:'6:00 PM'
+            });
+        }
+		
+};
+$('#rdob').datetimepicker({
+	//lang: 'en',
+	format: 'm/d/Y h:i A',
+	formatTime: 'h:i A',
+	formatTimeScroller: 'h:i A',
+	minDate: 0,
+	onChangeDateTime:logic,
+	onShow:logic,
+	className: 'datepicker_position',
+	step: 15,
+	scrollMonth: false,
+	scrollTime: false,
+	scrollInput: false,
+});
+
 
 	var rfname = $("#rfname"), rlname = $("#rlname"), remail = $("#remail"), rphone = $("#rphone"), rdob = $("#rdob");
 	rfname.on('blur keyup',validateRfname);
@@ -126,12 +161,14 @@ $(document).ready(function(e) {
 	rphone.on('blur keyup focus',validateRphone);
 	remail.on('blur keyup',validateRemail);
 
-	$('#register').submit(function(){ 
+	$('#apprequest').submit(function(){ 
 		if(validateRfname() & validateRlname() & validateRdob() & validateRphone() & validateRemail())
 		{ 
-			var dataString ="uname="+$("#remail").val()+"&fname="+rfname.val()+"&lname="+rlname.val()+"&dob="+rdob.val()+"&cphone="+rphone.val()+"&act=u";
+			var dataString ="uname="+$("#remail").val()+"&fname="+rfname.val()+"&lname="+rlname.val()+"&dob="+rdob.val()+"&phone="+rphone.val()+"&practiceid="+$("#dpracticeid").val()+"&did="+$("#did").val();
+			$(".md-body h4 span").empty().html($("#dname").val());
+			$(".md-body p span").empty().html($("#rdob").val());
 			$.ajax({
-				url:base_url+"mobile-app?page=login",
+				url:base_url+"mobile-app?page=apptrequest",
 				type:"POST",
 				data:dataString,
 				dataType:"json",
@@ -140,22 +177,8 @@ $(document).ready(function(e) {
 				},
 				success:function(data){ 
 					$("#loading").hide(); 
-					if(data.success=="Y"){
-						window.localStorage.setItem("pat_id", data.data.Id);
-						window.localStorage.setItem("pat_fname", data.data.FirstName+"+#="+data.data.LastName);
-						window.localStorage.setItem("pat_email", $("#remail").val());
-						//window.localStorage.setItem("pat_phone", data.data.Phone);
-						window.localStorage.setItem("pat_dob", data.data.Dob);
-						window.localStorage.setItem("pat_reftok", data.data.practice.refresh_token);
-						window.localStorage.setItem("pat_acctok", data.data.practice.access_token);
-						
-						location.href = "home.html";
-					}else{
-						$('#password').parent().addClass("has-error");
-						$('#email').parent().addClass("has-error");	
-						setTimeout(function(){$('.login_err').html(data.det);}, 2000);
-						//window.localStorage.clear();
-					}
+					$('#appoinmentSuccess').addClass('md-show');
+    				$('.md-overlay').addClass('md-show');
 				}
 			});
 		}
@@ -167,30 +190,30 @@ $(document).ready(function(e) {
 		var rfname  = $('#rfname').val();
 		if(rfname == '')
 		{
-			$('#rfname').parent().addClass("has-error");				
+			$('#rfname').parent().addClass("error");				
 			return false;
 		}
-		$('#rfname').parent().removeClass("has-error");
+		$('#rfname').parent().removeClass("error").addClass('focused');
 		return true;
 	}
 	function validateRlname(){
 		var rlname  = $('#rlname').val();
 		if(rlname == '')
 		{
-			$('#rlname').parent().addClass("has-error");				
+			$('#rlname').parent().addClass("error");				
 			return false;
 		}
-		$('#rlname').parent().removeClass("has-error");
+		$('#rlname').parent().removeClass("error").addClass('focused');
 		return true;
 	}
 	function validateRdob(){
 		var rdob  = $('#rdob').val();
 		if(rdob == '')
 		{
-			$('#rdob').parent().addClass("has-error");				
+			$('#rdob').parent().addClass("error");				
 			return false;
 		}
-		$('#rdob').parent().removeClass("has-error");
+		$('#rdob').parent().removeClass("error").addClass('focused');
 		return true;
 	}
 	
@@ -214,16 +237,15 @@ $(document).ready(function(e) {
 		}
 		var regexp = /\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}/; 
 		if(regexp.test(rphone)){
-			$("#rphone").parent().removeClass("has-error");
+			$("#rphone").parent().removeClass("error");
 			return true;
 		}
 		else{
-			$('#rphone').parent().addClass("has-error");
+			$('#rphone').parent().addClass("error").addClass('focused');
 			return false;
 		}
 	
 	}
-
 
 
 function validateRemail(){
@@ -231,16 +253,16 @@ function validateRemail(){
 		var filter = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
 		if(remail == '')
 		{
-			$('#remail').parent().addClass("has-error");				
+			$('#remail').parent().addClass("error");				
 			return false;
 		}else
 			{
 				if(filter.test(remail)){
-					$("#remail").parent().removeClass("has-error");
+					$("#remail").parent().removeClass("error");
 					return true;
 				}
 				else{
-					$('#remail').parent().addClass("has-error");
+					$('#remail').parent().addClass("error").addClass('focused');
 					return false;
 				}
 			}
@@ -291,7 +313,7 @@ var height = $(window).height();
    $(".main").css("height", trueheight);
  $(".loginlogoheader, #user-profile_html").hide(); $("#pageheader, #myprofile_html").show(); setTimeout(function(){ $("#loading").hide(); },300); });
 
-$('#doctorsearch')
+/*$('#doctorsearch')
 	.autocomplete(base_url+"mobile-app?page=searchDoctor", acOptions_doctor)
 	.result(function(e, data) {
 		$("#loading").show();
@@ -314,7 +336,7 @@ $('#doctorsearch')
 		$(".address_row").empty().append(data[3]+"<br />"+data[4]);
 		initMap($('#mapaddress').val(),$('#lat').val(),$('#lng').val());
 		setTimeout(function(){ $("#loading").hide(); },300);
-		});
+		});*/
 			
 	var acOptions_doctor = {
     minChars: 2,

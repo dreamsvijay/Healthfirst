@@ -6,7 +6,7 @@ $(".walkthrough-item .yc-button").click(function(){
 	else
 	{
 		$("#loading").show();
-		$('body').removeClass('signup-page').addClass('privacy-page');
+		$('body').removeClass('walkthrough-page').addClass('privacy-page');
 		$("#emailcheck_html").hide();
 		$("#privacy_html").show();
 		$('#privacy-box').getNiceScroll().resize();
@@ -16,9 +16,31 @@ $(".walkthrough-item .yc-button").click(function(){
 	$(".dotstyle ul").find('li.current').removeClass('current').next('li').addClass('current');
 });
 
-/*if(window.localStorage.getItem("hf_app")){ //$(".loginlogotext .login").empty().append('Create Your Free Account'); 
-$("#emailcheck_html, #privacy_html").hide(); $('body').removeClass('privacy-page').addClass('home-page'); $("#pageheader .header").addClass('logo-center'); $(".home-menu, #pageheader").show();}
-	if(!window.localStorage.getItem("hf_app")) window.localStorage.setItem("hf_app",1)*/
+if(window.localStorage.getItem("hf_app")){ //$(".loginlogotext .login").empty().append('Create Your Free Account'); 
+$("#emailcheck_html, #privacy_html").hide(); $('body').removeClass('walkthrough-page').addClass('home-page'); $("#pageheader .header").addClass('logo-center'); $(".home-menu, #pageheader").show();}
+	if(!window.localStorage.getItem("hf_app")) window.localStorage.setItem("hf_app",1);
+	
+/* page resize */	
+	$(document).ready(function(){
+		var height = $(window).height();	
+		var headr_height = $("#pageheader").height();
+		var footr_height = $("#pagefooter").height();
+		var setheight = height - headr_height;
+		var trueheight = setheight - footr_height;
+		$(".menu-list").css("height", trueheight);
+		var h=$(window).height()-136;
+		$('.menu-list').height(h);
+		var main_ht = $(".menu-list").css("height").replace("px","");
+		$(".menu-list li").each(function(index){ $(this).css('height',(main_ht/5)+"px").css('line-height',(main_ht/5)+"px");});
+	});
+	$(window).resize(function(){
+		var h=$(window).height()-136;
+		$('.menu-list').height(h);
+		var main_ht = $(".menu-list").css("height").replace("px","");
+		$(".menu-list li").each(function(index){ $(this).css('height',(main_ht/5)+"px").css('line-height',(main_ht/5)+"px");});
+	});
+	
+/* End page resize */
 
 $('#privacy-box').niceScroll({
 		cursorcolor: "#2f185c",
@@ -29,7 +51,7 @@ $('#privacy-box').niceScroll({
 	
 $(document).on('click',"a.skip",function(){
 	$("#loading").show();
-	$('body').removeClass('signup-page').addClass('privacy-page');
+	$('body').removeClass('walkthrough-page').addClass('privacy-page');
 	$("#emailcheck_html").hide();
 	$("#privacy_html").show();
 	$('#privacy-box').getNiceScroll().resize();
@@ -55,7 +77,7 @@ $(".media-list li:eq(4)").on('click',function(){ $("#loading").show();
    var footr_height = $("#pagefooter").height();
    var setheight = height - headr_height;
    var trueheight = setheight - footr_height;
-   $(".main").css("height", trueheight);
+   $("#myprofile_html .main").css("height", trueheight);
    $(".home-menu").hide(); $("#pageheader, #myprofile_html").show(); setTimeout(function(){ $("#loading").hide(); },300); });
    
 $("#myprofile_html li:eq(2) a").on('click',function(){ $("#loading").show(); $(".site-title h4").empty().append('Consent to Communication');
@@ -65,7 +87,7 @@ $("#myprofile_html li:eq(2) a").on('click',function(){ $("#loading").show(); $("
 
 $(window).resize(function(){
 	var h=$(window).height()-70;
-	$('.main').height(h);
+	$('#myprofile_html .main').height(h);
 });
 
 $(document).on('click',"#pageheader .panel-control-left a",function(){
