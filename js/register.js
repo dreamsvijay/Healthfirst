@@ -47,7 +47,7 @@ $(".js-example-basic-single").select2({
 					window.localStorage.setItem("pat_phone", data.data.Phone);
 					window.localStorage.setItem("pat_dob", data.data.Dob);
 					window.localStorage.setItem("pat_mail", $("#email").val());
-					//if(data.data.Phone) $("#ccphone").val(data.data.Phone).attr('readonly','readonly').parent().addClass('focused');
+					if(data.data.Phone) $("#ccphone").val(data.data.Phone).attr('readonly','readonly').parent().addClass('focused');
 					if($("#email").val()) $("#ccemail").val($("#email").val()).attr('readonly','readonly').parent().addClass('focused');
 					if(window.localStorage.getItem('doc_req')){ window.localStorage.removeItem('doc_req'); window.location.href="index.html"; }
 					$("body").removeClass('signup-page').addClass('consent-page');
@@ -152,7 +152,7 @@ var iemail = $("#iemail"), ipassword = $("#ipassword");
 					window.localStorage.setItem("pat_phone", data.data.Phone);
 					window.localStorage.setItem("pat_dob", data.data.Dob);
 					window.localStorage.setItem("pat_mail", $("#iemail").val());
-					//if(data.data.Phone) $("#ccphone").val(data.data.Phone).attr('readonly','readonly').parent().addClass('focused');
+					if(data.data.Phone) $("#ccphone").val(data.data.Phone).attr('readonly','readonly').parent().addClass('focused');
 					if(data.data.Email) $("#ccemail").val($("#iemail").val()).attr('readonly','readonly').parent().addClass('focused');
 					$("body").removeClass('signup-page').addClass('consent-page');
 					$("#register, #sign_in_up, .loginlogoheader").hide();
@@ -287,3 +287,9 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 		} $("#ccphone").parent().removeClass("error").addClass('focused');return true;
 	}
 /* end consent form */
+
+if($(document.activeElement).attr('type') == "text"){
+    $("#consent_save").parent().parent().css('position','relative');
+}else{
+    $("#consent_save").parent().parent().css('position','fixed');
+}

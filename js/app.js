@@ -222,3 +222,8 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 		} $("#ccphone").parent().removeClass("error").addClass('focused');return true;
 	}
 /* end consent form */
+if($(document.activeElement).attr('type') == "text"){
+    $("#.footer-fixed-group").css('position','relative');
+}else{
+    $(".footer-fixed-group").css('position','fixed');
+}

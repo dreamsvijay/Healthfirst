@@ -23,3 +23,12 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 	window.localStorage.setItem("pre_page",'myprofile_html');
 	window.location.href = "index.html";
 });
+$(".dropdown-menu-right li a").click(function(){
+	window.localStorage.removeItem("pat_id");
+	window.localStorage.removeItem("pat_name");
+	window.localStorage.removeItem("pat_phone");
+	window.localStorage.removeItem("pat_dob");
+	window.localStorage.removeItem("pat_reftok");
+	window.localStorage.removeItem("pat_acctok");
+	window.location.href= "index.html";
+});

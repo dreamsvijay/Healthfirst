@@ -413,11 +413,11 @@ $("#myprofile_html").click(function(){
 
 
 
-/*if($(document.activeElement).attr('type') == "text"){
-    $("#doc_submit").parent().parent().css('position','relative');
+if($(document.activeElement).attr('type') == "text"){
+    $(".footer-fixed-group").css('position','relative');
 }else{
-    $("#doc_submit").parent().parent().css('position','relative');
-}*/
+    $(".footer-fixed-group").css('position','fixed');
+}
 
 $(".dropdown-menu-right li a").click(function(){
 	window.localStorage.removeItem("pat_id");
