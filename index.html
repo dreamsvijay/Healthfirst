@@ -128,7 +128,7 @@
 						</a>
 					</li>
 					<li class="media">
-						<a href="#" class="media-link">
+						<a href="events.html" class="media-link">
 							<div class="media-left media-middle text-nowrap">
 								<img src="img/calendar-event.png" alt="" width="31" height="31">
 							</div>
@@ -141,7 +141,7 @@
 						</a>
 					</li>
 					<li class="media">
-						<a href="#" class="media-link">
+						<a href="resource-finder.html" class="media-link">
 							<div class="media-left media-middle text-nowrap">
 								<img src="img/resource-finder.png" alt="" width="30" height="29">
 							</div>
@@ -188,13 +188,13 @@
 						<a href="mycare-team.html"><img src="img/mycare-team.png" alt="" width="35" height="24"> <span class="menu-title2">My Care Team</span></a>
 					</li>
 					<li class="top right">
-						<a href=""><img src="img/my-info.png" alt="" width="22" height="25"> <span class="menu-title2">My Info</span></a>
+						<a href="javascript:void(0);"><img src="img/my-info.png" alt="" width="22" height="25"> <span class="menu-title2">My Info</span></a>
 					</li>
 					<li class="bottom left">
 						<a href="javascript:void(0);"><img src="img/survey-question.png" alt="" width="34" height="23"> <span class="menu-title2">Communication Preference</span></a>
 					</li>
 					<li class="bottom right">
-						<a href="page-myactivity.html"><img src="img/activity-history.png" alt="" width="19" height="23"> <span class="menu-title2">Activity History</span></a>
+						<a href="myactivity.html"><img src="img/activity-history.png" alt="" width="19" height="23"> <span class="menu-title2">Activity History</span></a>
 					</li>
 				</ul>
 			</div>
@@ -205,47 +205,65 @@
                     <p>We could love to communicate with you regarding Healthy Village.</p>
                 </div>
                 <div class="consent-content">
-                    <h4>Please choose your consent below:</h4>
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label>
-                                <input name="unstyled-radio-left" checked="checked" type="checkbox">
-                                I like to Receive Text Message from Healthy Village
-                            </label>
-                        </div>
-                        <div class="md-input">
-                            <input class="md-form-control" required type="text">
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label>Enter Phone Number</label>
-                        </div>
+				<h4>Please choose your consent below:</h4>
+				<div class="form-group">
+					<div class="checkbox checkbox-success checkbox-circle">
+                        <input type="checkbox" id="checkbox3" >
+                        <label for="checkbox3">
+                            I like to Receive Text Message from Healthy Village
+                        </label>
                     </div>
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label>
-                                <span class="checked"><input name="stacked-radio-left" class="styled" checked="checked" type="checkbox"></span>
-                                I like to receive Email from Healthy Village
-                            </label>
-                        </div>
-                        <div class="md-input">
-                            <input class="md-form-control" required type="text">
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label>Enter Phone Number</label>
-                        </div>
+					
+					<div class="md-input" style="display:none;">
+						<input class="md-form-control" value="" type="text" id="ccphone" name="ccphone" maxlength="14">
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label>Enter Phone Number</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="checkbox checkbox-success checkbox-circle">
+                        <input type="checkbox" id="checkbox2"  >
+                        <label for="checkbox2">
+                            I like to receive Email from Healthy Village
+                        </label>
                     </div>
-                    <div class="form-group"><br /></div>
-                    <div class="form-group footer-fixed-group mb-0">
-                        <div class="footer-fixed-group-inner">
-                            <div class="actions">
-                                <input type="submit" value="Next" class="yc-button primary large">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <div class="md-input" style="display:none;">
+						<input class="md-form-control" type="text" id="ccemail" name="ccemail" value="">
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label>Enter Email</label>
+					</div>
+				</div>
+			</div>
+            <div class="footer-con-space"></div>
+			<div class="form-group footer-fixed-group mb-0">
+				<div class="footer-fixed-group-inner">
+					<div class="actions">
+						<input type="submit" value="Next" id="consent_save" class="yc-button primary large">
+					</div>
+				</div>
+			</div>
             </div>
 		</div>
     </main>
+    <div class="md-modal md-effect-1" id="appoinmentSuccess">
+		<div class="md-content">
+			<div class="md-body">
+				<div class="apt-icon">
+					<img src="img/request.png" alt="" width="87" height="87">
+				</div>
+				<h4></h4>
+				<p>Consent has been updated Successfully.</p>
+			</div>
+			<div class="md-footer">
+				<div class="row row-sm">
+					<a href="index.html" class="btn btn-light btn-block">Close</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="md-overlay"></div>
     <footer id="pagefooter"> </footer>
     <div id="loading" style="display: none;">
         <img src="img/ring.gif" alt="loading" width="66" height="66">

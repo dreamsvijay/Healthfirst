@@ -2,7 +2,10 @@ var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";
 $(".user-name").empty().append(window.localStorage.getItem("pat_name"));
 $(".user-number").empty().append(window.localStorage.getItem("pat_phone"));
 $(".user-dob").empty().append(window.localStorage.getItem("pat_dob"));
-$("#loading").show(); getDoctors(0);
+$("#loading").show(); getDoctors(0); $("#map").css('height',$(window).height()-220);
+if(!window.localStorage.getItem("pat_id")) $(".panel-control-right.dropdown").hide(); 
+else
+$(".md-footer .row-sm").empty().append('<a href="index.html" class="btn btn-light btn-block">Close</a>');
 /*document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -20,30 +23,28 @@ function onDeviceReady() {
     }*/
 var doc_cols = ['#57bb8a','#42b2b7','#7f8bcd','#9575cd','#4db6ac','#0c8bd4']
 function getDoctors(page){
-	$.post(base_url+"mobile-app?page=searchDoctor",{latlong:"40.71192280==-74.00851830",q:'',page:page},function(data){
-		if(data.success == "Y"){
+	$.post(base_url+"mobile-app?page=searchDoctor",{latlong:"40.71192280==-74.00851830",q:'',page:page},function(data){$("#doctorlist").empty();
+		if(data.success == "Y"){ 
 			 if(data.data.Count >0){
-				 $("#doctorlist").empty();
+				 
 				for(var i=0;i<data.data.Count;i++){
 					var doc_add = new Array;
 					if(data.data.Data[i].practice_address1) doc_add.push(data.data.Data[i].practice_address1);
 					if(data.data.Data[i].practice_address2) doc_add.push(data.data.Data[i].practice_address2);
 					if(data.data.Data[i].practice_city) doc_add.push(data.data.Data[i].practice_city);
 					if(data.data.Data[i].practice_state) doc_add.push(data.data.Data[i].practice_state);
-					$("#doctorlist").append('<li class="media" data-lat="'+data.data.Data[i].practice_latitude+'" data-long="'+data.data.Data[i].practice_longitude+'" data-id="'+data.data.Data[i].doctor_id+'" data-pid="'+data.data.Data[i].practice_id+'"><a class="media-link"><div class="media-left media-middle text-nowrap"><span style="background-color:#0c8bd4" class="doctor_icon">'+data.data.Data[i].doctor_first_name.substr(3,2)+'</span></div><div class="media-body media-middle">									<div class="provider-name">'+data.data.Data[i].doctor_first_name+' '+data.data.Data[i].doctor_last_name+'</div><div class="provider-address">'+doc_add.join(", ")+'</div><div class="provider-speciality">'+data.data.Data[i].doctor_specialty+'</div></div><div class="media-right media-middle text-nowrap"><img width="7" height="13" alt="" src="img/arrow-right.png"></div></a></li>');
-					
-					
+					$("#doctorlist").append('<li class="media" data-lat="'+data.data.Data[i].practice_latitude+'" data-long="'+data.data.Data[i].practice_longitude+'" data-id="'+data.data.Data[i].doctor_id+'" data-pid="'+data.data.Data[i].practice_id+'"><a class="media-link" ><div class="media-left media-middle text-nowrap" ><span style="background-color:#0c8bd4" class="doctor_icon">'+data.data.Data[i].doctor_first_name.substr(3,2)+'</span></div><div class="media-body media-middle"><div class="provider-name">'+data.data.Data[i].doctor_first_name+' '+data.data.Data[i].doctor_last_name+'</div><div class="provider-address">'+doc_add.join(", ")+'</div><div class="provider-speciality">'+data.data.Data[i].doctor_specialty+'</div></div><div class="media-right media-middle text-nowrap"><img width="7" height="13" alt="" src="img/arrow-right.png"></div></a></li>');
 					}
-				}
+				} setTimeout(function(){$("#loading").hide();},500);
 				//getDoctors(0);
-			 }$("#loading").hide();
+			 } 
 			 },"json");
 }
-$(document).on('click','#doctorlist li',function(){
+$(document).on('click','#doctorlist li',function(e){ $("#loading").show(); 
 	$("#doctorlist li").each(function(index, element) {
             $(this).hide();
-        }); 
-		$(this).show();
+        }); setTimeout(function(){ $("#loading").hide(); },200);
+		$(this).show(); $(".media-right").hide();
 	$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
 	$(".header-search").hide();
 	$(".site-title h4").empty().html($(this).find('.provider-name').html());
@@ -68,7 +69,7 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 		if($("#pageheader .site-title h4").html() != "Request Appointment"){
 			 $("#map").parent().hide();
 			$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
-			$(".site-title h4").empty().html('Network Provider');
+			$(".site-title h4").empty().html('Network Provider');$(".media-right").show();
 			$(".provider-name").show();
 			$("#doctorlist li").each(function(index, element) {
 				$(this).show();
@@ -81,9 +82,9 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 			$(".myprofile-list").show();
 			$('body').removeClass('appointment-page').addClass('provider-page');
 		}
-		setTimeout(function(){ $("#loading").hide(); },300);
+		setTimeout(function(){ $("#loading").hide(); },300); return false;
 	}else
-	window.location.href = "home.html";
+	window.location.href = "index.html";
 });
 
 
@@ -93,6 +94,14 @@ $("#form_mdoctordetail_info").submit(function(){
 	$(".myprofile-list").hide();
 	$('body').removeClass('provider-page').addClass('appointment-page');
 	$(".site-title h4").empty().html('Request Appointment');
+	if(window.localStorage.getItem("pat_mail")){
+		var uname = window.localStorage.getItem("pat_name").split(" ");
+		$('#rfname').val(uname[0]).attr('readonly','readonly').parent().addClass('focused');
+		$('#rlname').val(uname[1]).attr('readonly','readonly').parent().addClass('focused');
+		$("#remail").val(window.localStorage.getItem("pat_mail")).attr('readonly','readonly').parent().addClass('focused');
+		if(window.localStorage.getItem("pat_phone"))
+		$("#rphone").val(window.localStorage.getItem("pat_phone")).attr('readonly','readonly').parent().addClass('focused');
+	}
 	$(".reqform").show();
 	window.localStorage.setItem("c_app", $("#dpracticeid").val()+"=#="+$("#did").val()+"=#="+$("#dname").val());
 	window.localStorage.setItem("pre_page", 'apprequest');
@@ -125,6 +134,7 @@ $(document).ready(function(e) {
 	var now = new Date();
         var _d_date = currentDateTime.getDate();
         var _date = now.getDate();
+		$('#rdob').parent().removeClass("error").addClass('focused');
         if (_date === _d_date) {
             this.setOptions({
                 minTime: 0,
@@ -151,7 +161,7 @@ $('#rdob').datetimepicker({
 	scrollMonth: false,
 	scrollTime: false,
 	scrollInput: false,
-});
+}).attr("readonly", "readonly");
 
 
 	var rfname = $("#rfname"), rlname = $("#rlname"), remail = $("#remail"), rphone = $("#rphone"), rdob = $("#rdob");
@@ -179,6 +189,7 @@ $('#rdob').datetimepicker({
 					$("#loading").hide(); 
 					$('#appoinmentSuccess').addClass('md-show');
     				$('.md-overlay').addClass('md-show');
+					window.localStorage.setItem('doc_req',$("#remail").val()+"=#="+$("#rfname").val()+"=#="+$("#rlname").val()+"=#="+$("#rphone").val())
 				}
 			});
 		}

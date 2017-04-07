@@ -15,11 +15,26 @@ $(".walkthrough-item .yc-button").click(function(){
 	}
 	$(".dotstyle ul").find('li.current').removeClass('current').next('li').addClass('current');
 });
+/*document.addEventListener("deviceready", onDeviceReady, false);
 
+    function onDeviceReady() {
+        alert();
+    }*///alert(sessionStorage.getItem("Test"));
+	//sessionStorage.setItem("Test", "Test"); 
+//window.localStorage.removeItem('doc_req');
+if(!window.localStorage.getItem("pat_id")){ $(".panel-control-right.dropdown").hide(); $(".menu-list.main li:last").hide();}
 if(window.localStorage.getItem("hf_app")){ //$(".loginlogotext .login").empty().append('Create Your Free Account'); 
 $("#emailcheck_html, #privacy_html").hide(); $('body').removeClass('walkthrough-page').addClass('home-page'); $("#pageheader .header").addClass('logo-center'); $(".home-menu, #pageheader").show();}
-	if(!window.localStorage.getItem("hf_app")) window.localStorage.setItem("hf_app",1);
-	
+	if(!window.localStorage.getItem("hf_app")) window.localStorage.setItem("hf_app",1); 
+if(window.localStorage.getItem("pre_page") && window.localStorage.getItem("pre_page") != "apprequest") { $(".home-menu").hide(); 
+$(".site-title").empty().append('<h4>My profile</h4>');$('body').removeClass('subpagebody');$("#pageheader .header").removeClass('logo-center');
+   var height = $(window).height();        
+   var headr_height = $("#pageheader").height();
+   var footr_height = $("#pagefooter").height();
+   var setheight = height - headr_height;
+   var trueheight = setheight - footr_height;
+   $("#myprofile_html .main").css("height", trueheight);
+$("#"+window.localStorage.getItem("pre_page")).show();window.localStorage.removeItem("pre_page");}
 /* page resize */	
 	$(document).ready(function(){
 		var height = $(window).height();	
@@ -31,14 +46,17 @@ $("#emailcheck_html, #privacy_html").hide(); $('body').removeClass('walkthrough-
 		var h=$(window).height()-136;
 		$('.menu-list').height(h);
 		var main_ht = $(".menu-list").css("height").replace("px","");
+		if(window.localStorage.getItem("pat_id"))
 		$(".menu-list li").each(function(index){ $(this).css('height',(main_ht/5)+"px").css('line-height',(main_ht/5)+"px");});
+		else
+		$(".menu-list li").each(function(index){ $(this).css('height',(main_ht/4)+"px").css('line-height',(main_ht/4)+"px");});
 	});
-	$(window).resize(function(){
+	/*$(window).resize(function(){
 		var h=$(window).height()-136;
 		$('.menu-list').height(h);
 		var main_ht = $(".menu-list").css("height").replace("px","");
 		$(".menu-list li").each(function(index){ $(this).css('height',(main_ht/5)+"px").css('line-height',(main_ht/5)+"px");});
-	});
+	});*/
 	
 /* End page resize */
 
@@ -106,3 +124,100 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 	
 	setTimeout(function(){ $("#loading").hide(); },300);
 });
+
+$(".dropdown-menu-right li a").click(function(){
+	window.localStorage.removeItem("pat_id");
+	window.localStorage.removeItem("pat_name");
+	window.localStorage.removeItem("pat_phone");
+	window.localStorage.removeItem("pat_dob");
+	window.localStorage.removeItem("pat_reftok");
+	window.localStorage.removeItem("pat_acctok");
+	window.location.href= "index.html";
+});
+if(window.localStorage.getItem("pat_phone")) $("#ccphone").val(window.localStorage.getItem("pat_phone")).attr('readonly','readonly').parent().addClass('focused');
+if(window.localStorage.getItem("pat_mail")) $("#ccemail").val(window.localStorage.getItem("pat_mail")).attr('readonly','readonly').parent().addClass('focused'); 
+$("input[type='checkbox']").on('click',function(){
+	$(this).parent().next('div').toggle();
+});
+
+var ccemail = $("#ccemail"), ccphone = $("#ccphone");
+	ccemail.on('blur keyup',validateCemail);
+	ccphone.on('blur keyup focus',validateCphone);
+
+	$('#consent_save').click(function(){ 
+
+	if(typeof $('#checkbox3:checked').val() != "undefined" || typeof $('#checkbox2:checked').val() != "undefined"){ 
+		if(validateCemail() & validateCphone()){ 
+			var dataString ="email="+$("#ccemail").val()+"&phone="+ccphone.val()+"&cphone="+$("#checkbox3:checked").val()+"&cemail="+$("#checkbox2:checked").val()+"&act=c&id="+window.localStorage.getItem("pat_id");
+			$.ajax({
+				url:base_url+"mobile-app?page=login",
+				type:"POST",
+				data:dataString,
+				dataType:"json",
+				beforeSend:function(){
+					$("#loading").show();
+				},
+				success:function(data){ 
+					$("#loading").hide();
+					window.localStorage.setItem("pat_phone",$("#ccphone").val()); 
+					$(".md-modal").addClass('md-show');
+					$(".md-overlay").addClass('md-show');
+				}
+			});
+		}
+	}else{
+		$("#htmlContent").hide();
+		$(".md-modal").addClass('md-show');
+		$(".md-overlay").addClass('md-show');
+	}
+		return false;
+	});
+	
+	function validateCemail(){ 
+			var ccemail  = $('#ccemail').val();
+			if(typeof $('#checkbox2:checked').val() != "undefined"){
+			var filter = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
+			if(ccemail == '')
+			{
+				$('#ccemail').parent().addClass("error");return false;
+			}else
+				{
+					if(filter.test(ccemail)){
+						$("#ccemail").parent().removeClass("error").addClass('focused');return true;
+					}
+					else{
+						$('#ccemail').parent().addClass("error");return false;
+					}
+				}
+			} $("#ccemail").parent().removeClass("error").addClass('focused');return true;
+		}
+		
+	function validateCphone(e){
+		var ccphone  = $('#ccphone').val();
+		if(typeof $('#checkbox3:checked').val() != "undefined"){
+			if ($('#ccphone').val().length === 0) {
+				$('#ccphone').val('(');
+			} var key =0;
+			if(e) key = e.keyCode;
+			//var key = e.keyCode || 0;
+			if (key !== 8 && key !== 9) {
+				if ($('#ccphone').val().length === 4) {
+					$('#ccphone').val($('#ccphone').val() + ')');
+				}
+				if ($('#ccphone').val().length === 5) {
+					$('#ccphone').val($('#ccphone').val() + ' ');
+				}			
+				if ($('#ccphone').val().length === 9) {
+					$('#ccphone').val($('#ccphone').val() + '-');
+				}
+			}
+			var regexp = /\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}/; 
+			if(regexp.test(ccphone)){
+				$("#ccphone").parent().removeClass("error").addClass('focused');return true;
+			}
+			else{
+				$('#ccphone').parent().addClass("error");return false;
+			}
+		} $("#ccphone").parent().removeClass("error").addClass('focused');return true;
+	}
+/* end consent form */
