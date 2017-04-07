@@ -321,6 +321,17 @@ $(document).ready(function(e) {
    var setheight = height - headr_height;
    var trueheight = setheight - footr_height;
    $(".main").css("height", trueheight);
+   
+   
+   var initialScreenSize = window.innerHeight;
+ window.addEventListener("resize", function() {
+  if(window.innerHeight < initialScreenSize){
+     $(".footer-fixed-group").css('position','relative');;
+  }
+  else{
+     $(".footer-fixed-group").css('position','fixed');                                      
+  }
+ });
 });
 
 $(".media-list li:eq(1)").on('click',function(){ $("#loading").show();
