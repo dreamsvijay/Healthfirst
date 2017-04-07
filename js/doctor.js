@@ -12,8 +12,8 @@ $(".md-footer p").hide();
 {
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-		document.addEventListener("showkeyboard", function(){ $(".footer-fixed-group").css('position','relative');}, false);
-		document.addEventListener("hidekeyboard", function(){ $(".footer-fixed-group").css('position','fixed');}, false);
+		document.addEventListener("showkeyboard", function(){ alert(); $(".footer-fixed-group").css('position','relative');}, false);
+		document.addEventListener("hidekeyboard", function(){ alert(1); $(".footer-fixed-group").css('position','fixed');}, false);
 		 navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
  function onSuccess(position) {
