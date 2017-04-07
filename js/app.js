@@ -1,4 +1,4 @@
-var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";
+var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";$("#loading").show();setTimeout(function(){ $("#loading").hide(); },200);
 $(".walkthrough-item .yc-button").click(function(){
 	$(this).parent().parent().hide(); 
 	if($(this).parent().parent().next().hasClass('walkthrough-item'))
@@ -131,6 +131,7 @@ $(".dropdown-menu-right li a").click(function(){
 	window.localStorage.removeItem("pat_name");
 	window.localStorage.removeItem("pat_phone");
 	window.localStorage.removeItem("pat_dob");
+	window.localStorage.removeItem("pat_mail");
 	window.localStorage.removeItem("pat_reftok");
 	window.localStorage.removeItem("pat_acctok");
 	window.location.href= "index.html";

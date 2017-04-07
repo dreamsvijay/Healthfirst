@@ -28,7 +28,7 @@ $(document).on('click', '.event-list a.media-link', function(e) { $("#loading").
 	var event_res = $(this).find('.event_res').html().split("|");
 	$(".restrict-content ul").empty();
 	$.each(event_res,function(index, value){
-		$(".restrict-content ul").append('<li><p>'+value+'</p></li>');
+		$(".restrict-content ul").append('<li><p><span class="bullet-icon"></span> '+value+'</p></li>');
 	});
 	initMap($(this).find('.event-location').html(),$(this).parent().data('lat'),$(this).parent().data('long'));
 	 var divHeight = $(".desc-content p").height()
@@ -199,4 +199,15 @@ $(document).on('click',".search-icon a",function(){
 
 $("a.read-more").click(function(){
 	$(".desc-content p").toggleClass('showcont'); $(this).toggle(); return false;
+});
+
+$(".dropdown-menu-right li a").click(function(){
+	window.localStorage.removeItem("pat_id");
+	window.localStorage.removeItem("pat_name");
+	window.localStorage.removeItem("pat_phone");
+	window.localStorage.removeItem("pat_dob");
+	window.localStorage.removeItem("pat_reftok");
+	window.localStorage.removeItem("pat_acctok");
+	window.localStorage.removeItem("pat_mail");
+	window.location.href= "index.html";
 });

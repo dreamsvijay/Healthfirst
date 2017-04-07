@@ -289,7 +289,7 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 /* end consent form */
 
 if($(document.activeElement).attr('type') == "text"){
-    $("#consent_save").parent().parent().css('position','relative');
+    $("#consent_save").parent().parent().parent().css('position','relative');
 }else{
-    $("#consent_save").parent().parent().css('position','fixed');
+    $("#consent_save").parent().parent().parent().css('position','fixed');
 }

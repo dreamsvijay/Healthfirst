@@ -114,5 +114,6 @@ $(".dropdown-menu-right li a").click(function(){
 	window.localStorage.removeItem("pat_dob");
 	window.localStorage.removeItem("pat_reftok");
 	window.localStorage.removeItem("pat_acctok");
+	window.localStorage.removeItem("pat_mail");
 	window.location.href= "index.html";
 });

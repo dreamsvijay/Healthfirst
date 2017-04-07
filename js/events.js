@@ -166,7 +166,7 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 	{ 	$("#loading").show();$(".desc-content p").removeClass('showcont'); $(".read-more").hide();$(".header-search").show();
 	//$('html,body').animate({ scrollTop: 0 }, 300);
 		$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
-		$(".event-list").show(); $(".event_view").hide(); $(".site-title h4").empty().append('Events'); setTimeout(function(){ $("#loading").hide(); },300); return false;	
+		$(".event-list").show(); $(".event_view").hide(); $(".site-title h4").empty().append('Event List'); setTimeout(function(){ $("#loading").hide(); },300); return false;	
 	}else
 	window.location.href= "index.html";
 });
@@ -225,5 +225,6 @@ $(".dropdown-menu-right li a").click(function(){
 	window.localStorage.removeItem("pat_dob");
 	window.localStorage.removeItem("pat_reftok");
 	window.localStorage.removeItem("pat_acctok");
+	window.localStorage.removeItem("pat_mail");
 	window.location.href= "index.html";
 });
