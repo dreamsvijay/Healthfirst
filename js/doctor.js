@@ -8,10 +8,13 @@ else{
 $(".md-footer .row-sm").empty().append('<a href="index.html" class="btn btn-light btn-block">Close</a>');
 $(".md-footer p").hide();
 }
-if(!window.localStorage.getItem("lat_long")){
+//if(!window.localStorage.getItem("lat_long"))
+{
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		document.addEventListener("showkeyboard", function(){ $(".footer-fixed-group").css('position','relative');}, false);
+		document.addEventListener("hidekeyboard", function(){ $(".footer-fixed-group").css('position','fixed');}, false);
+		 navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
  function onSuccess(position) {
 	 window.localStorage.setItem("lat_long",position.coords.latitude+"=="+position.coords.longitude);
@@ -413,8 +416,7 @@ $("#myprofile_html").click(function(){
 	window.localStorage.setItem("pre_page", 'myprofile_html');
 });
 
-document.addEventListener("showkeyboard", function(){ $(".footer-fixed-group").css('position','relative');}, false);
-document.addEventListener("hidekeyboard", function(){ $(".footer-fixed-group").css('position','fixed');}, false);
+
 
 $(".dropdown-menu-right li a").click(function(){
 	window.localStorage.removeItem("pat_id");
