@@ -30,6 +30,16 @@ $(".walkthrough-item .yc-button").click(function(){
 		$(".menu-list li").each(function(index){ $(this).css('height',(main_ht/5)+"px").css('line-height',(main_ht/5)+"px");});
 		else
 		$(".menu-list li").each(function(index){ $(this).css('height',(main_ht/4)+"px").css('line-height',(main_ht/4)+"px");});
+		
+			var initialScreenSize = window.innerHeight;
+			window.addEventListener("resize", function() {
+			if(window.innerHeight < initialScreenSize){
+			 $(".footer-fixed-group").css('position','relative');;
+			}
+			else{
+			 $(".footer-fixed-group").css('position','fixed');                                      
+			}
+			});
 	});
 	/*$(window).resize(function(){
 		var h=$(window).height()-136;

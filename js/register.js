@@ -288,5 +288,14 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 	}
 /* end consent form */
 
-document.addEventListener("showkeyboard", function(){ $("#consent_save").parent().parent().parent().css('position','relative');}, false);
-document.addEventListener("hidekeyboard", function(){ $("#consent_save").parent().parent().parent().css('position','fixed');}, false);
+$(document).ready(function(e) {
+    var initialScreenSize = window.innerHeight;
+ window.addEventListener("resize", function() {
+  if(window.innerHeight < initialScreenSize){
+     $("#consent_save").parent().parent().parent().css('position','relative');;
+  }
+  else{
+     $("#consent_save").parent().parent().parent().css('position','fixed');                                      
+  }
+ });
+});

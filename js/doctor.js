@@ -8,12 +8,10 @@ else{
 $(".md-footer .row-sm").empty().append('<a href="index.html" class="btn btn-light btn-block">Close</a>');
 $(".md-footer p").hide();
 }
-//if(!window.localStorage.getItem("lat_long"))
+if(!window.localStorage.getItem("lat_long"))
 {
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-		document.addEventListener("showkeyboard", function(){ alert(); $(".footer-fixed-group").css('position','relative');}, false);
-		document.addEventListener("hidekeyboard", function(){ alert(12); $(".footer-fixed-group").css('position','fixed');}, false);
 		 navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
  function onSuccess(position) {
@@ -24,8 +22,8 @@ function onDeviceReady() {
     }
 
  function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
+       /* alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');*/
     }
 }
 var doc_cols = ['#57bb8a','#42b2b7','#7f8bcd','#9575cd','#4db6ac','#0c8bd4']
