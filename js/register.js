@@ -53,8 +53,10 @@ $(".js-example-basic-single").select2({
 					$("body").removeClass('signup-page').addClass('consent-page');
 					$("#register, #sign_in_up, .loginlogoheader").hide();
 					$("#htmlContent, #pageheader").show();
-					var event_dtl = window.localStorage.getItem("event_dtl").split("=#=");
-					$("#appoinmentSuccess .md-body h4").append('Your Request to <span>'+event_dtl[3]+'</span> for Appointment on :'+event_dtl[2]);
+					if(window.localStorage.getItem("event_dtl")){
+						var event_dtl = window.localStorage.getItem("event_dtl").split("=#=");
+						$("#appoinmentSuccess .md-body h4").append('Your Request to <span>'+event_dtl[3]+'</span> for Appointment on :'+event_dtl[2]);
+					}
 					}else{
 						$('#email').parent().addClass("has-error");
 					}window.localStorage.removeItem('event_dtl');
@@ -157,11 +159,15 @@ var iemail = $("#iemail"), ipassword = $("#ipassword");
 					$("body").removeClass('signup-page').addClass('consent-page');
 					$("#register, #sign_in_up, .loginlogoheader").hide();
 					//$("#htmlContent, #pageheader").show();
+					if(window.localStorage.getItem("event_dtl")){
 					var event_dtl = window.localStorage.getItem("event_dtl").split("=#=");
 					$("#appoinmentSuccess .md-body h4").append('Your Request to <span>'+event_dtl[3]+'</span> for Appointment on : '+event_dtl[2]);
 					window.localStorage.removeItem('event_dtl');
 					$(".md-modal").addClass('md-show');
 					$(".md-overlay").addClass('md-show');
+					}else
+					window.location.href="index.html";
+					
 					}else{
 						$('#ipassword, #iemail').parent().addClass("error");
 					}
@@ -226,6 +232,9 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 				success:function(data){ 
 					$("#loading").hide();
 					window.localStorage.setItem("pat_phone",$("#ccphone").val()); 
+					if(!window.localStorage.getItem("event_dtl")){
+					$("#appoinmentSuccess .md-body h4").append('Your consent has been updated success ');
+					}
 					$(".md-modal").addClass('md-show');
 					$(".md-overlay").addClass('md-show');
 				}
