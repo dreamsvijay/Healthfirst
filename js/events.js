@@ -106,7 +106,7 @@ $(document).on('click', '.event-list a.media-link', function(e) { $("#loading").
 			var event_res = $(this).find('.event_res').html().split("|");
 			$(".restrict-content ul").empty();$(".res_contact p").empty().append('Contact Name : '+$(this).parent().data('cont'));
 			$.each(event_res,function(index, value){
-				$(".restrict-content ul").append('<li><p>'+value+'</p></li>');
+				$(".restrict-content ul").append('<li><p><span class="bullet-icon"></span> '+value+'</p></li>');
 			}); $(".header-search").hide();
 			initMap($(this).find('.event-location').html(),$(this).parent().data('lat'),$(this).parent().data('long'));
 			 var divHeight = $(".desc-content p").height()

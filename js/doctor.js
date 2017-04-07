@@ -95,11 +95,12 @@ $("#form_mdoctordetail_info").submit(function(){
 	$("#map").parent().hide();
 	$(".myprofile-list").hide();
 	$('body').removeClass('provider-page').addClass('appointment-page');
-	$(".site-title h4").empty().html('Request Appointment');
+	$(".site-title h4").empty().html('Request Appointment'); 
 	if(window.localStorage.getItem("pat_mail")){
+		if(window.localStorage.getItem("pat_name")){
 		var uname = window.localStorage.getItem("pat_name").split(" ");
 		$('#rfname').val(uname[0]).attr('readonly','readonly').parent().addClass('focused');
-		$('#rlname').val(uname[1]).attr('readonly','readonly').parent().addClass('focused');
+		$('#rlname').val(uname[1]).attr('readonly','readonly').parent().addClass('focused');}
 		$("#remail").val(window.localStorage.getItem("pat_mail")).attr('readonly','readonly').parent().addClass('focused');
 		if(window.localStorage.getItem("pat_phone"))
 		$("#rphone").val(window.localStorage.getItem("pat_phone")).attr('readonly','readonly').parent().addClass('focused');
@@ -412,9 +413,18 @@ $("#myprofile_html").click(function(){
 
 
 
-if($(document.activeElement).attr('type') == "text"){
-    $(".footer-fixed-group").css('position','relative');
+/*if($(document.activeElement).attr('type') == "text"){
+    $("#doc_submit").parent().parent().css('position','relative');
 }else{
-    $(".footer-fixed-group").css('position','relative');
-}
+    $("#doc_submit").parent().parent().css('position','relative');
+}*/
 
+$(".dropdown-menu-right li a").click(function(){
+	window.localStorage.removeItem("pat_id");
+	window.localStorage.removeItem("pat_name");
+	window.localStorage.removeItem("pat_phone");
+	window.localStorage.removeItem("pat_dob");
+	window.localStorage.removeItem("pat_reftok");
+	window.localStorage.removeItem("pat_acctok");
+	window.location.href= "index.html";
+});
