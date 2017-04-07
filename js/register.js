@@ -288,8 +288,5 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 	}
 /* end consent form */
 
-if($(document.activeElement).attr('type') == "text"){
-    $("#consent_save").parent().parent().parent().css('position','relative');
-}else{
-    $("#consent_save").parent().parent().parent().css('position','fixed');
-}
+document.addEventListener("showkeyboard", function(){ $("#consent_save").parent().parent().parent().css('position','relative');}, false);
+document.addEventListener("hidekeyboard", function(){ $("#consent_save").parent().parent().parent().css('position','fixed');}, false);

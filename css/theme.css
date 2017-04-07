@@ -26,12 +26,12 @@ label{font-weight:normal;color:#333;font-size:13px;}
 #pagecontent .yc-form .form-field .form-control,
 #pagecontent .yc-form .form-field .input{background-image:none!important;}
 .floating-label {position: absolute;pointer-events: none;left: 50px;top: 8px;transition: 0.2s ease all;font-size:16px;font-weight:normal;color:#fff;font-family:'Droid Sans';}
-input:focus ~ .floating-label, input:not(:focus).valid ~ .floating-label, input:not(:focus).error ~ .floating-label{top: 1px;bottom: 10px;left: 50px;font-size: 11px;background: transparent;}
+input:focus ~ .floating-label, input:not(:focus).valid ~ .floating-label, input:not(:focus).error ~ .floating-label, .focused input ~ .floating-label{top: 1px;bottom: 10px;left: 50px;font-size: 11px;background: transparent;}
 .form-field .customddWrap .select2-container--default ~ .selected_icon ~ .floating-label{opacity:0;left:38px!important;}
 .form-field .customddWrap .selected_icon.active ~ .floating-label,
 .form-field .customddWrap .select2-container--default.select2-container--open ~ .selected_icon ~ .floating-label{top: 1px;font-size: 11px;background: transparent;left: 38px;opacity:1;}
 .floatingSelect .floating-label{}
-.ff_noicon .floating-label{left: 20px;}
+.ff_noicon .floating-label, .focused input ~ .floating-label{left: 20px;}
 .ff_noicon input:focus ~ .floating-label, .ff_noicon input:not(:focus).valid ~ .floating-label, .ff_noicon input:not(:focus).error ~ .floating-label{left: 20px;}
 .ff_noicon .form-control{padding: 6px 15px;}
 .form-field .form-control::-webkit-input-placeholder {opacity: 1;-webkit-transition: all .2s;transition: all .2s;}

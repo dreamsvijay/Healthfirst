@@ -8,7 +8,8 @@ else{
 $(".md-footer .row-sm").empty().append('<a href="index.html" class="btn btn-light btn-block">Close</a>');
 $(".md-footer p").hide();
 }
-/*document.addEventListener("deviceready", onDeviceReady, false);
+if(!window.localStorage.getItem("lat_long")){
+document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
@@ -22,10 +23,11 @@ function onDeviceReady() {
  function onError(error) {
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
-    }*/
+    }
+}
 var doc_cols = ['#57bb8a','#42b2b7','#7f8bcd','#9575cd','#4db6ac','#0c8bd4']
 function getDoctors(page){
-	$.post(base_url+"mobile-app?page=searchDoctor",{latlong:"40.71192280==-74.00851830",q:'',page:page},function(data){$("#doctorlist").empty();
+	$.post(base_url+"mobile-app?page=searchDoctor",{latlong:window.localStorage.getItem("lat_long"),q:'',page:page},function(data){$("#doctorlist").empty();
 		if(data.success == "Y"){ 
 			 if(data.data.Count >0){
 				 
@@ -411,13 +413,8 @@ $("#myprofile_html").click(function(){
 	window.localStorage.setItem("pre_page", 'myprofile_html');
 });
 
-
-
-if($(document.activeElement).attr('type') == "text"){
-    $(".footer-fixed-group").css('position','relative');
-}else{
-    $(".footer-fixed-group").css('position','fixed');
-}
+document.addEventListener("showkeyboard", function(){ $(".footer-fixed-group").css('position','relative');}, false);
+document.addEventListener("hidekeyboard", function(){ $(".footer-fixed-group").css('position','fixed');}, false);
 
 $(".dropdown-menu-right li a").click(function(){
 	window.localStorage.removeItem("pat_id");
