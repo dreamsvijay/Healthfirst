@@ -13,7 +13,7 @@ $(".js-example-basic-single").select2({
 	onChangeDateTime:function( currentDateTime ){
 	$('#dob').parent().removeClass("has-error");
 	},
-});
+}).attr("readonly", "readonly");
 	if(window.localStorage.getItem('doc_req')){
 		var doc_req_dtl = window.localStorage.getItem('doc_req').split('=#=');
 		$("#fname").val(doc_req_dtl[1]).attr('readonly','readonly');$("#lname").val(doc_req_dtl[2]).attr('readonly','readonly');$("#email").val(doc_req_dtl[0]).attr('readonly','readonly');window.localStorage.removeItem('doc_req');

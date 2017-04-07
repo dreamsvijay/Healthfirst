@@ -10,11 +10,11 @@
 
 	<feature name="http://api.phonegap.com/1.0/network"/>
 	<feature name="http://api.phonegap.com/1.0/file"/>
-    <!--<feature name="SplashScreen">
+    <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.SplashScreen" />
         <param name="ios-package" value="CDVSplashScreen" />
         <param name="onload" value="true" />
-	</feature>-->
+	</feature>
 
 	<preference name="phonegap-version" value="cli-6.3.0" />
     <preference name="permissions" value="none" />
@@ -33,12 +33,12 @@
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
     <preference name="show-splash-screen-spinner" value="false" />
-    <preference name="load-url-timeout" value="20000" />
+    <preference name="load-url-timeout" value="5000" />
     <preference name="android-windowSoftInputMode" value="stateHidden|adjustResize" />
 	<preference name="AndroidPersistentFileLocation" value="Compatibility" />
-	<preference name="SplashScreen" value="false" />
+	<preference name="SplashScreen" value="screen" />
 	<preference name="AutoHideSplashScreen" value="true" />
- 	<preference name="SplashScreenDelay" value="3000" />
+ 	<preference name="SplashScreenDelay" value="5000" />
     <plugin name="cordova-plugin-geolocation" spec="2.4.2" />
 	<plugin name="cordova-plugin-network-information" spec="1.3.2" />
 	<plugin name="cordova-plugin-splashscreen" spec="4.0.2" />

@@ -4,8 +4,10 @@ $(".user-number").empty().append(window.localStorage.getItem("pat_phone"));
 $(".user-dob").empty().append(window.localStorage.getItem("pat_dob"));
 $("#loading").show(); getDoctors(0); $("#map").css('height',$(window).height()-220);
 if(!window.localStorage.getItem("pat_id")) $(".panel-control-right.dropdown").hide(); 
-else
+else{
 $(".md-footer .row-sm").empty().append('<a href="index.html" class="btn btn-light btn-block">Close</a>');
+$(".md-footer p").hide();
+}
 /*document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -407,3 +409,12 @@ function initMap(mapaddress,lat,lng) {
 $("#myprofile_html").click(function(){
 	window.localStorage.setItem("pre_page", 'myprofile_html');
 });
+
+
+
+if($(document.activeElement).attr('type') == "text"){
+    $(".footer-fixed-group").css('position','relative');
+}else{
+    $(".footer-fixed-group").css('position','relative');
+}
+
