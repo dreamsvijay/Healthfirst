@@ -3,7 +3,7 @@ $(".js-example-basic-single").select2({
 	  minimumResultsForSearch: Infinity
 	});
 	
-	$('#dob').datetimepicker({
+	/*$('#dob').datetimepicker({
 	format: 'm/d/Y',
 	maxDate: 0,
 	timepicker:false,
@@ -13,7 +13,16 @@ $(".js-example-basic-single").select2({
 	onChangeDateTime:function( currentDateTime ){
 	$('#dob').parent().removeClass("has-error");
 	},
-}).attr("readonly", "readonly");
+}).attr("readonly", "readonly");*/
+var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), now.getDate());
+    
+        $('#dob').mobiscroll().date({
+            theme: 'ios',       
+            lang: 'en',         
+            display: 'center', 
+            max: now,
+			min: new Date(now.getFullYear() - 75, now.getMonth(), now.getDate())         
+        }).attr("readonly", "readonly");
 	if(window.localStorage.getItem('doc_req')){
 		var doc_req_dtl = window.localStorage.getItem('doc_req').split('=#=');
 		$("#fname").val(doc_req_dtl[1]).attr('readonly','readonly');$("#lname").val(doc_req_dtl[2]).attr('readonly','readonly');$("#email").val(doc_req_dtl[0]).attr('readonly','readonly');window.localStorage.removeItem('doc_req');
@@ -53,8 +62,8 @@ $(".js-example-basic-single").select2({
 					$("body").removeClass('signup-page').addClass('consent-page');
 					$("#register, #sign_in_up, .loginlogoheader").hide();
 					$("#htmlContent, #pageheader").show();
-					if(window.localStorage.getItem("event_dtl")){
-						var event_dtl = window.localStorage.getItem("event_dtl").split("=#=");
+					if(window.localStorage.getItem("event_dtl")){ 
+						var event_dtl = window.localStorage.getItem("event_dtl").split("=#=");$("#htmlContent .consent-pop p b").empty().append(event_dtl[3]);
 						$("#appoinmentSuccess .md-body h4").append('Your Request to <span>'+event_dtl[3]+'</span> for Appointment on :'+event_dtl[2]);
 					}
 					}else{
@@ -233,7 +242,8 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 					$("#loading").hide();
 					window.localStorage.setItem("pat_phone",$("#ccphone").val()); 
 					if(!window.localStorage.getItem("event_dtl")){
-					$("#appoinmentSuccess .md-body h4").append('Your consent has been updated success ');
+					$("#appoinmentSuccess .md-body h4").hide();
+					$("#appoinmentSuccess .md-body p").empty().append('Your Consent has been updated Successfully ');
 					}
 					$(".md-modal").addClass('md-show');
 					$(".md-overlay").addClass('md-show');
@@ -250,7 +260,7 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 	
 	function validateCemail(){ 
 			var ccemail  = $('#ccemail').val();
-			if(typeof $('#checkbox3:checked').val() != "undefined"){
+			if(typeof $('#checkbox2:checked').val() != "undefined"){
 			var filter = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
 			if(ccemail == '')
 			{
@@ -269,7 +279,7 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 		
 	function validateCphone(e){
 		var ccphone  = $('#ccphone').val();
-		if(typeof $('#checkbox2:checked').val() != "undefined"){
+		if(typeof $('#checkbox3:checked').val() != "undefined"){
 			if ($('#ccphone').val().length === 0) {
 				$('#ccphone').val('(');
 			} var key =0;
@@ -307,4 +317,15 @@ $(document).ready(function(e) {
      $("#consent_save").parent().parent().parent().css('position','fixed');                                      
   }
  });
+});
+
+$(".dropdown-menu-right li a").click(function(){
+	window.localStorage.removeItem("pat_id");
+	window.localStorage.removeItem("pat_name");
+	window.localStorage.removeItem("pat_phone");
+	window.localStorage.removeItem("pat_dob");
+	window.localStorage.removeItem("pat_reftok");
+	window.localStorage.removeItem("pat_acctok");
+	window.localStorage.removeItem("pat_mail");
+	window.location.href= "index.html";
 });

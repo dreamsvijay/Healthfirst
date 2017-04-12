@@ -1,8 +1,9 @@
 var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";
+$("#loading").show();$("#doctorlist").empty(); getDoctors(0,50);
 $(".user-name").empty().append(window.localStorage.getItem("pat_name"));
 $(".user-number").empty().append(window.localStorage.getItem("pat_phone"));
 $(".user-dob").empty().append(window.localStorage.getItem("pat_dob"));
-$("#loading").show(); getDoctors(0); $("#map").css('height',$(window).height()-220);
+ $("#map").css('height',$(window).height()-220);
 if(!window.localStorage.getItem("pat_id")) $(".panel-control-right.dropdown").hide(); 
 else{
 $(".md-footer .row-sm").empty().append('<a href="index.html" class="btn btn-light btn-block">Close</a>');
@@ -26,22 +27,15 @@ function onDeviceReady() {
               'message: ' + error.message + '\n');*/
     }
 }
-var doc_cols = ['#57bb8a','#42b2b7','#7f8bcd','#9575cd','#4db6ac','#0c8bd4']
-function getDoctors(page){
-	$.post(base_url+"mobile-app?page=searchDoctor",{latlong:window.localStorage.getItem("lat_long"),q:'',page:page},function(data){$("#doctorlist").empty();
+var i=0;
+function getDoctors(page,plimit){
+	$.post(base_url+"mobile-app?page=searchDoctor",{latlong:window.localStorage.getItem("lat_long"),q:'',page:page,plimit:plimit},function(data){
 		if(data.success == "Y"){ 
-			 if(data.data.Count >0){
-				 
-				for(var i=0;i<data.data.Count;i++){
-					var doc_add = new Array;
-					if(data.data.Data[i].practice_address1) doc_add.push(data.data.Data[i].practice_address1);
-					if(data.data.Data[i].practice_address2) doc_add.push(data.data.Data[i].practice_address2);
-					if(data.data.Data[i].practice_city) doc_add.push(data.data.Data[i].practice_city);
-					if(data.data.Data[i].practice_state) doc_add.push(data.data.Data[i].practice_state);
-					$("#doctorlist").append('<li class="media" data-lat="'+data.data.Data[i].practice_latitude+'" data-long="'+data.data.Data[i].practice_longitude+'" data-id="'+data.data.Data[i].doctor_id+'" data-pid="'+data.data.Data[i].practice_id+'"><a class="media-link" ><div class="media-left media-middle text-nowrap" ><span style="background-color:#0c8bd4" class="doctor_icon">'+data.data.Data[i].doctor_first_name.substr(3,2)+'</span></div><div class="media-body media-middle"><div class="provider-name">'+data.data.Data[i].doctor_first_name+' '+data.data.Data[i].doctor_last_name+'</div><div class="provider-address">'+doc_add.join(", ")+'</div><div class="provider-speciality">'+data.data.Data[i].doctor_specialty+'</div></div><div class="media-right media-middle text-nowrap"><img width="7" height="13" alt="" src="img/arrow-right.png"></div></a></li>');
-					}
-				} setTimeout(function(){$("#loading").hide();},500);
-				//getDoctors(0);
+			$("#doctorlist").append(data.data.Data);
+			if(page == '0') $("#loading").hide();
+				i++;
+				//if(i <=2)
+				//getDoctors(page+plimit,500);
 			 } 
 			 },"json");
 }
@@ -50,7 +44,7 @@ $(document).on('click','#doctorlist li',function(e){ $("#loading").show();
             $(this).hide();
         }); setTimeout(function(){ $("#loading").hide(); },200);
 		$(this).show(); $(".media-right").hide();
-	$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
+	//$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
 	$(".header-search").hide();
 	$(".site-title h4").empty().html($(this).find('.provider-name').html());
 	$(this).removeClass('media');
@@ -73,9 +67,9 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 		$("#loading").show();
 		if($("#pageheader .site-title h4").html() != "Request Appointment"){
 			 $("#map").parent().hide();
-			$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
+			//$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
 			$(".site-title h4").empty().html('Network Provider');$(".media-right").show();
-			$(".provider-name").show();
+			$(".provider-name").show();$(".header-search").show();
 			$("#doctorlist li").each(function(index, element) {
 				$(this).show();
 				if($(this).attr('class') != "media") $(this).addClass('media');
@@ -99,13 +93,13 @@ $("#form_mdoctordetail_info").submit(function(){
 	$(".myprofile-list").hide();
 	$('body').removeClass('provider-page').addClass('appointment-page');
 	$(".site-title h4").empty().html('Request Appointment'); 
-	if(window.localStorage.getItem("pat_mail")){
+	if(window.localStorage.getItem("pat_mail")){ 
 		if(window.localStorage.getItem("pat_name")){
 		var uname = window.localStorage.getItem("pat_name").split(" ");
 		$('#rfname').val(uname[0]).attr('readonly','readonly').parent().addClass('focused');
 		$('#rlname').val(uname[1]).attr('readonly','readonly').parent().addClass('focused');}
 		$("#remail").val(window.localStorage.getItem("pat_mail")).attr('readonly','readonly').parent().addClass('focused');
-		if(window.localStorage.getItem("pat_phone"))
+		if(window.localStorage.getItem("pat_phone") && window.localStorage.getItem("pat_phone") != "undefined")
 		$("#rphone").val(window.localStorage.getItem("pat_phone")).attr('readonly','readonly').parent().addClass('focused');
 	}
 	$(".reqform").show();
@@ -154,7 +148,7 @@ $(document).ready(function(e) {
         }
 		
 };
-$('#rdob').datetimepicker({
+/*$('#rdob').datetimepicker({
 	//lang: 'en',
 	format: 'm/d/Y h:i A',
 	formatTime: 'h:i A',
@@ -167,8 +161,28 @@ $('#rdob').datetimepicker({
 	scrollMonth: false,
 	scrollTime: false,
 	scrollInput: false,
-}).attr("readonly", "readonly");
-
+}).attr("readonly", "readonly");*/
+var now = new Date(),
+            minDate = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate()),
+            maxDate = new Date(now.getFullYear() + 1, now.getMonth(), now.getDate());
+			now.setMinutes ( now.getMinutes() + 15 );
+ $('#rdob').mobiscroll().datetime({
+            theme: 'ios',       
+            lang: 'en',        
+            display: 'center',  
+            min: now,       
+            max: maxDate,       
+			steps: { 
+			minute: 15,
+				zeroBased: true
+		},
+		invalid: [
+			{ start: '00:00', end: '08:00' }, 
+			{ start: '19:00', end: '23:59' }, 
+			
+		],
+            dateWheels: '|D M d|'
+        }).attr("readonly", "readonly");
 
 	var rfname = $("#rfname"), rlname = $("#rlname"), remail = $("#remail"), rphone = $("#rphone"), rdob = $("#rdob");
 	rfname.on('blur keyup',validateRfname);
@@ -306,13 +320,13 @@ if(window.localStorage.getItem("pre_page")){
 	$("#user-profile_html").hide();
 	$("#pageheader").show();
 	$(".loginlogoheader, #user-profile_html").hide();
-	$("#pageheader .site-title h4").empty().append('My profile');
+	$("#pageheader .site-title h4").empty().append('Network Provider');
 	$("#"+window.localStorage.getItem("pre_page")).show();
 	window.localStorage.removeItem("pre_page");
 }
 $(document).ready(function(e) {
 	//if(!window.localStorage.getItem("pat_id")){ window.location.href="index.html"; }
-    setTimeout(function(){ $("#loading").hide(); },1000);
+    //setTimeout(function(){ $("#loading").hide(); },1000);
    var height = $(window).height();        
    var headr_height = $("#pageheader").height();
    var footr_height = $("#pagefooter").height();
@@ -436,4 +450,23 @@ $(".dropdown-menu-right li a").click(function(){
 	window.localStorage.removeItem("pat_acctok");
 	window.localStorage.removeItem("pat_mail");
 	window.location.href= "index.html";
+});
+
+$("#doc_search").on("keydown keyup", function(){ var sch_txt = $(this).val().toLowerCase();
+$("#loading").show(); 
+	if($(this).val().length >= 3)
+	{
+		$("#doctorlist li").each(function(index, element) {
+			$(this).hide();
+			if($(this).find('.provider-name').length > 0){
+				if ($(this).find('.provider-name').text().toLowerCase().search(sch_txt) > -1) {
+                $(this).show(); 
+				}
+            }
+            
+        });	
+	}else{
+		$("#doctorlist li").show();
+	}
+	$("#loading").hide(); 
 });

@@ -23,7 +23,7 @@ $(document).ready(function(e) {
 			$(".question-list").append(question);
 			$("#total_question_count").val(qcnt);
 			$("#loading").hide(); 
-			if($("[type='radio']:checked").length == $('#total_question_count').val()) $("#submit_button").show();
+			if($("[type='radio']:checked").length > 0) $("#submit_button").show();
 			$.each(data.data.Event, function(key, value) { 
 				event_arr[key] = value;
 			});
@@ -58,7 +58,8 @@ $('body').on('click', '.selected_answer', function(){
 	curPos = curPos + 270;	
 	$('html , body').animate({scrollTop:curPos},3500 );	
 	}
-	if($("[type='radio']:checked").length == $('#total_question_count').val()) $("#submit_button").show();	
+	//if($("[type='radio']:checked").length == $('#total_question_count').val()) $("#submit_button").show();
+	if($("[type='radio']:checked").length > 0) $("#submit_button").show();	
 });
 function offsetBottom(el, i) { i = i || 0; return $(el)[i].getBoundingClientRect().bottom } 
 // Returns right offset value

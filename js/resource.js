@@ -19,7 +19,7 @@ $(document).ready(function(e) {$("#loading").show();
 
 $(document).on('click', '.event-list a.media-link', function(e) { $("#loading").show(); 
 	$(".site-title h4").empty().append($(this).find('.event-title').html());
-	$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
+	//$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
 	var action = 'eventselect';
 	$(".event-list").hide();$(".event_view").show();
 	$(".location-box").find('.event_loc').empty().append($(this).find('.event-location').html());
@@ -49,7 +49,7 @@ $(document).on('click', '.event-list a.media-link', function(e) { $("#loading").
 $(document).on('click',"#pageheader .panel-control-left a",function(){
 	if($(".site-title h4").text() != "Resource finder")
 	{ 	$("#loading").show();$(".desc-content p").removeClass('showcont'); $(".read-more").hide();
-		$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
+		//$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
 		$(".event-list").show(); $(".event_view").hide(); $(".site-title h4").empty().append('Resource finder'); setTimeout(function(){ $("#loading").hide(); },300); return false;	
 	}else
 	window.location.href= "index.html";

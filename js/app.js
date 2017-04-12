@@ -61,7 +61,7 @@ if(window.localStorage.getItem("hf_app")){ //$(".loginlogotext .login").empty().
 $("#emailcheck_html, #privacy_html").hide(); $('body').removeClass('walkthrough-page').addClass('home-page'); $("#pageheader .header").addClass('logo-center'); $(".home-menu, #pageheader").show();}
 	if(!window.localStorage.getItem("hf_app")) window.localStorage.setItem("hf_app",1); 
 if(window.localStorage.getItem("pre_page") && window.localStorage.getItem("pre_page") != "apprequest") { $(".home-menu").hide(); 
-$("#loading").show();setTimeout(function(){ $("#loading").hide(); },200);
+$("#loading").show();setTimeout(function(){ $("#loading").hide(); },200);$(".panel-control-left").append('<a href="javascript:void(0);"><img alt="Back" src="img/left-arrow.png" height="17" width="9"></a>');
 $(".site-title").empty().append('<h4>My profile</h4>');$('body').removeClass('subpagebody');$("#pageheader .header").removeClass('logo-center');
    var height = $(window).height();        
    var headr_height = $("#pageheader").height();
@@ -101,6 +101,7 @@ $(document).on('click',"#privacy_html a",function(){
 });
 
 $(".media-list li:eq(4)").on('click',function(){ $("#loading").show();
+   $(".panel-control-left").append('<a href="javascript:void(0);"><img alt="Back" src="img/left-arrow.png" height="17" width="9"></a>');
    $(".site-title").empty().append('<h4>My profile</h4>');$('body').removeClass('subpagebody');$("#pageheader .header").removeClass('logo-center');
    var height = $(window).height();        
    var headr_height = $("#pageheader").height();
@@ -125,6 +126,7 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 	if($(".site-title h4").html() == "My profile"){
 		$("#myprofile_html").hide();
 		$(".home-menu").show();
+		 $(".panel-control-left").empty();
 		$(".site-title").empty().append('<img src="img/logo.png" alt="" width="228" height="56">');$("#pageheader .header").addClass('logo-center');
 	}
 	if($(".site-title h4").html() == "Consent to Communication"){

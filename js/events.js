@@ -5,28 +5,99 @@ $(".user-number").empty().append(window.localStorage.getItem("pat_phone"));
 $(".user-dob").empty().append(window.localStorage.getItem("pat_dob"));
 if(!window.localStorage.getItem("pat_id")) $(".panel-control-right.dropdown").hide(); 
 else $("#addappointment").val('Register');
+
+Date.prototype.addDays = function(days) {
+       var dat = new Date(this.valueOf())
+       dat.setDate(dat.getDate() + days);
+       return dat;
+   }
+var startDate = '2012-04-01';
+var endDate = '2012-05-01';
+
+/*var dates = [];
+    for (var i = start.getFullYear(); i < end.getFullYear() + 1; i++) {
+       // for (var j = 1; j <= 12; j++) {
+          if (i === end.getFullYear() && j === end.getMonth() + 3) {
+            break;
+          }
+          else if (i === 2012 && j < 4){
+            continue;
+          }
+          else if (j < 10) {
+            var dateString = [i, '-', '0' + j, '-','01'].join('');
+            dates.push(dateString)
+            }
+          else {
+            var dateString = [i, '-', j, '-','01'].join('');
+            dates.push(dateString);
+            }
+       // }
+    }*/
+	
+
+
+
 $(document).ready(function(e) {$("#loading").show(); var Eid;
 if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("evt_id"); window.localStorage.removeItem("evt_id"); }
-    //setTimeout(function(){ $("#loading").hide(); },1000);
-	//if(!window.localStorage.getItem("pat_id")){ window.location.href="index.html"; }
+    var today = new Date();
+	var cur_date = ((today.getMonth()+1) < 9 ? "0"+(today.getMonth()+1):(today.getMonth()+1))+"/"+(today.getDate() < 9 ? "0"+today.getDate():today.getDate())+"/"+today.getFullYear();
+	var tmr_date = ((today.getMonth()+1) < 9 ? "0"+(today.getMonth()+1):(today.getMonth()+1))+"/"+((today.getDate()+1) < 9 ? "0"+(today.getDate()+1):(today.getDate()+1))+"/"+today.getFullYear(); 
 	$.post(base_url+"mobile-app?page=getevents",{pat_id:window.localStorage.getItem("pat_id"),pat_acctok:window.localStorage.getItem("pat_acctok"),pat_reftok:window.localStorage.getItem("pat_reftok"),"Edate":"01/20/2017",latlong:"40.71192280==-74.00851830","Eid":Eid},
 	function(data){
 		$("#loading").hide(); 
-		/*for(var i=0;i<data.data.result.length;i++){
-			for(var j=0;j<data.data.result[i].length;j++){ alert(data.data.result[i]);
-			$(".event-list").append(data.data.result[i][j]);
-			}
-		}*/
 		var date_arr = new Array;
 		 $.each(data.data.result, function(index, value){
 		  for(var j=0;j<value.length;j++){ 
-			$.each(value[j],function(index,value){var row_date = index.replace('"',"").replace('"',"");var rowdt=''; if($.inArray(row_date,date_arr) == -1){date_arr.push(row_date);rowdt=row_date;} 
-			if(value)$(".event-list").append('<li class="media event-date-time"><div class="event-line"><span class="timestamp">'+rowdt+'</span></div></li>'+value);
+			$.each(value[j],function(index,value){var row_date = index.replace('"',"").replace('"',"");var rowdt=''; if($.inArray(row_date,date_arr) == -1){date_arr.push(row_date);rowdt=row_date;} var row_hd = rowdt; var spt_date = rowdt.split("/");
+			if(rowdt == cur_date) row_hd = "Today"; if(rowdt == tmr_date) row_hd = "Tomorrow"; 
+			if(value)$(".event-lists").append('<li class="media event-date-time" data-edate="'+rowdt+'"><div class="event-line"><span class="timestamp">'+row_hd+'</span></div></li>'+value);
 			});
 			}
 		});
 		
-		
+		var start = new Date(data.data.edate);
+		//var end = new Date(endDate);
+		var end =(new Date(data.data.edate)).addDays(10);
+		var dateArray = new Array(),$month=new Array(),$month_cnt = new Array();
+		var currentDate = start;
+		var weekday = ["sun","mon","tue","wed","thu","fri","sat"];
+		while (currentDate <= end) { var lp_dt = new Date (currentDate);
+			
+			$.each(data.data.Data,function(index,value){
+				var row_edate = new Date();
+				if(typeof value['end_date'] != "undefined") var row_edate = new Date(value['end_date']);
+				
+			if(new Date(row_edate.getFullYear()+"-"+(row_edate.getMonth()+1)+"-"+row_edate.getDate()) <= new Date(lp_dt.getFullYear()+"-"+(lp_dt.getMonth()+1)+"-"+lp_dt.getDate())){ 
+				//alert(value['end_date']+"==="+lp_dt.getFullYear()+"-"+(lp_dt.getMonth()+1)+"-"+lp_dt.getDate());
+				//dateArray.push((lp_dt.getMonth()+1)+"/"+lp_dt.getDate()+"/"+lp_dt.getFullYear());
+				if(value['type'] == "weekly" && value['day'] == weekday[lp_dt.getDay()]){ 
+					//alert(weekday[lp_dt.getDay()]+"=="+value['day']);
+					$(".event-list").append('<li class="media" data-id="'+value['id']+'" data-time="'+value['time']+'" data-edate="'+(lp_dt.getMonth()+1)+"/"+lp_dt.getDate()+"/"+lp_dt.getFullYear()+'" data-sid="'+value['sid']+'" data-lat="'+value['lat']+'" data-long="'+value['long']+'" data-cont="'+value['cont_name']+'"><a class="media-link" href="#"><div class="media-left"><span class="status-icon"></span></div><div class="media-body media-middle"><div class="event-title">'+value['program']+'</div><div class="event-location">'+value['address']+'</div><div class="event-desc">'+value['description']+'</div></div><div class="media-right media-bottom"><span class="event-time2"><img width="11" height="10" alt="" src="img/clock.png"> '+value['stime']+'</span></div><div class="event_res" style="display:none;">'+value['restrictions']+'</div></a></li>');
+				}
+				
+				if(value['type'] == "monthly" && value['day'] == weekday[lp_dt.getDay()]){ 
+				if(typeof $month[value['sid']] == "undefined"){ $month[value['sid']] = 0;$month_cnt[value['sid']] = 0; } 
+					if($month[value['sid']] != (lp_dt.getFullYear()+"-"+(lp_dt.getMonth()+1)+"-"+lp_dt.getDate()) && $month_cnt[value['sid']] < value['month']){ var start_date = new Date(value['start_date']);
+					$month[value['sid']] = (lp_dt.getFullYear()+"-"+(lp_dt.getMonth()+1)+"-"+lp_dt.getDate());
+					total_months = (lp_dt.getFullYear() - start_date.getFullYear())*12 + ((lp_dt.getMonth()+1) - (start_date.getMonth()+1)); 
+						if(total_months <= value['month'] ){
+							
+							if(value['week'] == (Math.ceil((lp_dt.getDate() - 1 - lp_dt.getDay()) / 7))+1){
+						var $end_date = value['end_date'];
+						if(typeof $end_date =="undefined") $end_date =lp_dt.getFullYear()+"-"+(lp_dt.getMonth()+1)+"-"+lp_dt.getDate();
+						if($end_date >= lp_dt.getFullYear()+"-"+(lp_dt.getMonth()+1)+"-"+lp_dt.getDate()){ 
+					$(".event-list").append('<li class="media" data-id="'+value['id']+'" data-time="'+value['time']+'" data-edate="'+(lp_dt.getMonth()+1)+"/"+lp_dt.getDate()+"/"+lp_dt.getFullYear()+'" data-sid="'+value['sid']+'" data-lat="'+value['lat']+'" data-long="'+value['long']+'" data-cont="'+value['cont_name']+'"><a class="media-link" href="#"><div class="media-left"><span class="status-icon"></span></div><div class="media-body media-middle"><div class="event-title">'+value['program']+'</div><div class="event-location">'+value['address']+'</div><div class="event-desc">'+value['description']+'</div></div><div class="media-right media-bottom"><span class="event-time2"><img width="11" height="10" alt="" src="img/clock.png"> '+value['stime']+'</span></div><div class="event_res" style="display:none;">'+value['restrictions']+'</div></a></li>');
+						}
+						}
+						}
+					}
+				}
+			}
+		});
+			
+			currentDate = currentDate.addDays(1);
+		}
+		$('body').append(dateArray);
 		/*var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 		for(var i=0;i<data.data.length;i++){
 			var event_date = data.data[i]['start_date'].split("/");
@@ -97,7 +168,7 @@ function scrollContent(direction) {
 
 $(document).on('click', '.event-list a.media-link', function(e) { $("#loading").show(); 
 			$(".site-title h4").empty().append($(this).find('.event-title').html());
-			$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
+			//$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
 			var action = 'eventselect'; $("#event_id").val($(this).parent().data('id'));$("#event_sid").val($(this).parent().data('sid'));
 			$(".event-list").hide();
 			$(".location-box").find('.event_loc').empty().append($(this).find('.event-location').html());
@@ -165,7 +236,7 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 	if($(".site-title h4").text() != "Event List")
 	{ 	$("#loading").show();$(".desc-content p").removeClass('showcont'); $(".read-more").hide();$(".header-search").show();
 	//$('html,body').animate({ scrollTop: 0 }, 300);
-		$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
+		//$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
 		$(".event-list").show(); $(".event_view").hide(); $(".site-title h4").empty().append('Event List'); setTimeout(function(){ $("#loading").hide(); },300); return false;	
 	}else
 	window.location.href= "index.html";
@@ -227,4 +298,24 @@ $(".dropdown-menu-right li a").click(function(){
 	window.localStorage.removeItem("pat_acctok");
 	window.localStorage.removeItem("pat_mail");
 	window.location.href= "index.html";
+});
+
+$("#event_search").on("keydown keyup", function(){ var sch_txt = $(this).val().toLowerCase();
+$("#loading").show(); 
+	if($(this).val().length >= 3)
+	{
+		$(".event-list li").each(function(index, element) {
+			$(this).hide();
+			if($(this).find('.event-title').length > 0){
+				if ($(this).find('.event-title').text().toLowerCase().search(sch_txt) > -1) {
+                $(this).show(); 
+				$('li.event-date-time[data-edate="'+$(this).attr('data-edate')+'"]').show();
+				}
+            }
+            
+        });	
+	}else{
+		$(".event-list li").show();
+	}
+	$("#loading").hide(); 
 });
