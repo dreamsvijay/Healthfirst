@@ -33,7 +33,7 @@
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
     <preference name="show-splash-screen-spinner" value="false" />
-    <preference name="load-url-timeout" value="15000" />
+    <preference name="load-url-timeout" value="20000" />
     <preference name="android-windowSoftInputMode" value="stateHidden|adjustResize" />
 	<preference name="AndroidPersistentFileLocation" value="Compatibility" />
 	<preference name="SplashScreen" value="screen" />

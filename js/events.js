@@ -1,8 +1,5 @@
-//var base_url = "https://dev.yosicare.com/healthyvillage-app/";
 var base_url = "https://healthfirst.yosicare.com/dev/hf-app/"; 
-$(".user-name").empty().append(window.localStorage.getItem("pat_name"));
-$(".user-number").empty().append(window.localStorage.getItem("pat_phone")); 
-$(".user-dob").empty().append(window.localStorage.getItem("pat_dob"));
+
 if(!window.localStorage.getItem("pat_id")) $(".panel-control-right.dropdown").hide(); 
 else $("#addappointment").val('Register');
 
@@ -13,28 +10,6 @@ Date.prototype.addDays = function(days) {
    }
 var startDate = '2012-04-01';
 var endDate = '2012-05-01';
-
-/*var dates = [];
-    for (var i = start.getFullYear(); i < end.getFullYear() + 1; i++) {
-       // for (var j = 1; j <= 12; j++) {
-          if (i === end.getFullYear() && j === end.getMonth() + 3) {
-            break;
-          }
-          else if (i === 2012 && j < 4){
-            continue;
-          }
-          else if (j < 10) {
-            var dateString = [i, '-', '0' + j, '-','01'].join('');
-            dates.push(dateString)
-            }
-          else {
-            var dateString = [i, '-', j, '-','01'].join('');
-            dates.push(dateString);
-            }
-       // }
-    }*/
-	
-
 
 
 $(document).ready(function(e) {$("#loading").show(); var Eid;
@@ -50,7 +25,7 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 		  for(var j=0;j<value.length;j++){ 
 			$.each(value[j],function(index,value){var row_date = index.replace('"',"").replace('"',"");var rowdt=''; if($.inArray(row_date,date_arr) == -1){date_arr.push(row_date);rowdt=row_date;} var row_hd = rowdt; var spt_date = rowdt.split("/");
 			if(rowdt == cur_date) row_hd = "Today"; if(rowdt == tmr_date) row_hd = "Tomorrow"; 
-			if(value)$(".event-lists").append('<li class="media event-date-time" data-edate="'+rowdt+'"><div class="event-line"><span class="timestamp">'+row_hd+'</span></div></li>'+value);
+			if(value)$(".event-list").append('<li class="media event-date-time" data-edate="'+rowdt+'"><div class="event-line"><span class="timestamp">'+row_hd+'</span></div></li>'+value);
 			});
 			}
 		});
@@ -62,17 +37,18 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 		var currentDate = start;
 		var weekday = ["sun","mon","tue","wed","thu","fri","sat"];
 		while (currentDate <= end) { var lp_dt = new Date (currentDate);
-			
+			var j=0;list_date = '';
 			$.each(data.data.Data,function(index,value){
 				var row_edate = new Date();
 				if(typeof value['end_date'] != "undefined") var row_edate = new Date(value['end_date']);
-				
+			
 			if(new Date(row_edate.getFullYear()+"-"+(row_edate.getMonth()+1)+"-"+row_edate.getDate()) <= new Date(lp_dt.getFullYear()+"-"+(lp_dt.getMonth()+1)+"-"+lp_dt.getDate())){ 
 				//alert(value['end_date']+"==="+lp_dt.getFullYear()+"-"+(lp_dt.getMonth()+1)+"-"+lp_dt.getDate());
 				//dateArray.push((lp_dt.getMonth()+1)+"/"+lp_dt.getDate()+"/"+lp_dt.getFullYear());
 				if(value['type'] == "weekly" && value['day'] == weekday[lp_dt.getDay()]){ 
 					//alert(weekday[lp_dt.getDay()]+"=="+value['day']);
-					$(".event-list").append('<li class="media" data-id="'+value['id']+'" data-time="'+value['time']+'" data-edate="'+(lp_dt.getMonth()+1)+"/"+lp_dt.getDate()+"/"+lp_dt.getFullYear()+'" data-sid="'+value['sid']+'" data-lat="'+value['lat']+'" data-long="'+value['long']+'" data-cont="'+value['cont_name']+'"><a class="media-link" href="#"><div class="media-left"><span class="status-icon"></span></div><div class="media-body media-middle"><div class="event-title">'+value['program']+'</div><div class="event-location">'+value['address']+'</div><div class="event-desc">'+value['description']+'</div></div><div class="media-right media-bottom"><span class="event-time2"><img width="11" height="10" alt="" src="img/clock.png"> '+value['stime']+'</span></div><div class="event_res" style="display:none;">'+value['restrictions']+'</div></a></li>');
+					list_date +='<li class="media" data-id="'+value['id']+'" data-time="'+value['time']+'" data-edate="'+(lp_dt.getMonth()+1)+"/"+lp_dt.getDate()+"/"+lp_dt.getFullYear()+'" data-sid="'+value['sid']+'" data-lat="'+value['lat']+'" data-long="'+value['long']+'" data-cont="'+value['cont_name']+'"><a class="media-link" href="#"><div class="media-left"><span class="status-icon"></span></div><div class="media-body media-middle"><div class="event-title">'+value['program']+'</div><div class="event-location">'+value['address']+'</div><div class="event-desc">'+value['description']+'</div></div><div class="media-right media-bottom"><span class="event-time2"><img width="11" height="10" alt="" src="img/clock.png"> '+value['stime']+'</span></div><div class="event_res" style="display:none;">'+value['restrictions']+'</div></a></li>';
+					j=1;
 				}
 				
 				if(value['type'] == "monthly" && value['day'] == weekday[lp_dt.getDay()]){ 
@@ -86,7 +62,8 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 						var $end_date = value['end_date'];
 						if(typeof $end_date =="undefined") $end_date =lp_dt.getFullYear()+"-"+(lp_dt.getMonth()+1)+"-"+lp_dt.getDate();
 						if($end_date >= lp_dt.getFullYear()+"-"+(lp_dt.getMonth()+1)+"-"+lp_dt.getDate()){ 
-					$(".event-list").append('<li class="media" data-id="'+value['id']+'" data-time="'+value['time']+'" data-edate="'+(lp_dt.getMonth()+1)+"/"+lp_dt.getDate()+"/"+lp_dt.getFullYear()+'" data-sid="'+value['sid']+'" data-lat="'+value['lat']+'" data-long="'+value['long']+'" data-cont="'+value['cont_name']+'"><a class="media-link" href="#"><div class="media-left"><span class="status-icon"></span></div><div class="media-body media-middle"><div class="event-title">'+value['program']+'</div><div class="event-location">'+value['address']+'</div><div class="event-desc">'+value['description']+'</div></div><div class="media-right media-bottom"><span class="event-time2"><img width="11" height="10" alt="" src="img/clock.png"> '+value['stime']+'</span></div><div class="event_res" style="display:none;">'+value['restrictions']+'</div></a></li>');
+					list_date += '<li class="media" data-id="'+value['id']+'" data-time="'+value['time']+'" data-edate="'+(lp_dt.getMonth()+1)+"/"+lp_dt.getDate()+"/"+lp_dt.getFullYear()+'" data-sid="'+value['sid']+'" data-lat="'+value['lat']+'" data-long="'+value['long']+'" data-cont="'+value['cont_name']+'"><a class="media-link" href="#"><div class="media-left"><span class="status-icon"></span></div><div class="media-body media-middle"><div class="event-title">'+value['program']+'</div><div class="event-location">'+value['address']+'</div><div class="event-desc">'+value['description']+'</div></div><div class="media-right media-bottom"><span class="event-time2"><img width="11" height="10" alt="" src="img/clock.png"> '+value['stime']+'</span></div><div class="event_res" style="display:none;">'+value['restrictions']+'</div></a></li>';
+					j=1;
 						}
 						}
 						}
@@ -94,7 +71,10 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 				}
 			}
 		});
-			
+			if(j == 1){
+				$(".event-list").append('<li class="media event-date-time" data-edate="'+(lp_dt.getMonth()+1)+"/"+lp_dt.getDate()+"/"+lp_dt.getFullYear()+'"><div class="event-line"><span class="timestamp">'+(lp_dt.getMonth()+1)+"/"+lp_dt.getDate()+"/"+lp_dt.getFullYear()+'</span></div></li>'+list_date);
+				list_date='';
+			}
 			currentDate = currentDate.addDays(1);
 		}
 		$('body').append(dateArray);

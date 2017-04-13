@@ -435,8 +435,9 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
 .error .md-form-control {border-color: #de3226;box-shadow: none;}
 .has-error .form-control,.error .form-control {border-color: #843534;}
 
-@media only screen and (min-width: 315px) and (max-width: 343px) {
-	.xdsoft_datetimepicker .xdsoft_timepicker {margin-left: 6px;}
-	.xdsoft_datetimepicker .xdsoft_month {width: 95px;}
-	.md-content {width:95%; margin:0 auto;}
-}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important; 
+    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; 
+    outline: none !important;
+} 

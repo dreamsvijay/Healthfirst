@@ -1,8 +1,5 @@
 var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";
 $("#loading").show();$("#doctorlist").empty(); getDoctors(0,50);
-$(".user-name").empty().append(window.localStorage.getItem("pat_name"));
-$(".user-number").empty().append(window.localStorage.getItem("pat_phone"));
-$(".user-dob").empty().append(window.localStorage.getItem("pat_dob"));
  $("#map").css('height',$(window).height()-220);
 if(!window.localStorage.getItem("pat_id")) $(".panel-control-right.dropdown").hide(); 
 else{
@@ -34,8 +31,8 @@ function getDoctors(page,plimit){
 			$("#doctorlist").append(data.data.Data);
 			if(page == '0') $("#loading").hide();
 				i++;
-				//if(i <=2)
-				//getDoctors(page+plimit,500);
+				if(i <=2)
+				getDoctors(page+plimit,500);
 			 } 
 			 },"json");
 }
