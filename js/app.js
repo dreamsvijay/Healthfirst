@@ -35,7 +35,8 @@ $(".walkthrough-item .yc-button").click(function(){
 		$(".menu-list li").each(function(index){ $(this).css('height',(main_ht/4)+"px").css('line-height',(main_ht/4)+"px");});
 		
 		if(window.localStorage.getItem("hf_app")){ $("#loading").show();
- $("#pageheader .header").addClass('logo-center'); $("#pageheader").show();if(!window.localStorage.getItem("pre_page")){ $(".home-menu").show();} setTimeout(function(){ $("#loading").hide();},300);}
+ $("#pageheader .header").addClass('logo-center'); $("#pageheader").show(); setTimeout(function(){ $("#loading").hide();},300);}
+       if(!window.localStorage.getItem("pre_page")){ $(".home-menu").show();}
 			var initialScreenSize = window.innerHeight;
 			window.addEventListener("resize", function() {
 			if(window.innerHeight < initialScreenSize){
