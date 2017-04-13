@@ -36,7 +36,7 @@ $(".walkthrough-item .yc-button").click(function(){
 		
 		if(window.localStorage.getItem("hf_app")){ $("#loading").show();
  $("#pageheader .header").addClass('logo-center'); $("#pageheader").show(); setTimeout(function(){ $("#loading").hide();},300);}
-       if(!window.localStorage.getItem("pre_page") || window.localStorage.getItem("pre_page") == "apprequest"){ $(".home-menu").show();}
+       if(!window.localStorage.getItem("pre_page") || window.localStorage.getItem("pre_page") == "apprequest"){ if(window.localStorage.getItem("hf_app")){$(".home-menu").show();}}
 			var initialScreenSize = window.innerHeight;
 			window.addEventListener("resize", function() {
 			if(window.innerHeight < initialScreenSize){
