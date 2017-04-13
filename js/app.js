@@ -16,7 +16,7 @@ $(".walkthrough-item .yc-button").click(function(){
 	$(".dotstyle ul").find('li.current').removeClass('current').next('li').addClass('current');
 });
 if(window.localStorage.getItem("hf_app")){ $("#loading").show();
-$("#emailcheck_html, #privacy_html").hide(); $('body').removeClass('walkthrough-page').addClass('home-page'); $("#pageheader .header").addClass('logo-center'); $("#pageheader").show(); setTimeout(function(){ $(".home-menu").show();$("#loading").hide();},500);}
+$("#emailcheck_html, #privacy_html").hide(); $('body').removeClass('walkthrough-page').addClass('home-page'); $("#pageheader .header").addClass('logo-center'); $("#pageheader").show();if(!window.localStorage.getItem("pre_page")){ $(".home-menu").show();} setTimeout(function(){ $("#loading").hide();},500);}
 /* page resize */	
 	$(document).ready(function(){
 		var height = $(window).height();	
@@ -62,8 +62,14 @@ if(!window.localStorage.getItem("pat_id")){ $(".panel-control-right.dropdown").h
 
 if(!window.localStorage.getItem("hf_app")) window.localStorage.setItem("hf_app",1); 
 if(window.localStorage.getItem("pre_page") && window.localStorage.getItem("pre_page") != "apprequest") { $(".home-menu").hide(); 
-$("#loading").show();setTimeout(function(){ $("#loading").hide(); },200);$(".panel-control-left").append('<a href="javascript:void(0);"><img alt="Back" src="img/left-arrow.png" height="17" width="9"></a>');
+/*$("#loading").show();setTimeout(function(){ $("#loading").hide(); },200);*/$(".panel-control-left").append('<a href="javascript:void(0);"><img alt="Back" src="img/left-arrow.png" height="17" width="9"></a>');
 $(".site-title").empty().append('<h4>My profile</h4>');$('body').removeClass('subpagebody');$("#pageheader .header").removeClass('logo-center');
+var height = $(window).height();        
+   var headr_height = $("#pageheader").height();
+   var footr_height = $("#pagefooter").height();
+   var setheight = height - headr_height;
+   var trueheight = setheight - footr_height;
+   $("#myprofile_html .main").css("height", trueheight);
 $("#"+window.localStorage.getItem("pre_page")).show();window.localStorage.removeItem("pre_page");}
 
 
@@ -120,7 +126,7 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 	$("#loading").show();
 	if($(".site-title h4").html() == "My profile"){
 		$("#myprofile_html").hide();
-		$(".home-menu").show();
+		setTimeout(function(){$(".home-menu").show();},300);
 		 $(".panel-control-left").empty();
 		$(".site-title").empty().append('<img src="img/logo.png" alt="" width="228" height="56">');$("#pageheader .header").addClass('logo-center');
 	}

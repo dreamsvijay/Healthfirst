@@ -12,7 +12,7 @@ $(document).ready(function(e) {
 				$(".event-list").append(data.data[i]);
 			}
 		}else{
-			$(".event-list").append('<li class="media">No Activity</li>');
+			$(".event-list").append('<li class="media"><a class="media-link" href="javascript:void(0);">No Activity</a></li>');
 		}
 		$("#loading").hide(); 
 	},"json");
