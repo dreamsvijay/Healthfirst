@@ -3,6 +3,7 @@ $(".js-example-basic-single").select2({
 	  minimumResultsForSearch: Infinity
 	});
 	
+
 	/*$('#dob').datetimepicker({
 	format: 'm/d/Y',
 	maxDate: 0,
@@ -61,7 +62,7 @@ var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), no
 					if(window.localStorage.getItem('doc_req')){ window.localStorage.removeItem('doc_req'); window.location.href="index.html"; }
 					$("body").removeClass('signup-page').addClass('consent-page');
 					$("#register, #sign_in_up, .loginlogoheader").hide();
-					$("#htmlContent, #pageheader").show();
+					$("#htmlContent, #pageheader").show(); 
 					if(window.localStorage.getItem("event_dtl")){ 
 						var event_dtl = window.localStorage.getItem("event_dtl").split("=#=");$("#htmlContent .consent-pop p b").empty().append(event_dtl[3]);
 						$("#appoinmentSuccess .md-body h4").append('Your Request to <span>'+event_dtl[3]+'</span> for Appointment on :'+event_dtl[2]);
@@ -215,10 +216,7 @@ var iemail = $("#iemail"), ipassword = $("#ipassword");
 /* consent form */
 
 $("input[type='checkbox']").on('click',function(){
-	if(window.localStorage.getItem("pat_phone") && window.localStorage.getItem("pat_mail"))
 	$(this).parent().next('div').toggle();
-	else
-	$(this).parent().next('div').toggle().find('input').val('');
 });
 
 var ccemail = $("#ccemail"), ccphone = $("#ccphone");
