@@ -435,7 +435,8 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
 .error .md-form-control {border-color: #de3226;box-shadow: none;}
 .has-error .form-control,.error .form-control {border-color: #843534;}
 @media only screen and (min-width: 315px) and (max-width: 343px) {
-       .md-content {width:95%; margin:0 auto;}
+   .md-content {width:95%; margin:0 auto;}
+   .smile-icon {left: 10px;}
 }
 
 * {
