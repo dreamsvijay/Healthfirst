@@ -22,6 +22,7 @@
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="false" />
     <preference name="DisallowOverscroll" value="true" />
+	<preference name="KeepRunning" value="true"/>
     <preference name="webviewbounce" value="false" />
     <preference name="stay-in-webview" value="false" />
     <preference name="prerendered-icon" value="true" />
