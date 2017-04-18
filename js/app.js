@@ -22,14 +22,15 @@ function onDeviceReady() {
 document.addEventListener("pause", onPause, false);
     document.addEventListener("resume", onResume, false);
 }
-function onPause() {
+function onPause() {alert(window.localStorage.getItem("bg_page"));
 	if(window.localStorage.getItem("bg_page"))
    window.location = window.localStorage.getItem("bg_page");
 }
 
 
-function onResume() {
-   
+function onResume() { alert(window.localStorage.getItem("bg_page"));
+   if(window.localStorage.getItem("bg_page"))
+   window.location = window.localStorage.getItem("bg_page");
 }
 
 /* page resize */	
