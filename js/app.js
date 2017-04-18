@@ -19,10 +19,10 @@ $(".walkthrough-item .yc-button").click(function(){
     document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() { 
-document.addEventListener("pause", onPause, false);
+//document.addEventListener("pause", onPause, false);
     document.addEventListener("resume", onResume, false);
 }
-function onPause() {alert(window.localStorage.getItem("bg_page"));
+function onPause() {
 	if(window.localStorage.getItem("bg_page"))
    window.location = window.localStorage.getItem("bg_page");
 }

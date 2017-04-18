@@ -1,7 +1,7 @@
 var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";
 $("#loading").show();$("#doctorlist").empty(); getDoctors(0,50);
  $("#map").css('height',$(window).height()-220);
-window.localStorage.setItem("bg_page","doctor.html");
+window.localStorage.setItem("bg_page","doctor.html"); 
 if(!window.localStorage.getItem("pat_id")) $(".panel-control-right.dropdown").hide(); 
 else{
 $(".md-footer .row-sm").empty().append('<a href="index.html" class="btn btn-light btn-block">Close</a>');
