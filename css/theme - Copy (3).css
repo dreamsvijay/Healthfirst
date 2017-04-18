@@ -4,7 +4,6 @@
 
 /* Basic Style */
 
-* {-webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; outline: none !important;}
 body{font-family:"Droid Sans",sans-serif;background:#f3f7fa;font-size:15px;}
 html, body{height:100%;}
 body.subpagebody, body.howreach-page, body.privacy-page, body.password-page, body.signup-page{background-repeat:no-repeat;background-attachment:fixed;
@@ -182,11 +181,11 @@ border: none;border-radius: 50px;color: #fff;display: block;font-size: 15px; fon
 .md-close{position:absolute;top:10px;right:10px;}
 .md-close img{height:10px;width:auto;}
 .md-pop-content{padding:15px;border-radius:3px 3px 0 0;-moz-border-radius:3px 3px 0 0;-webkit-border-radius:3px 3px 0 0;}
-.md-pop-content h2{color:#333;font-family:"Droid Sans",sans-serif;font-size:16px;font-weight:400;line-height:1.4;margin:0;text-align:center;}
+.md-pop-content h2{color:#333;font-family:"Source Sans Pro",sans-serif;font-size:16px;font-weight:400;line-height:1.4;margin:0;text-align:center;}
 .md-body{background:#fcfdfd;text-align:center;/*border-bottom:4px solid #5e2ca1;*/padding:15px;-webkit-border-radius:3px 3px 0 0;-moz-border-radius:3px 3px 0 0;border-radius:3px 3px 0 0;}
 .md-body img {height: 87px;margin: 23px 0 40px;width: 87px;}
 .md-body h4 {color: #404040;font-size: 15px;font-weight: bold;margin-top: 0;}
-#pagecontent .md-body h4{font-family:"Droid Sans",sans-serif;font-size:16px;margin:0 0 15px;line-height:18px;color:#fff;text-shadow:0px 0px 1px rgba(0, 144, 147, 0.6);letter-spacing:0.4px;font-weight:600;padding-top:25px;margin-bottom:25px;}
+#pagecontent .md-body h4{font-family:"Source Sans Pro",sans-serif;font-size:16px;margin:0 0 15px;line-height:18px;color:#fff;text-shadow:0px 0px 1px rgba(0, 144, 147, 0.6);letter-spacing:0.4px;font-weight:600;padding-top:25px;margin-bottom:25px;}
 .md-body h4 span{display:inline-block;margin:2px 0;}
 .md-footer{border-top: 2px dotted #c3c3c3;color:#333;font-size:15px;padding:15px;text-align:center;}
 .row.row-sm {margin-left: -8px;margin-right: -8px;}
@@ -435,24 +434,13 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
 .media-list.event-list {margin: 0;}
 .error .md-form-control {border-color: #de3226;box-shadow: none;}
 .has-error .form-control,.error .form-control {border-color: #843534;}
-
-/* View Profile */
-
-.page-view-profile {background-color: #fff;}
-.page-view-profile #pagecontent {padding-bottom:0;padding:15px;}
-.mobilevp ul{margin-bottom:10px;padding:0;}
-.mobilevp ul:last-child{margin-bottom:0;}
-.mobilevp li{list-style:none;border-bottom:1px solid #f1f1f1;padding:15px;}
-.mobilevp li:last-child{border-bottom:0;}
-.mobilevp .vp_header{width:auto;margin:0;height:40px;text-indent:15px;background:#bababa;border:0!important;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;-o-border-radius:3px;padding:0 0 0 0 !important;}
-.mobilevp .vp_header h2{font-family:"Droid Sans",sans-serif;font-size:15px;font-weight:bold;padding:12px 0px;margin:0;position:absolute;color:#fff;}
-.mobilevp h4{margin-bottom:0;}
-.vp_container h4{color:#444;font-family:"Droid Sans",sans-serif;font-size:15px;line-height:18px;margin:0;min-height:18px;padding:3px 0 0;}
-.vp_container h2{color:#818181;font-family:"Droid Sans",sans-serif;font-size:15px !important;line-height:18px;margin:0;}
-
-/* Responsive Css */
-
 @media only screen and (min-width: 315px) and (max-width: 343px) {
    .md-content {width:95%; margin:0 auto;}
    .smile-icon {left: 10px;}
 }
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important; 
+    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; 
+    outline: none !important;
+} 
