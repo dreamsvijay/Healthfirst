@@ -1,6 +1,7 @@
 var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";
 $("#loading").show();$("#doctorlist").empty(); getDoctors(0,50);
  $("#map").css('height',$(window).height()-220);
+window.localStorage.setItem("bg_page","doctor.html");
 if(!window.localStorage.getItem("pat_id")) $(".panel-control-right.dropdown").hide(); 
 else{
 $(".md-footer .row-sm").empty().append('<a href="index.html" class="btn btn-light btn-block">Close</a>');
@@ -79,8 +80,10 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 			$('body').removeClass('appointment-page').addClass('provider-page');
 		}
 		setTimeout(function(){ $("#loading").hide(); },300); return false;
-	}else
-	window.location.href = "index.html";
+	}else{
+		window.localStorage.removeItem("bg_page");
+		window.location.href = "index.html";
+	}
 });
 
 
@@ -446,6 +449,7 @@ $(".dropdown-menu-right li a").click(function(){
 	window.localStorage.removeItem("pat_reftok");
 	window.localStorage.removeItem("pat_acctok");
 	window.localStorage.removeItem("pat_mail");
+	window.localStorage.removeItem("bg_page");
 	window.location.href= "index.html";
 });
 

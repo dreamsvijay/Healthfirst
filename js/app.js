@@ -18,17 +18,18 @@ $(".walkthrough-item .yc-button").click(function(){
 });
     document.addEventListener("deviceready", onDeviceReady, false);
 
-function onDeviceReady() { alert(11);
+function onDeviceReady() { 
 document.addEventListener("pause", onPause, false);
     document.addEventListener("resume", onResume, false);
 }
 function onPause() {
-   alert(211);
+	if(window.localStorage.getItem("bg_page"))
+   window.location = window.localStorage.getItem("bg_page");
 }
 
 
 function onResume() {
-   alert(1);
+   
 }
 
 /* page resize */	
