@@ -16,18 +16,19 @@ $(".walkthrough-item .yc-button").click(function(){
 	}
 	$(".dotstyle ul").find('li.current').removeClass('current').next('li').addClass('current');
 });
+$(document).ready(function(e) {
+    document.addEventListener("deviceready", onDeviceReady, false);
 
-document.addEventListener("deviceready", onDeviceReady, false);
-
-function onDeviceReady() {
+function onDeviceReady() { alert(11);
     document.addEventListener("resume", onResume, false);
-    // Add similar listeners for other events
 }
 
 
 function onResume() {
    alert(1);
 }
+});
+
 /* page resize */	
 	//$(document).ready(function(){
 		
