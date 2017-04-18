@@ -17,6 +17,17 @@ $(".walkthrough-item .yc-button").click(function(){
 	$(".dotstyle ul").find('li.current').removeClass('current').next('li').addClass('current');
 });
 
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    document.addEventListener("resume", onResume, false);
+    // Add similar listeners for other events
+}
+
+
+function onResume() {
+   alert(1);
+}
 /* page resize */	
 	//$(document).ready(function(){
 		
