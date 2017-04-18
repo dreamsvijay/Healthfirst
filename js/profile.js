@@ -85,8 +85,8 @@ $(document).ready(function(e) {
 			$("#mobilenumber").empty().html(data.data.GeneralData.MobileNumber);
 			$("#employed_company").empty().html(data.data.GeneralData.CompanyName);
 			$("#dem_mar_sts").empty().html(data.data.GeneralData.MaritalStatus);
-			if(data.data.GeneralData.Employed.length > 0)
-			$("input[name=select_employed][value=" + data.data.GeneralData.Employed + "]").prop('checked', true);
+			//if(data.data.GeneralData.Employed.length > 0)
+			//$("input[name=select_employed][value=" + data.data.GeneralData.Employed + "]").prop('checked', true);
 			//$("#dem_enhn").val(data.data.GeneralData.EthnicityName);
 			//$("#dem_race").val(data.data.GeneralData.RaceName);
 			//$("#select_ethinicity_wrap").val(data.data.GeneralData.EthnicityId);
