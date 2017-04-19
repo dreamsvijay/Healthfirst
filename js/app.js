@@ -16,7 +16,7 @@ $(".walkthrough-item .yc-button").click(function(){
 	}
 	$(".dotstyle ul").find('li.current').removeClass('current').next('li').addClass('current');
 });
-    /*document.addEventListener("deviceready", onDeviceReady, false);
+    document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() { 
 //document.addEventListener("pause", onPause, false);
@@ -28,10 +28,10 @@ function onPause() {
 }
 
 
-function onResume() { alert(window.localStorage.getItem("bg_page"));
+function onResume() { alert(11);
    if(window.localStorage.getItem("bg_page"))
    window.location = window.localStorage.getItem("bg_page");
-}*/
+}
 
 /* page resize */	
 	//$(document).ready(function(){
