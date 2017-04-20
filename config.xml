@@ -70,12 +70,6 @@
     <gap:splash gap:platform="ios" src="res/screen/ios/Default-568h@2x.png" width="640" height="1136" />
     <gap:splash gap:platform="ios" src="res/screen/ios/Default-portrait-ipad.png" width="768" height="1024" />
     <gap:splash gap:platform="ios" src="res/screen/ios/Default-Portrait@2x-ipad.png" width="1536" height="2008" />
-  	<feature name="AppsFlyerPlugin">
-	  <param name="ios-package" value="AppsFlyerPlugin" />
-	</feature>
-	
-	<feature name="AppsFlyerPlugin">
-	  <param name="android-package" value="com.appsflyer.cordova.plugin.AppsFlyerPlugin" />
-	</feature>
+  	
     <access origin="*" />
 </widget>
