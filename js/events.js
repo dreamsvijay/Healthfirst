@@ -300,7 +300,7 @@ $("#loading").show();
 	$("#loading").hide(); 
 });
 
-$(document).on('click','a span[data-toggle]',function(){ alert();
+$(document).on('click','a span[data-toggle]',function(){ 
 	$(this).toggleClass('collapsed');
 	$(this).parent().parent().next('div').toggleClass('in');
 });
