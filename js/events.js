@@ -299,3 +299,8 @@ $("#loading").show();
 	}
 	$("#loading").hide(); 
 });
+
+$(document).on('click','span[data-toggle]',function(){
+	$(this).toggleClass('collapsed');
+	$(this).parent().next('div').toggleClass('in');
+});
