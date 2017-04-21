@@ -209,3 +209,8 @@ $(".dropdown-menu-right li a").click(function(){
 	window.localStorage.removeItem("pat_mail");
 	window.location.href= "index.html";
 });
+
+$(document).on('click','a span[data-toggle]',function(){ 
+	$(this).toggleClass('collapsed');
+	$(this).parent().parent().next('div').toggleClass('in');
+});

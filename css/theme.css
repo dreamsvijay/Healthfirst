@@ -458,3 +458,5 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
 @media only screen and (min-width: 315px) and (max-width: 343px) {
    .md-content {width:95%; margin:0 auto;}
 }
+
+.title-cont a {color:#333;}

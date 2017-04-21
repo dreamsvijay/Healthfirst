@@ -121,13 +121,7 @@ $(document).on('click',"#privacy_html a",function(){
 	return false;
 });
 
-var ua = navigator.userAgent, 
-event = (ua.match(/iPad|Android/i)) ? "touchstart" : "click";
 
-$("button,a").bind(event, function()
-{
-    $(this).trigger('click');
-});
 $(".media-list li:eq(4)").bind('touchstart',function(event){ $("#loading").show();event.stopPropagation(); event.preventDefault();event.stopImmediatePropagation();
    $(".panel-control-left").append('<a href="javascript:void(0);"><img alt="Back" src="img/left-arrow.png" height="17" width="9"></a>');
    $(".site-title").empty().append('<h4>My profile</h4>');$('body').removeClass('subpagebody');$("#pageheader .header").removeClass('logo-center');
