@@ -121,7 +121,7 @@ $(document).on('click',"#privacy_html a",function(){
 	return false;
 });
 
-$(".media-list li:eq(4)").on('touchstart',function(){ $("#loading").show();
+$(".media-list li:eq(4)").bind('touchstart',function(){ $("#loading").show();
    $(".panel-control-left").append('<a href="javascript:void(0);"><img alt="Back" src="img/left-arrow.png" height="17" width="9"></a>');
    $(".site-title").empty().append('<h4>My profile</h4>');$('body').removeClass('subpagebody');$("#pageheader .header").removeClass('logo-center');
    var height = $(window).height();        
@@ -132,7 +132,7 @@ $(".media-list li:eq(4)").on('touchstart',function(){ $("#loading").show();
    $("#myprofile_html .main").css("height", trueheight);
    $(".home-menu").hide(); $("#pageheader, #myprofile_html").show(); setTimeout(function(){ $("#loading").hide(); },300); });
    
-$("#myprofile_html li:eq(2) a").on('touchstart',function(){ $("#loading").show(); $(".site-title h4").empty().append('Consent to Communication');
+$("#myprofile_html li:eq(2) a").bind('touchstart',function(){ $("#loading").show(); $(".site-title h4").empty().append('Consent to Communication');
 	$('body').removeClass('home-page').addClass('consent-page');
 	$("#myprofile_html").hide(); $("#consent").show(); setTimeout(function(){ $("#loading").hide(); },300);
 });

@@ -30,17 +30,18 @@ function getDoctors(page,plimit){
 	$.post(base_url+"mobile-app?page=searchDoctor",{latlong:window.localStorage.getItem("lat_long"),q:'',page:page,plimit:plimit},function(data){
 		if(data.success == "Y"){ 
 			$("#doctorlist").append(data.data.Data);
+			if($("#pageheader .site-title h4").html() != 'Network Provider') $('#doctorlist li.media').hide();
 			if(page == '0') $("#loading").hide();
 				i++;
 				if(i <=2)
 				getDoctors(page+plimit,500);
-			 } 
+				 } 
 			 },"json");
 }
-$(document).on('touchstart','#doctorlist li',function(e){ $("#loading").show(); 
+$(document).on('click ','#doctorlist li',function(e){ $("#loading").show(); 
 	$("#doctorlist li").each(function(index, element) {
-            $(this).hide();
-        }); setTimeout(function(){ $("#loading").hide(); },200);
+            
+        });$('#doctorlist li').hide(); setTimeout(function(){ $("#loading").hide(); },200);
 		$(this).show(); $(".media-right").hide();
 	//$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
 	$(".header-search").hide();
