@@ -2,19 +2,7 @@ var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";
 $(".js-example-basic-single").select2({
 	  minimumResultsForSearch: Infinity
 	});
-	
-
-	/*$('#dob').datetimepicker({
-	format: 'm/d/Y',
-	maxDate: 0,
-	timepicker:false,
-	autoclose: true,keepOpen: false, 
-	className: 'datepicker_register',
-	closeOnDateSelect:true,
-	onChangeDateTime:function( currentDateTime ){
-	$('#dob').parent().removeClass("has-error");
-	},
-}).attr("readonly", "readonly");*/
+setTimeout(function(){ $("#loading").hide(); $("#pagecontent").show();},700);
 var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), now.getDate());
     
         $('#dob').mobiscroll().date({
@@ -66,6 +54,8 @@ var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), no
 					if(window.localStorage.getItem("event_dtl")){ 
 						var event_dtl = window.localStorage.getItem("event_dtl").split("=#=");$("#htmlContent .consent-pop p b").empty().append(event_dtl[3]);
 						$("#appoinmentSuccess .md-body h4").append('Your Request to <span>'+event_dtl[3]+'</span> for Appointment on :'+event_dtl[2]);
+					}else{
+						$("#htmlContent .consent-pop p b").empty().append('Us');
 					}
 					}else{
 						$('#email').parent().addClass("has-error");

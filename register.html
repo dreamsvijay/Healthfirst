@@ -25,7 +25,7 @@
 	<div class="loginlogoheader logo-header" style="">
         <div class="practicelogo logo-img"><img alt="Health First" src="img/logo.png"></div>
     </div>
-	<main id="pagecontent" class="mobile-wrapper">
+	<main id="pagecontent" class="mobile-wrapper" style="display:none;">
     		
     	<form class="login-form" method="post" autocomplete="off" name="register" id="register" style="display:block;">
 			<input type="hidden" name="cconf" id="cconf" value="" />
@@ -83,10 +83,8 @@
         </form>
         
         <div id="htmlContent" style="display:none;">
-			<div class="consent-pop">
-				<span class="smile-icon"></span>
-				<p>Thanks for Registering with <b></b></p>
-			</div>
+			
+            <div class="consent-pop"><div class="media-left media-middle"><span class="smile-icon" ></span></div><div class="media-body media-middle"><h4>Thanks</h4><p >for Registering with <b></b></p></div></div>
 			<div class="consent">
 				<div class="consent-icon"><img src="img/edit.png" alt="" width="78" height="78"></div>
 				<p>We could love to communicate with you regarding Healthy Village.</p>
@@ -152,7 +150,7 @@
 	</div>
 	<div class="md-overlay"></div>
     <footer id="pagefooter"> </footer>
-    <div id="loading" style="display: none;">
+    <div id="loading" style="display: block;">
         <img src="img/ring.gif" alt="loading" width="66" height="66">
     </div>
     <script src="js/jquery.min.js"></script>
