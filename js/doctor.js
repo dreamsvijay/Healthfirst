@@ -37,7 +37,7 @@ function getDoctors(page,plimit){
 			 } 
 			 },"json");
 }
-$(document).on('click','#doctorlist li',function(e){ $("#loading").show(); 
+$(document).on('touchstart','#doctorlist li',function(e){ $("#loading").show(); 
 	$("#doctorlist li").each(function(index, element) {
             $(this).hide();
         }); setTimeout(function(){ $("#loading").hide(); },200);
@@ -51,7 +51,7 @@ $(document).on('click','#doctorlist li',function(e){ $("#loading").show();
 	$("#dpracticeid").val($(this).attr('data-pid'));
 	$("#did").val($(this).attr('data-id'));
 	$("#dname").val($(this).find('.provider-name').html());
-	$("#map").parent().show();
+	$("#map").parent().show().css('visibility','visible').css('overflow','visible').css('height','inherit');
 	/*$("#doctordetail_html .reach-title").empty().html($(this).text());
 	
 	$("#dpracticeid").val($(this).attr('data-pid'));
@@ -64,7 +64,7 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 	if($("#pageheader .site-title h4").html() != "Network Provider"){
 		$("#loading").show();
 		if($("#pageheader .site-title h4").html() != "Request Appointment"){
-			 $("#map").parent().hide();
+			 $("#map").parent().css('visibility','hidden').css('overflow','hidden').css('height','1px');
 			//$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
 			$(".site-title h4").empty().html('Network Provider');$(".media-right").show();
 			$(".provider-name").show();$(".header-search").show();
@@ -110,25 +110,15 @@ $("#form_mdoctordetail_info").submit(function(){
 });
  
 $(document).ready(function(e) {
-		/*$("#rdob").datetimepicker({
-		format: "mm/dd/yyyy hh:ii",
-		autoclose: true,
-		disableTouchKeyboard: true,
-		Readonly: true,
-		startDate: '+0d',
-		minuteStep: 15,
-		inline: true,
-		hoursDisabled: [0,1,2,3,4,5,6,7,19,20,21,22,23],
-		
-	}).on("changeDate", function (e) {
-		$('#start-time-before').html(e.date); // Log
-		var TimeZoned = new Date(e.date.setTime(e.date.getTime() + (e.date.getTimezoneOffset() * 60000)));
-		$('#time-end').datetimepicker('setStartDate', TimeZoned);
-		$('#time-start').datetimepicker('setDate', TimeZoned);
-		$('#start-time-adjusted').html(TimeZoned); // Log
-	}).attr("readonly", "readonly");
-*/
 
+var script = document.createElement('script');
+script.setAttribute('type', 'text/javascript');
+script.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAWRfo3Xtlj926B7XS0E-i2l0ss8Tv-vjI&callback=');
+document.body.appendChild(script);
+var script = document.createElement('script');
+script.setAttribute('type', 'text/javascript');
+script.setAttribute('src', 'https://trial.mobiscroll.com/33cf7aa5/mobiscroll.jquery.min.js');
+document.body.appendChild(script);
 
 	var logic = function( currentDateTime ){
 	var now = new Date();
@@ -148,24 +138,12 @@ $(document).ready(function(e) {
         }
 		
 };
-/*$('#rdob').datetimepicker({
-	//lang: 'en',
-	format: 'm/d/Y h:i A',
-	formatTime: 'h:i A',
-	formatTimeScroller: 'h:i A',
-	minDate: 0,
-	onChangeDateTime:logic,
-	onShow:logic,
-	className: 'datepicker_position',
-	step: 15,
-	scrollMonth: false,
-	scrollTime: false,
-	scrollInput: false,
-}).attr("readonly", "readonly");*/
+
 var now = new Date(),
             minDate = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate()),
             maxDate = new Date(now.getFullYear() + 1, now.getMonth(), now.getDate());
 			now.setMinutes ( now.getMinutes() + 15 );
+			setTimeout(function(){
  $('#rdob').mobiscroll().datetime({
             theme: 'ios',       
             lang: 'en',        
@@ -183,6 +161,7 @@ var now = new Date(),
 		],
             dateWheels: '|D M d|'
         }).attr("readonly", "readonly");
+			},8000);
 
 	var rfname = $("#rfname"), rlname = $("#rlname"), remail = $("#remail"), rphone = $("#rphone"), rdob = $("#rdob");
 	rfname.on('blur keyup',validateRfname);
@@ -355,30 +334,6 @@ var height = $(window).height();
    $(".main").css("height", trueheight);
  $(".loginlogoheader, #user-profile_html").hide(); $("#pageheader, #myprofile_html").show(); setTimeout(function(){ $("#loading").hide(); },300); });
 
-/*$('#doctorsearch')
-	.autocomplete(base_url+"mobile-app?page=searchDoctor", acOptions_doctor)
-	.result(function(e, data) {
-		$("#loading").show();
-		$('body').removeClass('profile-page2').addClass('user-profile-page').addClass('doctor-profile-page');
-		$("#user-profile_html").hide();
-		$(".loginlogoheader").hide();
-		$("#pageheader, #doctordetail_html").show();
-		$("#pageheader .site-title h4").empty().append('DOCTOR PROFILE');
-		$("#dpracticeid").val(data[5]);
-		$("#did").val(data[1]);
-		$("#dname").val(data[0]);
-		$("#mapaddress").val(data[3]+" "+data[4]);
-		$("#lat").val(data[6]);
-		$("#lng").val(data[7]);
-		
-		$(".docteraddressdiv .reach-title").empty().append(data[0]);
-		$(".docteraddressdiv .reach-subtitl").empty().append(data[9]);
-		$(".docteraddressdiv .speciality_row span").empty().append(data[2]);
-		$(".calbutton a").attr("href","tel://"+data[8]);
-		$(".address_row").empty().append(data[3]+"<br />"+data[4]);
-		initMap($('#mapaddress').val(),$('#lat').val(),$('#lng').val());
-		setTimeout(function(){ $("#loading").hide(); },300);
-		});*/
 			
 	var acOptions_doctor = {
     minChars: 2,
@@ -399,25 +354,26 @@ var height = $(window).height();
 function initMap(mapaddress,lat,lng) {
 	var locations = [
 		[''+mapaddress+'', ''+lat+'', ''+lng+'']
-
 	];
-
+	
 	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 16,
 		center: new google.maps.LatLng(''+lat+'', ''+lng+''),
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	});
-
+	
 	var infowindow = new google.maps.InfoWindow();
 
 	var marker, i;
 
 	for (i = 0; i < locations.length; i++) {
 		marker = new google.maps.Marker({
-			position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+			//position: new google.maps.LatLng(locations[i][1], locations[i][2]),
 			map: map
 		});
-
+google.maps.event.clearInstanceListeners(marker);
+        marker.setPosition( new google.maps.LatLng( locations[i][1], locations[i][2] ) );
+        //map.panTo( new google.maps.LatLng( locations[i][1], locations[i][2]) );
 		google.maps.event.addListener(marker, 'click', (function(marker, i) {
 			return function() {
 				infowindow.setContent(locations[i][0]);
