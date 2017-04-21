@@ -13,6 +13,10 @@ var endDate = '2012-05-01';
 
 
 $(document).ready(function(e) {$("#loading").show(); var Eid;
+setTimeout(function(){var script = document.createElement('script');
+script.setAttribute('type', 'text/javascript');
+script.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAWRfo3Xtlj926B7XS0E-i2l0ss8Tv-vjI&callback=');
+document.body.appendChild(script);},5000);
 if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("evt_id"); window.localStorage.removeItem("evt_id"); }
     var today = new Date();
 	var cur_date = ((today.getMonth()+1) < 9 ? "0"+(today.getMonth()+1):(today.getMonth()+1))+"/"+(today.getDate() < 9 ? "0"+today.getDate():today.getDate())+"/"+today.getFullYear();
@@ -32,7 +36,7 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 		
 		var start = new Date(data.data.edate);
 		//var end = new Date(endDate);
-		var end =(new Date(data.data.edate)).addDays(10);
+		var end =(new Date(data.data.edate)).addDays(90);
 		var dateArray = new Array(),$month=new Array(),$month_cnt = new Array();
 		var currentDate = start;
 		var weekday = ["sun","mon","tue","wed","thu","fri","sat"];
@@ -167,24 +171,8 @@ $(document).on('click', '.event-list a.media-link', function(e) { $("#loading").
 			 else {
 			 	$(".desc-content:first p").removeClass('showcont'); $(".read-more").hide();
 			 }
-			/*var id = $(this).data('eventid'); $("#event_id").val($(this).data('eventid'));
-			var val =$(this).data('event'); $("#event_date").val($(this).data('event'));
-			var eventname =$(this).data('eventname'); $(".success_content h4 span").empty().append($(this).data('eventname'));
-			$('#loading').show();
-			var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-			var dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI","SAT"];
-			var event_date = $(this).data('event').split("/");
-			var today = new Date(event_date[2]+"-"+event_date[0]+"-"+event_date[1]);
-            var dd = today.getDate(); 
-			$(".reach-title").empty().append(dayNames[today.getDay()]+", "+monthNames[today.getMonth()]+" "+event_date[0]+", "+event_date[2]+" @ "+$(this).find('.event-time2').html());
-			$(".header").addClass('doc-page-header');
-			$(".reach-subtitle").empty().append($(this).find('.event-location').html());
-			$(".address_row").empty().append($(this).find('.event-address').html());
-			initMap($(this).find('.event-address').html(),"40.75505860","-73.98167810");
-			setTimeout(function(){ $("#loading").hide(); },500);
-			$("#events_html").hide();
-           $("#confirmation_html").show();*/
-			setTimeout(function(){ $("#loading").hide(); $(".event_view").show();},200);
+			//initMap('123 Main St, suite.1, New York, NY',"40.75505860","-73.98167810");
+			setTimeout(function(){ $("#loading").hide(); $(".event_view").show().css('visibility','visible').css('overflow','visible').css('height','inherit');},200);
 		return false;
 		});
 $('#addappointment').click(function(){ 
@@ -217,7 +205,7 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 	{ 	$("#loading").show();$(".desc-content p").removeClass('showcont'); $(".read-more").hide();$(".header-search").show();
 	//$('html,body').animate({ scrollTop: 0 }, 300);
 		//$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
-		$(".event-list").show(); $(".event_view").hide(); $(".site-title h4").empty().append('Event List'); setTimeout(function(){ $("#loading").hide(); },300); return false;	
+		$(".event-list").show(); $(".event_view").css('visibility','hidden').css('overflow','hidden').css('height','1px'); $(".site-title h4").empty().append('Event List'); setTimeout(function(){ $("#loading").hide(); },300); return false;	
 	}else
 	window.location.href= "index.html";
 });
