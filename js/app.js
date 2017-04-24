@@ -264,6 +264,6 @@ if($(document.activeElement).attr('type') == "text"){
     $(".footer-fixed-group").css('position','fixed');
 }
 
-$(document).on('touchstart', '.menu-list a', function(e){
+$(document).on('touchstart', '.menu-list a', function(event){
     window.location = $(this).attr('href');
 });
