@@ -263,3 +263,8 @@ if($(document.activeElement).attr('type') == "text"){
 }else{
     $(".footer-fixed-group").css('position','fixed');
 }
+
+$(document).on('touchstart', '.menu-list a', function(e){
+   alert(1);
+    e.preventDefault();
+});
