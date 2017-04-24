@@ -265,6 +265,5 @@ if($(document.activeElement).attr('type') == "text"){
 }
 
 $(document).on('touchstart', '.menu-list a', function(e){
-   alert(1);
-    e.preventDefault();
+    window.location = $(this).attr('href');
 });
