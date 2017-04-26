@@ -10,11 +10,11 @@
 
 	<feature name="http://api.phonegap.com/1.0/network"/>
 	<feature name="http://api.phonegap.com/1.0/file"/>
-    <feature name="SplashScreen">
+    <!--<feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.SplashScreen" />
         <param name="ios-package" value="CDVSplashScreen" />
         <param name="onload" value="true" />
-	</feature>
+	</feature>-->
 
 	<preference name="phonegap-version" value="cli-6.3.0" />
     <preference name="permissions" value="none" />

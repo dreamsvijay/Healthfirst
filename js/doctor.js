@@ -36,6 +36,14 @@ function getDoctors(page,plimit){
 			var docList = new List('teeet', { 
   valueNames: ['provider-name']
 });
+docList.on('updated', function(list) { 
+    if (list.matchingItems.length > 0) {
+        $('#search_res').hide()
+    } else {
+        $('#search_res').show()
+	   
+    }
+})
 			if($("#pageheader .site-title h4").html() != 'Network Provider') $('#doctorlist li.media').hide();
 			if(page == '0') $("#loading").hide();
 				i++;
