@@ -26,10 +26,16 @@ function onDeviceReady() {
     }
 }
 var i=0;
+var docList = new List('teeet', { 
+  valueNames: ['provider-name']
+});
 function getDoctors(page,plimit){
 	$.post(base_url+"mobile-app?page=searchDoctor",{latlong:window.localStorage.getItem("lat_long"),q:'',page:page,plimit:plimit},function(data){
 		if(data.success == "Y"){ 
 			$("#doctorlist").append(data.data.Data);
+			var docList = new List('teeet', { 
+  valueNames: ['provider-name']
+});
 			if($("#pageheader .site-title h4").html() != 'Network Provider') $('#doctorlist li.media').hide();
 			if(page == '0') $("#loading").hide();
 				i++;
@@ -410,7 +416,7 @@ $(".dropdown-menu-right li a").click(function(){
 	window.location.href= "index.html";
 });
 
-$("#doc_search").on("keydown keyup", function(){ var sch_txt = $(this).val().toLowerCase();
+/*$("#doc_search").on("keydown keyup", function(){ var sch_txt = $(this).val().toLowerCase();
 $("#loading").show(); 
 	if($(this).val().length >= 3)
 	{
@@ -427,4 +433,4 @@ $("#loading").show();
 		$("#doctorlist li").show();
 	}
 	$("#loading").hide(); 
-});
+});*/
