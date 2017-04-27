@@ -34,16 +34,16 @@ function getDoctors(page,plimit){
 		if(data.success == "Y"){ 
 			$("#doctorlist").append(data.data.Data);
 			var docList = new List('teeet', { 
-  valueNames: ['provider-name']
-});
-docList.on('updated', function(list) { 
-    if (list.matchingItems.length > 0) {
-        $('#search_res').hide()
-    } else {
-        $('#search_res').show()
-	   
-    }
-})
+			  valueNames: ['provider-name']
+			});
+			docList.on('updated', function(list) { 
+				if (list.matchingItems.length > 0) {
+					$('#search_res').hide()
+				} else {
+					$('#search_res').show()
+				   
+				}
+			})
 			if($("#pageheader .site-title h4").html() != 'Network Provider') $('#doctorlist li.media').hide();
 			if(page == '0') $("#loading").hide();
 				i++;
@@ -56,7 +56,7 @@ $(document).on('click ','#doctorlist li',function(e){ $("#loading").show();
 	$("#doctorlist li").each(function(index, element) {
             
         });$('#doctorlist li').hide(); setTimeout(function(){ $("#loading").hide(); },200);
-		$(this).show(); $(".media-right").hide();
+		$(this).show(); $(".media-right").hide();$("#doctorlist").addClass('pt-0');
 	//$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
 	$(".header-search").hide();
 	$(".site-title h4").empty().html($(this).find('.provider-name').html());
@@ -78,7 +78,7 @@ $(document).on('click ','#doctorlist li',function(e){ $("#loading").show();
 $(document).on('click',"#pageheader .panel-control-left a",function(){ 
 	if($("#pageheader .site-title h4").html() != "Network Provider"){
 		$("#loading").show();
-		if($("#pageheader .site-title h4").html() != "Request Appointment"){
+		if($("#pageheader .site-title h4").html() != "Request Appointment"){$("#doctorlist").removeClass('pt-0');
 			 $("#map").parent().css('visibility','hidden').css('overflow','hidden').css('height','1px');
 			//$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
 			$(".site-title h4").empty().html('Network Provider');$(".media-right").show();

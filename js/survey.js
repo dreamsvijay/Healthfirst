@@ -49,15 +49,15 @@ $(document).on('click', '.event-list .select_event', function(e) {
 
 var curPos = 0;
 $('body').on('click', '.selected_answer', function(){ 
-	var bottom = offsetBottom(this);
+	/*var bottom = offsetBottom(this);
 	var right = offsetRight(this);
-	
+	//alert($(window).height());
 	var bottom2 = $(window).height() - bottom;
 	if(bottom2 < 80) 
 	{ 
 	curPos = curPos + 270;	
 	$('html , body').animate({scrollTop:curPos},3500 );	
-	}
+	}*/
 	//if($("[type='radio']:checked").length == $('#total_question_count').val()) $("#submit_button").show();
 	if($("[type='radio']:checked").length > 0) $("#submit_button").show();	
 });

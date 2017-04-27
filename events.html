@@ -20,16 +20,21 @@
 				</ul>
 			</div>
 		</div>
-        <div class="header-search">
-			<input type="text" placeholder="Search..." class="form-control" id="event_search" name="event_search">
-		</div>
+       
 	</header>
     <main id="pagecontent">
         <div id="htmlContent">
-				<ul class="media-list event-list" >
+        	<div id="teeet">
+                 <div class="header-search">
+                    <input type="text" placeholder="Search..." class="form-control fuzzy-search" id="event_search" name="event_search">
+                </div>
+				<ul class="media-list event-list list" >
 					
 				</ul>
-                
+                <ul id="search_res" class="media-list provider-list pt-0" style="display:none;">
+                	<li class="media" style="min-height:40px;"><a class="media-link" href="">No results</a></li>
+                </ul>
+               </div> 
                 <div class="event_view" style="visibility:hidden; height:1px;overflow:hidden;"><input type="hidden" id="event_id" value="" />
                 <input type="hidden" id="event_sid" value="" />
                 	<div class="event-details">
@@ -116,6 +121,8 @@
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/list.min.js"></script>
     <script src="js/events.js"></script>
 </body>
 </html>

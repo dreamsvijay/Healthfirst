@@ -34,6 +34,18 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 			}
 		});
 		
+			var eventList = new List('teeet', { 
+			  valueNames: ['event-title']
+			});
+			eventList.on('updated', function(list) { 
+				if (list.matchingItems.length > 0) {
+					$('#search_res').hide()
+				} else {
+					$('#search_res').show()
+				   
+				}
+			})
+		
 		var start = new Date(data.data.edate);
 		//var end = new Date(endDate);
 		var end =(new Date(data.data.edate)).addDays(90);
@@ -268,7 +280,7 @@ $(".dropdown-menu-right li a").click(function(){
 	window.location.href= "index.html";
 });
 
-$("#event_search").on("keydown keyup", function(){ var sch_txt = $(this).val().toLowerCase();
+/*$("#event_search").on("keydown keyup", function(){ var sch_txt = $(this).val().toLowerCase();
 $("#loading").show(); 
 	if($(this).val().length >= 3)
 	{
@@ -286,7 +298,7 @@ $("#loading").show();
 		$(".event-list li").show();
 	}
 	$("#loading").hide(); 
-});
+});*/
 
 $(document).on('click','a span[data-toggle]',function(){ 
 	$(this).toggleClass('collapsed');
