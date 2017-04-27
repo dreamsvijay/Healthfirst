@@ -102,7 +102,7 @@ border: none;border-radius: 50px;color: #fff;display: block;font-size: 15px; fon
 .site-title h4{line-height:70px;color:#fff;display:block;font-family:Droid Sans;font-size:15px;letter-spacing:0.5px;margin:0;}
 .panel-control-right{float:right;}
 .panel-control-right > a{display:inline-block;padding:25px 15px;line-height:initial;}
-.header{background:#0c7cbb;height:70px;margin:auto;position:fixed;width:100%;z-index:99;top:0px;}
+.header{background:#0c7cbb;height:70px;margin:auto;position:relative;width:100%;z-index:99;}
 
 /* Network Provider */
 
@@ -465,9 +465,10 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
 .title-cont a {color:#333;}
 
 #pageheader {
-    position: relative;
+    position: fixed;
     width: 100%;
 	z-index: 100;
+	top:0;
 }
 .provider-page #pagecontent {
     padding: 70px 0 0;
