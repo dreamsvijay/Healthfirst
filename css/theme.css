@@ -57,7 +57,7 @@ input:focus ~ .floating-label, input:not(:focus).valid ~ .floating-label, input:
 .practicelogo img {height: auto;margin: 0;padding: 0;width: auto;}
 .loginlogotext {color: #fff;font-size: 15px;padding: 50px 0 0;}
 .loginlogotext span {font-weight: normal;}
-#pagecontent {padding: 30px;}
+#pagecontent {padding: 30px;-webkit-overflow-scrolling: touch;}
 #pagecontent input[type="submit"] {
 background: rgba(252,198,5,1);
 background: -moz-linear-gradient(top, rgba(252,198,5,1) 0%, rgba(253,155,9,1) 100%);
@@ -465,10 +465,11 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
 .title-cont a {color:#333;}
 
 #pageheader {
-    position: fixed;
+    position: absolute;
     width: 100%;
 	z-index: 100;
 	top:0;
+	left:0;
 }
 .provider-page #pagecontent {
     padding: 70px 0 0;
@@ -486,7 +487,7 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
     padding-top: 48px;
 }
 .home-page #pageheader {
-	position:relative;	
+	position:absolute;	
 }
 .event-page #pagecontent {
     padding: 70px 0 0;
@@ -496,3 +497,15 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
     padding-top: 48px;
 }
 .pt-0 {padding-top:0 !important;}
+.home-page #pagecontent {
+    padding: 0;
+    position: absolute;
+    top: 86px;
+}
+#pagecontent {
+    box-sizing: border-box;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    z-index: 1;
+}
