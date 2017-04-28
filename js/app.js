@@ -36,14 +36,16 @@ function onResume() { alert(window.localStorage.getItem("bg_page"));
 /* page resize */	
 	//$(document).ready(function(){
 		
-		var height = $(window).height();	
+		/*var height = $(window).height();	
 		var headr_height = $("#pageheader").height();
 		var footr_height = $("#pagefooter").height();
 		var setheight = height - headr_height;
 		var trueheight = setheight - footr_height;
-		$(".menu-list").css("height", trueheight);
-		var h=$(window).height()-136;
+		$(".menu-list").css("height", trueheight);*/
+		
+		var h=$(window).height()-136; 
 		$('.menu-list').height(h);
+		$("#pagecontent").height($(window).height()-86);
 		var main_ht = $(".menu-list").css("height").replace("px","");
 		if(window.localStorage.getItem("pat_id"))
 		$(".menu-list li").each(function(index){ $(this).css('height',(main_ht/5)+"px").css('line-height',(main_ht/5)+"px");});
