@@ -47,7 +47,7 @@ function getDoctors(page,plimit){
 			if($("#pageheader .site-title h4").html() != 'Network Provider') $('#doctorlist li.media').hide();
 			if(page == '0') $("#loading").hide();
 				i++;
-				if(i <=1)
+				if(i <=2)
 				getDoctors(page+plimit,500);
 				 } 
 			 },"json");

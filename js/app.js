@@ -1,5 +1,5 @@
-var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";
-if(window.localStorage.getItem("hf_app")){$("#pageheader").show();$("#emailcheck_html, #privacy_html").hide(); $('body').removeClass('walkthrough-page').addClass('home-page');}
+var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";window.localStorage.removeItem("hf_app");
+if(window.localStorage.getItem("hf_app")){$("#pageheader").show();$("#emailcheck_html, #privacy_html").hide(); $('body').removeClass('walkthrough-page').addClass('home-page');$("#pagecontent").height($(window).height()-86);}
 $(".walkthrough-item .yc-button").click(function(){
 	$(this).parent().parent().hide(); 
 	if($(this).parent().parent().next().hasClass('walkthrough-item'))
@@ -45,7 +45,7 @@ function onResume() { alert(window.localStorage.getItem("bg_page"));
 		
 		var h=$(window).height()-136; 
 		$('.menu-list').height(h);
-		$("#pagecontent").height($(window).height()-86);
+		
 		var main_ht = $(".menu-list").css("height").replace("px","");
 		if(window.localStorage.getItem("pat_id"))
 		$(".menu-list li").each(function(index){ $(this).css('height',(main_ht/5)+"px").css('line-height',(main_ht/5)+"px");});
@@ -113,7 +113,7 @@ $(document).on('click',"a.skip",function(){
 });
 
 $(document).on('click',"#privacy_html a",function(){
-	$("#loading").show();
+	$("#loading").show();$("#pagecontent").height($(window).height()-106);
 	$('body').removeClass('privacy-page').addClass('home-page');
 	$("#pageheader .header").addClass('logo-center');
 	$("#pageheader").show();
