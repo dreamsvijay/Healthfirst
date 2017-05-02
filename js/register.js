@@ -5,13 +5,13 @@ $(".js-example-basic-single").select2({
 setTimeout(function(){ $("#loading").hide(); $("#pagecontent").show();},700);
 var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), now.getDate());
     
-        /*$('#dob').mobiscroll().date({
+        $('#dob').mobiscroll().date({
             theme: 'ios',       
             lang: 'en',         
             display: 'center', 
             max: now,
 			min: new Date(now.getFullYear() - 75, now.getMonth(), now.getDate())         
-        }).attr("readonly", "readonly");*/
+        }).attr("readonly", "readonly");
 	if(window.localStorage.getItem('doc_req')){
 		var doc_req_dtl = window.localStorage.getItem('doc_req').split('=#=');
 		$("#fname").val(doc_req_dtl[1]).attr('readonly','readonly');$("#lname").val(doc_req_dtl[2]).attr('readonly','readonly');$("#email").val(doc_req_dtl[0]).attr('readonly','readonly');window.localStorage.removeItem('doc_req');
@@ -50,6 +50,7 @@ var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), no
 					if(window.localStorage.getItem('doc_req')){ window.localStorage.removeItem('doc_req'); window.location.href="index.html"; }
 					$("body").removeClass('signup-page').addClass('consent-page');
 					$("#register, #sign_in_up, .loginlogoheader").hide();
+					$("#pagecontent").height($(window).height()-200);
 					$("#htmlContent, #pageheader").show(); 
 					if(window.localStorage.getItem("event_dtl")){ 
 						var event_dtl = window.localStorage.getItem("event_dtl").split("=#=");$("#htmlContent .consent-pop p b").empty().append(event_dtl[3]);

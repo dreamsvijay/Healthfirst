@@ -7,8 +7,8 @@
 	<title>Health First</title>
 	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://trial.mobiscroll.com/33cf7aa5/mobiscroll.jquery.min.css">
 	<link href="css/theme.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/mobiscroll.custom-3.1.0.min.css">
 </head>
 <body class="provider-page" id="teeet">
 	<header id="pageheader">
@@ -22,8 +22,8 @@
 			</div>
 		</div>
         <div class="header-search">
-        <input type="text" class="form-control fuzzy-search" placeholder="Search..." id="doc_search" name="doc_search">
-        </div>
+            <input type="text" class="form-control fuzzy-search" placeholder="Search..." id="doc_search" name="doc_search">
+            </div>
 	</header>
     <main id="pagecontent">
         <div id="htmlContent">
@@ -70,7 +70,7 @@
                     <label>Date & Time</label>
                 </div>
                 <div class="footer-con-space"></div>
-                <div class="form-group footer-fixed-group mb-0">
+                <div class="form-group mb-0">
                     <div class="footer-fixed-group-inner">
                         <div class="actions">
                             <input type="submit" value="Submit Request" class="yc-button">
@@ -79,11 +79,13 @@
                 </div>
                 </form>
 		</div>
-		</div>
-        <div class="" style="display:none;">
+         <div class="" style="display:none;">
         	<div id="map" style="width: 100%;"></div>
-            <div class="footer-con-space"></div>
-			<div class="form-group footer-fixed-group mb-0">
+    	</div>
+		</div>
+       
+    </main>
+    <div class="form-group footer-fixed-group mb-0" style="display:none;">
 				<div class="footer-fixed-group-inner">
 					<div class="actions">
                     	<form action="" method="post" class="yc-form form_mdocdet" id="form_mdoctordetail_info" data-track="Doctor Details">
@@ -95,8 +97,6 @@
 					</div>
 				</div>
 			</div>
-    	</div>
-    </main>
     <div class="md-modal md-effect-1" id="appoinmentSuccess">
 		<div class="md-content">
 			<div class="md-body">

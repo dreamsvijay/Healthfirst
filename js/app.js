@@ -124,7 +124,7 @@ $(document).on('click',"#privacy_html a",function(){
 });
 
 
-$(".media-list li:eq(4)").bind('touchstart',function(event){ $("#loading").show();event.stopPropagation(); event.preventDefault();event.stopImmediatePropagation();
+$(".media-list li:eq(4)").bind('touchstart',function(event){  $("#loading").show();event.stopPropagation(); event.preventDefault();event.stopImmediatePropagation();
    $(".panel-control-left").append('<a href="javascript:void(0);"><img alt="Back" src="img/left-arrow.png" height="17" width="9"></a>');
    $(".site-title").empty().append('<h4>My profile</h4>');$('body').removeClass('subpagebody');$("#pageheader .header").removeClass('logo-center');
    var height = $(window).height();        
@@ -137,7 +137,7 @@ $(".media-list li:eq(4)").bind('touchstart',function(event){ $("#loading").show(
    
 $("#myprofile_html li:eq(2) a").bind('touchstart',function(event){ event.stopPropagation(); event.preventDefault();event.stopImmediatePropagation(); $("#loading").show(); $(".site-title h4").empty().append('Consent to Communication');
 	$('body').removeClass('home-page').addClass('consent-page');
-	$("#myprofile_html").hide(); $("#consent").show(); setTimeout(function(){ $("#loading").hide(); },300);
+	$("#myprofile_html").hide(); $("#consent, .footer-fixed-group").show(); setTimeout(function(){ $("#loading").hide(); },300);
 });
 
 $(window).resize(function(){
@@ -155,7 +155,7 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 	}
 	if($(".site-title h4").html() == "Consent to Communication"){
 		$('body').removeClass('consent-page').addClass('home-page');
-		$("#consent").hide();
+		$("#consent, .footer-fixed-group").hide();
 		$("#myprofile_html").show();
 		$(".site-title h4").empty().append('My profile');
 	}
@@ -266,6 +266,6 @@ if($(document.activeElement).attr('type') == "text"){
     $(".footer-fixed-group").css('position','fixed');
 }
 
-$(document).on('touchstart', '.menu-list a', function(event){
+/*$(document).on('touchstart', '.menu-list a', function(event){
     window.location = $(this).attr('href');
-});
+});*/

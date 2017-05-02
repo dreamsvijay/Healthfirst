@@ -53,9 +53,10 @@ function getDoctors(page,plimit){
 			 },"json");
 }
 $(document).on('click ','#doctorlist li',function(e){ $("#loading").show(); 
-	$("#doctorlist li").each(function(index, element) {
+	/*$("#doctorlist li").each(function(index, element) {
             
-        });$('#doctorlist li').hide(); setTimeout(function(){ $("#loading").hide(); },200);
+        });*/$('#doctorlist li').hide(); setTimeout(function(){ $("#loading").hide(); },200);
+		$("#doc_submit").parent().parent().parent().parent().show();
 		$(this).show(); $(".media-right").hide();$("#doctorlist").addClass('pt-0');
 	//$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
 	$(".header-search").hide();
@@ -80,14 +81,14 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 		$("#loading").show();
 		if($("#pageheader .site-title h4").html() != "Request Appointment"){$("#doctorlist").removeClass('pt-0');
 			 $("#map").parent().css('visibility','hidden').css('overflow','hidden').css('height','1px');
-			//$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
+			$("#doc_submit").parent().parent().parent().parent().hide();
 			$(".site-title h4").empty().html('Network Provider');$(".media-right").show();
 			$(".provider-name").show();$(".header-search").show();
 			$("#doctorlist li").each(function(index, element) {
 				$(this).show();
 				if($(this).attr('class') != "media") $(this).addClass('media');
 			});
-		}else{
+		}else{$("#doc_submit").parent().parent().parent().parent().show();
 			$(".site-title h4").empty().html($("#dname").val());
 			$(".reqform").hide();
 			$("#map").parent().show();
@@ -105,7 +106,7 @@ $(document).on('click',"#pageheader .panel-control-left a",function(){
 $("#form_mdoctordetail_info").submit(function(){
 	$("#loading").show(); 
 	$("#map").parent().hide();
-	$(".myprofile-list").hide();
+	$(".myprofile-list").hide(); $(this).parent().parent().parent().hide();
 	$('body').removeClass('provider-page').addClass('appointment-page');
 	$(".site-title h4").empty().html('Request Appointment'); 
 	if(window.localStorage.getItem("pat_mail")){ 
@@ -132,7 +133,7 @@ script.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAW
 document.body.appendChild(script);
 var script = document.createElement('script');
 script.setAttribute('type', 'text/javascript');
-script.setAttribute('src', 'https://trial.mobiscroll.com/33cf7aa5/mobiscroll.jquery.min.js');
+script.setAttribute('src', 'js/mobiscroll.custom-3.1.0.min.js');
 document.body.appendChild(script);
 
 	var logic = function( currentDateTime ){
