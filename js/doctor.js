@@ -246,7 +246,7 @@ var now = new Date(),
 	function validateRphone(e){
 		var rphone  = $('#rphone').val();
 		if ($('#rphone').val().length === 0) {
-			$('#rphone').val('(');
+			$('#rphone').val('(').val($('#rphone').val());
 		} var key =0;
 		if(e) key = e.keyCode;
 		//var key = e.keyCode || 0;

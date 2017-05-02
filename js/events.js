@@ -166,7 +166,7 @@ $(document).on('click', '.event-list a.media-link', function(e) { $("#loading").
 			$(".site-title h4").empty().append($(this).find('.event-title').html());
 			//$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
 			var action = 'eventselect'; $("#event_id").val($(this).parent().data('id'));$("#event_sid").val($(this).parent().data('sid'));
-			$(".event-list").hide();
+			$(".event-list").hide();$("#pagecontent").height($(window).height()-150);
 			$(".location-box").find('.event_loc').empty().append($(this).find('.event-location').html());
 			$(".event-timebox").find('.event_time').empty().append($(this).parent().data('edate')+", "+$(this).parent().data('time'));
 			$(".desc-content:first p").empty().append($(this).find('.event-desc').html());
@@ -174,7 +174,7 @@ $(document).on('click', '.event-list a.media-link', function(e) { $("#loading").
 			$(".restrict-content ul").empty();$(".res_contact p").empty().append('Contact Name : '+$(this).parent().data('cont'));
 			$.each(event_res,function(index, value){
 				$(".restrict-content ul").append('<li><p><span class="bullet-icon"></span> '+value+'</p></li>');
-			}); $(".header-search").hide();
+			}); $(".header-search").hide(); $(".footer-fixed-group").show();
 			initMap($(this).find('.event-location').html(),$(this).parent().data('lat'),$(this).parent().data('long'));
 			 var divHeight = $(".desc-content p").height()
 			 var lineHeight = parseInt($(".desc-content p").css('line-height'));
@@ -214,7 +214,7 @@ $('#addappointment').click(function(){
 
 $(document).on('click',"#pageheader .panel-control-left a",function(){
 	if($(".site-title h4").text() != "Event List")
-	{ 	$("#loading").show();$(".desc-content p").removeClass('showcont'); $(".read-more").hide();$(".header-search").show();
+	{ 	$("#loading").show();$(".desc-content p").removeClass('showcont'); $(".read-more, .footer-fixed-group").hide();$(".header-search").show();$("#pagecontent").height('inherit');
 	//$('html,body').animate({ scrollTop: 0 }, 300);
 		//$(".panel-control-left img").attr('src','img/menu2.png').css('height',19).css('width',21);
 		$(".event-list").show(); $(".event_view").css('visibility','hidden').css('overflow','hidden').css('height','1px'); $(".site-title h4").empty().append('Event List'); setTimeout(function(){ $("#loading").hide(); },300); return false;	
