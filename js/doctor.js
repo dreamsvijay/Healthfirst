@@ -211,10 +211,10 @@ var now = new Date(),
 		return false;
 	});
 	
-	
+	var namefilter = /^[a-zA-Z]+$/;
 	function validateRfname(){
 		var rfname  = $('#rfname').val();
-		if(rfname == '')
+		if(rfname == ''|| !namefilter.test(rfname))
 		{
 			$('#rfname').parent().addClass("error");				
 			return false;
@@ -224,7 +224,7 @@ var now = new Date(),
 	}
 	function validateRlname(){
 		var rlname  = $('#rlname').val();
-		if(rlname == '')
+		if(rlname == ''|| !namefilter.test(rlname))
 		{
 			$('#rlname').parent().addClass("error");				
 			return false;
