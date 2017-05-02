@@ -58,7 +58,7 @@ var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), no
 					}else{
 						$("#htmlContent .consent-pop p b").empty().append('Us');
 					}
-					}else{
+					}else{ $(".loginlogoheader").show(); 
 						$('#email').parent().addClass("has-error");
 					}window.localStorage.removeItem('event_dtl');
 				}
