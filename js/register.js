@@ -50,7 +50,7 @@ var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), no
 					if(window.localStorage.getItem('doc_req')){ window.localStorage.removeItem('doc_req'); window.location.href="index.html"; }
 					$("body").removeClass('signup-page').addClass('consent-page');
 					$("#register, #sign_in_up, .loginlogoheader").hide();
-					$("#pagecontent").height($(window).height()-200);
+					$("#pagecontent").height($(window).height()-200);$(".footer-fixed-group").show();
 					$("#htmlContent, #pageheader").show(); 
 					if(window.localStorage.getItem("event_dtl")){ 
 						var event_dtl = window.localStorage.getItem("event_dtl").split("=#=");$("#htmlContent .consent-pop p b").empty().append(event_dtl[3]);

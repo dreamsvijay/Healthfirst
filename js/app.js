@@ -90,7 +90,7 @@ var height = $(window).height();
    var headr_height = $("#pageheader").height();
    var footr_height = $("#pagefooter").height();
    var setheight = height - headr_height;
-   var trueheight = setheight - footr_height;
+   var trueheight = setheight - footr_height;$("#pagecontent").css('position','relative').css('top','70px').css("height", trueheight);
    $("#myprofile_html .main").css("height", trueheight);
 $("#"+window.localStorage.getItem("pre_page")).show();window.localStorage.removeItem("pre_page");}
 

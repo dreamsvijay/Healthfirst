@@ -466,11 +466,15 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
 .mobilevp h4{margin-bottom:0;}
 .vp_container h4{color:#444;font-family:"Droid Sans",sans-serif;font-size:15px;line-height:18px;margin:0;min-height:18px;padding:3px 0 0;}
 .vp_container h2{color:#818181;font-family:"Droid Sans",sans-serif;font-size:15px !important;line-height:18px;margin:0;}
-
+.panel-control-right {float: right;min-width: 34px;position: absolute;right: 0;top: 0;}
+.panel-control-left {float: left;left: 0;position: absolute;top: 0;width: 50px;}
+.site-title h4 {color: #fff;display: block;font-family: Droid Sans;font-size: 15px;letter-spacing: 0.5px;line-height: 70px;margin: 0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.site-title {display: inline-block;height: 70px;padding: 0 34px 0 50px;width: 100%;margin:0px;}
 /* Responsive Css */
 
 @media only screen and (min-width: 315px) and (max-width: 343px) {
    .md-content {width:95%; margin:0 auto;}
+   .mbsc-fr-w {width:100% !important;}
 }
 
 .title-cont a {color:#333;}
@@ -491,7 +495,7 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
     padding: 7px 8px;
     position: absolute;
     width: 100%;
-	z-index: 99;
+	z-index: 98;
 }
 .provider-list {
     margin-bottom: 0;
@@ -500,7 +504,7 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
 .home-page #pageheader {
 	position:absolute;	
 }
-.event-page #pagecontent {
+.event-page #pagecontent,.mycare-page #pagecontent {
     padding: 70px 0 0;
 }
 .media-list.event-list {
@@ -521,3 +525,4 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
 }
 
 .appointment-page #pagecontent, .consent-page #pagecontent{padding-top:90px;}
+.signup-page #pagecontent {height:auto;}
