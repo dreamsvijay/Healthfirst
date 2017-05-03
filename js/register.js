@@ -59,7 +59,7 @@ var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), no
 						$("#htmlContent .consent-pop p b").empty().append('Us');
 					}
 					}else{ $(".loginlogoheader").show();  $("#emailerror").addClass('md-show');$(".md-overlay").addClass('md-show');
-						$('#email').parent().addClass("has-error"); $("#emailerror p").empty().append(data.message);
+						$('#email').parent().addClass("has-error").removeAttr('readonly'); $("#emailerror p").empty().append(data.message);
 					}window.localStorage.removeItem('event_dtl');
 				}
 			});
