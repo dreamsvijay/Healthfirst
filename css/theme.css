@@ -378,7 +378,7 @@ h2.title-cont span {background-color: #fafafa;border: 1px solid #cfcfcf;border-r
 .question-list .radio-primary input[type="radio"] + label::after{background-color:#333;}
 .question-list .radio-primary input[type="radio"]:checked + label::before{border-color:#333;}
 .question-list .radio-primary input[type="radio"]:checked + label::after{background-color:#333;}
-.question-list .radio input[type=radio]:not(old):checked + label{background-position:inherit;color: #fd9b09;font-weight: bold;}
+.question-list .radio input[type=radio]:not(old):checked + label{background-position:inherit;color: #fd9b09;}
 .question-list .radio input[type=checkbox]:not(old),.radio input[type=radio]:not(old){width:auto;}
 .question-list .radio input[type=checkbox]:not(old) + label,.radio input[type=radio]:not(old) + label{display:inline-block;margin-left:-0;padding-left:0;background:inherit;line-height:inherit;padding-bottom:0;font-weight:400;color:#333;font-size:13px;}
 .question-list .radio input[type=checkbox]:not(old) + label{margin-left:0;}

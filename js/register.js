@@ -58,8 +58,8 @@ var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), no
 					}else{
 						$("#htmlContent .consent-pop p b").empty().append('Us');
 					}
-					}else{ $(".loginlogoheader").show(); 
-						$('#email').parent().addClass("has-error");
+					}else{ $(".loginlogoheader").show();  $("#emailerror").addClass('md-show');$(".md-overlay").addClass('md-show');
+						$('#email').parent().addClass("has-error"); $("#emailerror p").empty(data.message);
 					}window.localStorage.removeItem('event_dtl');
 				}
 			});
@@ -164,7 +164,7 @@ var iemail = $("#iemail"), ipassword = $("#ipassword");
 					var event_dtl = window.localStorage.getItem("event_dtl").split("=#=");
 					$("#appoinmentSuccess .md-body h4").append('Your Request to <span>'+event_dtl[3]+'</span> for Appointment on : '+event_dtl[2]);
 					window.localStorage.removeItem('event_dtl');
-					$(".md-modal").addClass('md-show');
+					$("#appoinmentSuccess").addClass('md-show');
 					$(".md-overlay").addClass('md-show');
 					}else
 					window.location.href="index.html";
@@ -234,7 +234,7 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 					$("#appoinmentSuccess .md-body h4").hide();
 					$("#appoinmentSuccess .md-body p").empty().append('Your Consent has been updated Successfully ');
 					}
-					$(".md-modal").addClass('md-show');
+					$("#appoinmentSuccess").addClass('md-show');
 					$(".md-overlay").addClass('md-show');
 				}
 			});
@@ -317,4 +317,9 @@ $(".dropdown-menu-right li a").click(function(){
 	window.localStorage.removeItem("pat_acctok");
 	window.localStorage.removeItem("pat_mail");
 	window.location.href= "index.html";
+});
+
+$("#emailerror a").click(function(){
+	$("#emailerror").addClass('md-show');
+	$(".md-overlay").addClass('md-show');
 });
