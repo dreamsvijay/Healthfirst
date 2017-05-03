@@ -59,7 +59,7 @@ var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), no
 						$("#htmlContent .consent-pop p b").empty().append('Us');
 					}
 					}else{ $(".loginlogoheader").show();  $("#emailerror").addClass('md-show');$(".md-overlay").addClass('md-show');
-						$('#email').parent().addClass("has-error"); $("#emailerror p").empty(data.message);
+						$('#email').parent().addClass("has-error"); $("#emailerror p").empty().append(data.message);
 					}window.localStorage.removeItem('event_dtl');
 				}
 			});
@@ -241,7 +241,7 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 		}
 	}else{
 		$("#htmlContent").hide();
-		$(".md-modal").addClass('md-show');
+		$("#appoinmentSuccess").addClass('md-show');
 		$(".md-overlay").addClass('md-show');
 	}
 		return false;
@@ -320,6 +320,6 @@ $(".dropdown-menu-right li a").click(function(){
 });
 
 $("#emailerror a").click(function(){
-	$("#emailerror").addClass('md-show');
-	$(".md-overlay").addClass('md-show');
+	$("#emailerror").removeClass('md-show');
+	$(".md-overlay").removeClass('md-show');
 });

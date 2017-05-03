@@ -15,7 +15,7 @@ $(document).ready(function(e) {
 			}
 			
 		}else{
-			$(".mycare-list").append('<li class="media"><a href="#" class="media-link">No Appointments</a></li>');
+			$(".mycare-list").append('<li class="media" style="padding:20px;"><a href="#" class="media-link">No Appointments</a></li>');
 		}
 		$("#loading").hide();
 	},"json");

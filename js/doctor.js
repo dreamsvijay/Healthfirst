@@ -44,7 +44,7 @@ function getDoctors(page,plimit){
 				   
 				}
 			})
-			if($("#pageheader .site-title h4").html() != 'Network Provider') $('#doctorlist li.media').hide();
+			if($("#pageheader .site-title h4").html() != 'Doctors') $('#doctorlist li.media').hide();
 			if(page == '0') $("#loading").hide();
 				i++;
 				if(i <=2)
@@ -77,12 +77,12 @@ $(document).on('click ','#doctorlist li',function(e){ $("#loading").show();
 		 
 	 
 $(document).on('click',"#pageheader .panel-control-left a",function(){ 
-	if($("#pageheader .site-title h4").html() != "Network Provider"){
+	if($("#pageheader .site-title h4").html() != "Doctors"){
 		$("#loading").show();
 		if($("#pageheader .site-title h4").html() != "Request Appointment"){$("#doctorlist").removeClass('pt-0');
 			 $("#map").parent().css('visibility','hidden').css('overflow','hidden').css('height','1px');
 			$("#doc_submit").parent().parent().parent().parent().hide();
-			$(".site-title h4").empty().html('Network Provider');$(".media-right").show();
+			$(".site-title h4").empty().html('Doctors');$(".media-right").show();
 			$(".provider-name").show();$(".header-search").show();
 			$("#doctorlist li").each(function(index, element) {
 				$(this).show();
@@ -315,7 +315,7 @@ if(window.localStorage.getItem("pre_page")){
 	$("#user-profile_html").hide();
 	$("#pageheader").show();
 	$(".loginlogoheader, #user-profile_html").hide();
-	$("#pageheader .site-title h4").empty().append('Network Provider');
+	$("#pageheader .site-title h4").empty().append('Doctors');
 	$("#"+window.localStorage.getItem("pre_page")).show();
 	window.localStorage.removeItem("pre_page");
 }

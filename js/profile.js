@@ -159,7 +159,7 @@ $(document).ready(function(e) {
 			referalList();
 		}else{
 			$("#view-profile_html").hide();
-		$("#htmlContent").append("Your profile info does not match our record");
+		$("#htmlContent").append("<div style='padding:15px;'>Your profile info does not match our record</div>");
 		}
 		$("#loading").hide();
 		
