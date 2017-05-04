@@ -242,6 +242,8 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 	}else{
 		$("#htmlContent").hide();
 		$("#appoinmentSuccess").addClass('md-show');
+		$("#appoinmentSuccess .md-body h4").hide();
+		$("#appoinmentSuccess .md-body p").empty().append('Your contact preference has been updated');
 		$(".md-overlay").addClass('md-show');
 	}
 		return false;
