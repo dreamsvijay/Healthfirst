@@ -200,7 +200,7 @@ $('#addappointment').click(function(){
 					$("#loading").hide(); 
 					if(data.success == "Y"){
 						var event_dtl = window.localStorage.getItem("event_dtl").split("=#=");
-						$("#appoinmentSuccess .md-body h4").append('Thanks for registering with <span>'+event_dtl[3]+'</span>.<br /> Your event is on : '+event_dtl[2]);
+						$("#appoinmentSuccess .md-body h4").append('Thanks for registering with <span>'+event_dtl[3]+'</span><br /> Your event is on : '+event_dtl[2]);
 						 $('#appoinmentSuccess').addClass('md-show');
 						 $('.md-overlay').addClass('md-show');
 					}

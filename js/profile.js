@@ -14,7 +14,7 @@ $(document).ready(function(e) {
 	relationsList(); getLifestyle(); frequencylist();relationshipList();
 	$.post(base_url+"mobile-app?page=getDetails",{pat_id:window.localStorage.getItem("pat_id"),pat_acctok:window.localStorage.getItem("pat_acctok"),pat_reftok:window.localStorage.getItem("pat_reftok")},
 	function(data){
-		$("#pagecontent").show();
+		$("#pagecontent").show();$(".no-result-container").remove();$("#htmlContent").height('inherit'); 
 		if(data.success == "Y"){
 			$("#frm_step").val(data.data.Step.Step); $("#app_submit").attr('data-step',data.data.Step.Step);
 			$("#firstname").empty().html(data.data.PersonalData.FirstName);
@@ -158,8 +158,8 @@ $(document).ready(function(e) {
             
 			referalList();
 		}else{
-			$("#view-profile_html").hide();
-		$("#htmlContent").append("<div style='padding:15px;'>Your profile will be updated once you select a doctor and register for the appointment.</div>");
+			$("#view-profile_html").hide();$("#htmlContent").height($(window).height()-70); 
+		$("#htmlContent").append('<div class="no-result-container"><div class="no-result"><div class="no-result-inner"><div class="no-result-img"><img alt="Back" src="img/cloud.png" width="63" height="52"></div><div class="no-result-cont"><p>Your profile will be updated once you select a doctor and register for the appointment.</p></div></div></div></div>');
 		}
 		$("#loading").hide();
 		
