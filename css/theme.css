@@ -469,7 +469,7 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
 .panel-control-right {float: right;min-width: 34px;position: absolute;right: 0;top: 0;}
 .panel-control-left {float: left;left: 0;position: absolute;top: 0;width: 50px;}
 .site-title h4 {color: #fff;display: block;font-family: Droid Sans;font-size: 15px;letter-spacing: 0.5px;line-height: 70px;margin: 0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-.site-title {display: inline-block;height: 70px;padding: 0 34px 0 50px;width: 100%;margin:0px;}
+.site-title {display: inline-block;height: 70px;padding: 0 50px;width: 100%;margin:0px;}
 /* Responsive Css */
 
 
