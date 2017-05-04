@@ -63,7 +63,7 @@ $(document).on('click ','#doctorlist li',function(e){ $("#loading").show();
 	$(".site-title h4").empty().html($(this).find('.provider-name').html());
 	$(this).removeClass('media');
 	$(this).find('.provider-name').hide();
-	initMap($('#mapaddress').val(),$(this).attr('data-lat'),$(this).attr('data-long'));
+	initMap($(this).find('.provider-address').html(),$(this).attr('data-lat'),$(this).attr('data-long'));
 	$("#dpracticeid").val($(this).attr('data-pid'));
 	$("#did").val($(this).attr('data-id'));
 	$("#dname").val($(this).find('.provider-name').html());

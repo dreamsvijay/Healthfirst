@@ -7,13 +7,13 @@ $(document).ready(function(e) {
    $(".media-list").css('padding-top','0px');
 	if(!window.localStorage.getItem("pat_id")){ window.location.href="index.html"; }
 	$.post(base_url+"mobile-app?page=getActivity",{pat_id:window.localStorage.getItem("pat_id"),pat_acctok:window.localStorage.getItem("pat_acctok"),pat_reftok:window.localStorage.getItem("pat_reftok")},
-	function(data){ 	
+	function(data){ $(".no-result-container").remove();	$(".event-list").show(); $("#htmlContent").height('inherit');
 		if(data.success == "Y"){
 			for(var i=0;i<data.data.length;i++){
 				$(".event-list").append(data.data[i]);
 			}
-		}else{
-			$(".event-list").append('<li class="media"><a class="media-link" href="javascript:void(0);">No Activity</a></li>');
+		}else{$(".event-list").hide(); $("#htmlContent").height($(window).height()-70);
+			$("#htmlContent").append('<div class="no-result-container"><div class="no-result"><div class="no-result-inner"><div class="no-result-img"><img alt="Back" src="img/cloud.png" width="63" height="52"></div><div class="no-result-cont"><p>No Activity</p></div></div></div></div>');
 		}
 		$("#loading").hide(); 
 	},"json");
