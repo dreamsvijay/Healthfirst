@@ -59,7 +59,7 @@ var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), no
 						$("#htmlContent .consent-pop p b").empty().append('Us');
 					}
 					}else{ $(".loginlogoheader").show();  $("#emailerror").addClass('md-show');$(".md-overlay").addClass('md-show');
-						$('#email').parent().addClass("has-error").removeAttr('readonly'); $("#emailerror p").empty().append(data.message);
+						$('#email').parent().addClass("has-error"); $('#email').removeAttr('readonly');$("#emailerror p").empty().append(data.message);
 					}window.localStorage.removeItem('event_dtl');
 				}
 			});
@@ -232,7 +232,7 @@ var ccemail = $("#ccemail"), ccphone = $("#ccphone");
 					window.localStorage.setItem("pat_phone",$("#ccphone").val()); 
 					if(!window.localStorage.getItem("event_dtl")){
 					$("#appoinmentSuccess .md-body h4").hide();
-					$("#appoinmentSuccess .md-body p").empty().append('Your Consent has been updated Successfully ');
+					$("#appoinmentSuccess .md-body p").empty().append('Your contact preference has been updated');
 					}
 					$("#appoinmentSuccess").addClass('md-show');
 					$(".md-overlay").addClass('md-show');
