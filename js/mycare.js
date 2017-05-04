@@ -15,7 +15,7 @@ $(document).ready(function(e) {
 			}
 			
 		}else{
-			$(".mycare-list").append('<li class="media" style="padding:20px;"><a href="#" class="media-link">No Appointments</a></li>');
+			$(".mycare-list").append('<li class="media" style="padding:20px;"><a href="#" class="media-link">My Care Team section will be updated as soon you visit a doctor through the Healthy Village App.</a></li>');
 		}
 		$("#loading").hide();
 	},"json");

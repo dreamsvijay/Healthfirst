@@ -46,7 +46,7 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 				}
 			})
 		
-		var start = new Date(data.data.edate);
+		/*var start = new Date(data.data.edate);
 		//var end = new Date(endDate);
 		var end =(new Date(data.data.edate)).addDays(90);
 		var dateArray = new Array(),$month=new Array(),$month_cnt = new Array();
@@ -92,7 +92,7 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 				list_date='';
 			}
 			currentDate = currentDate.addDays(1);
-		}
+		}*/
 		$('body').append(dateArray);
 		/*var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 		for(var i=0;i<data.data.length;i++){

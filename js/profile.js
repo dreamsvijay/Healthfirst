@@ -159,7 +159,7 @@ $(document).ready(function(e) {
 			referalList();
 		}else{
 			$("#view-profile_html").hide();
-		$("#htmlContent").append("<div style='padding:15px;'>Your profile info does not match our record</div>");
+		$("#htmlContent").append("<div style='padding:15px;'>Your profile will be updated once you select a doctor and register for the appointment.</div>");
 		}
 		$("#loading").hide();
 		
