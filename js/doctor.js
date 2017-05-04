@@ -202,6 +202,7 @@ var now = new Date(),
 				},
 				success:function(data){ 
 					$("#loading").hide(); 
+					if(window.localStorage.getItem("pat_id")) { $(".popup-btn").hide();$(".popup-link a").empty().append('Continue to Home Screen');}
 					$('#appoinmentSuccess').addClass('md-show');
     				$('.md-overlay').addClass('md-show');
 					window.localStorage.setItem('doc_req',$("#remail").val()+"=#="+$("#rfname").val()+"=#="+$("#rlname").val()+"=#="+$("#rphone").val())
