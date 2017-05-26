@@ -35,7 +35,8 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 		});
 		
 			var eventList = new List('teeet', { 
-			  valueNames: ['event-title']
+			  valueNames: ['event-title'],
+			  
 			});
 			eventList.on('updated', function(list) { 
 				if (list.matchingItems.length > 0) {
@@ -162,7 +163,7 @@ function scrollContent(direction) {
 
 
 
-$(document).on('click', '.event-list a.media-link', function(e) { $("#loading").show(); 
+/*$(document).on('click', '.event-list a.media-link', function(e) { $("#loading").show(); 
 			$(".site-title h4").empty().append($(this).find('.event-title').html());
 			//$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
 			var action = 'eventselect'; $("#event_id").val($(this).parent().data('id'));$("#event_sid").val($(this).parent().data('sid'));
@@ -186,7 +187,7 @@ $(document).on('click', '.event-list a.media-link', function(e) { $("#loading").
 			//initMap('123 Main St, suite.1, New York, NY',"40.75505860","-73.98167810");
 			setTimeout(function(){ $("#loading").hide();$("#pagecontent").height($(window).height()-150); $(".event_view").show().css('visibility','visible').css('overflow','visible').css('height','inherit');},200);
 		return false;
-		});
+		});*/
 $('#addappointment').click(function(){ 
 	$("#loading").show(); 
 	window.localStorage.setItem('event_dtl',$("#event_id").val()+"=#="+$("#event_sid").val()+"=#="+$(".event_time").html()+"=#="+$(".site-title h4").html()); 
