@@ -1,11 +1,11 @@
 <ion-view view-title="Privacy">
-    <ion-content>
+    <ion-content class="scroll-content ionic-scroll ">
        <div id="privacy_html" >
 				<div class="privacy-title">Privacy Policy</div>
 				<div class="panel privacy-wrap main">
 					<div class="panel-body">
-					  <div id="privacy-box" class="privacy-box slimscrollleft">
-						<div class="privacy-cont">
+					  <div id="privacy-box" class="">
+						<div class="scroll" style="height:350px;overflow:scroll;">
 							<p>Our customers trust us to safeguard their privacy and the security of their personal information. We take the privacy of our customers, users, and visitors to our Site seriously and we are committed to providing you with clear and concise terms of privacy policy.</p>
 							<p>This Privacy Policy governs the manner in which Yosi, Inc (“Yosi”, “Us”, “We”, “Yosi Service”, “The Service”, “Yosicare”, “Yosi Patient Registration Mobile Application”, “Yosi App”, “Healthy Village”, “Healthy Village App”, “Healthy Village at Claremont”, “Yosi Patient Registration Tablet Application”, “YosiMD”) collects, uses, maintains and discloses information collected from users (each, a "User") of the www.yosicare.com website ("Site"), the Yosi mobile application (“app”) as available from the Google Play Store ® and the Apple App Store ®, the Yosi MD application and associated services that we provide. This privacy policy applies to the Site and all products and services offered by Yosi, Inc.</p>
 							<p>Your use of the Yosi Service is governed by this Privacy Policy and the additional terms as set forth in the Terms of Use. By continuing to use the service you agree to the terms as set forth in the Terms of Use as well as to Yosi’s practices of collection, tracking, use, and sharing of all of the categories of your personal information as outlined in this Privacy Policy. If you do not agree with the terms set forth in either the Terms of Use or in this Privacy Policy, please discontinue your use of the Yosi Service. If you are using the service on behalf of someone else (spouse, child, employer etc.), you represent that you are authorized to accept the terms set forth in the Terms of Use and this Privacy Policy on their behalf.</p>
@@ -83,7 +83,7 @@
 					</div>
 					<div class="panel-footer ">
 						<div class="btn-group btn-group-footer btn-group-justified privacy-footer">
-							<a href="#" class="btn">Cancel</a>
+							<a href="javascript:void(0);" ng-click="getout()" class="btn">Cancel</a>
 							<a href="#access/home" class="btn">I Agree</a>
 						</div>
 					</div>

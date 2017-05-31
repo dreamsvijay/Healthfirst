@@ -3524,7 +3524,7 @@ ion-infinite-scroll {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+ /* background-color: #fff;*/
   overflow: hidden; }
 
 .view-container {
@@ -9164,7 +9164,7 @@ a.button {
 
 [nav-view-transition="ios"][nav-view-direction="forward"],
 [nav-view-transition="ios"][nav-view-direction="back"] {
-  background-color: #000; }
+ /* background-color: #000;*/ }
 
 [nav-view-transition="ios"] [nav-view="active"],
 [nav-view-transition="ios"][nav-view-direction="forward"] [nav-view="entering"],

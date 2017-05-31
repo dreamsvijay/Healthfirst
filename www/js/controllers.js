@@ -182,6 +182,9 @@ angular.module('healthyvillage.controllers', ['healthyvillage.services', 'ion-ga
 		});
 	}
 
+	$scope.privacy = function () { 
+		$location.url("/access/privacy");
+	}
 	// Form data for the login modal
 	$scope.loginData = {};
 
@@ -233,8 +236,13 @@ angular.module('healthyvillage.controllers', ['healthyvillage.services', 'ion-ga
 	}
 })
 
-.controller('PrivacyCtrl', function ($scope) {
-
+.controller('PrivacyCtrl', function ($scope, MyServices, $stateParams, $ionicPopup, $interval, $location, $window, $ionicLoading, $timeout) {
+	$scope.getout = function () {
+		navigator.app.exitApp();
+	}
+	$scope.reCalculateSize= function() {
+        $ionicScrollDelegate.$getByHandle('mainScroll').resize();
+    };
 })
 
 

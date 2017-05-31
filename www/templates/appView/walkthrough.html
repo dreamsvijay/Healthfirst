@@ -6,17 +6,24 @@
 				<div class="skip-wrap">
 					<a ng-click="privacy()" class="skip">Skip</a>
 				</div>
+                <br />
+                <br />
+                
 				<div id="walkthrough-items">
-					<div class="walkthrough-item">
-						<div class="walkthrough-img"><img src="img/icon-01.png" alt="" width="134" height="134"></div>
-						<p class="walkthrough-text" style="font-size:13px;">
-							Find events and programs in and around your neighborhood tailored to your unique interests and preferences.
-						</p>
-						<div class="walkthrough-btn">
-							<input type="submit" value="Next" class="yc-button primary large">
-						</div>
-					</div>
-					<div class="walkthrough-item" style="display:none;">
+                	<ion-slide-box on-slide-changed="slideHasChanged($index)">
+                        <ion-slide>
+                            <div class="walkthrough-item">
+                            <div class="walkthrough-img"><img src="img/icon-01.png" alt="" width="134" height="134"></div>
+                            <p class="walkthrough-text" style="font-size:13px;">
+                                Find events and programs in and around your neighborhood tailored to your unique interests and preferences.
+                            </p>
+                            <div class="walkthrough-btn">
+                                <input type="submit" value="Next" class="yc-button primary large">
+                            </div>
+                        </div>
+                        </ion-slide>
+                        <ion-slide>
+                        <div class="walkthrough-item" >
 						<div class="walkthrough-img"><img src="img/icon-03.png" alt="" width="134" height="134"></div>
 						<p class="walkthrough-text" style="font-size:13px;">
 							Find doctors within the Healthy Village Community, request an appointment and register directly from the app.
@@ -25,7 +32,9 @@
 							<input type="submit" value="Next" class="yc-button primary large">
 						</div>
 					</div>
-					<div class="walkthrough-item" style="display:none;">
+                        </ion-slide>
+                        <ion-slide>
+                        <div class="walkthrough-item" >
 						<div class="walkthrough-img"><img src="img/icon-02.png" alt="" width="134" height="134"></div>
 						<p class="walkthrough-text" style="font-size:13px;">
 							Find and register for events within the Healthy Village community.  The location and time will show up in your calendar.
@@ -34,7 +43,9 @@
 							<input type="submit" value="Next" class="yc-button primary large">
 						</div>
 					</div>
-					<div class="walkthrough-item" style="display:none;">
+                        </ion-slide>
+                        <ion-slide>
+                        <div class="walkthrough-item" >
 						<div class="walkthrough-img"><img src="img/icon-04.png" alt="" width="134" height="134"></div>
 						<p class="walkthrough-text" style="font-size:13px;">
 							Choose what matters to you and we will match events and programs in the Healthy Village related to your interests.
@@ -43,15 +54,12 @@
 							<input type="submit" value="Done" class="yc-button primary large">
 						</div>
 					</div>
+                        </ion-slide>
+                    </ion-slide-box>               
+					
+					
 				</div>
-                <div class="dotstyle dotstyle-smalldotstroke" >
-					<ul>
-						<li class="current"><a href="javascript:;">Step 1</a></li>
-						<li><a href="javascript:;">Step 2</a></li>
-						<li><a href="javascript:;">Step 3</a></li>
-						<li><a href="javascript:;">Step 4</a></li>
-					</ul>
-				</div>
+                
                 </div>
                 </div>
                 </div>

@@ -86,7 +86,7 @@ angular.module('healthyvillage', ['ionic', 'healthyvillage.controllers'])
 	$httpProvider.defaults.withCredentials = true;
 	$stateProvider
 
-		.state('app', {
+	.state('app', {
 		url: '/app',
 		abstract: true,
 		templateUrl: 'templates/menu.html',
@@ -99,14 +99,14 @@ angular.module('healthyvillage', ['ionic', 'healthyvillage.controllers'])
 		templateUrl: 'templates/access.html',
 		controller: 'AccessCtrl'
 	})
-.state('access.walkthrough', {
-		url: '/walkthrough',
-		views: {
-			'content': {
-				templateUrl: 'templates/appView/walkthrough.html',
-				controller: "WalkthroughCtrl"
+	.state('access.walkthrough', {
+			url: '/walkthrough',
+			views: {
+				'content': {
+					templateUrl: 'templates/appView/walkthrough.html',
+					controller: "WalkthroughCtrl"
+				}
 			}
-		}
 	})
 	
 	.state('access.privacy', {
@@ -348,8 +348,10 @@ angular.module('healthyvillage', ['ionic', 'healthyvillage.controllers'])
 		}
 	});
 
-	// if none of the above states are matched, use this as the fallback
+	if ($.jStorage.get("app_access"))
 	$urlRouterProvider.otherwise('/access/home');
+	else
+	$urlRouterProvider.otherwise('/access/walkthrough');
 
 })
 
