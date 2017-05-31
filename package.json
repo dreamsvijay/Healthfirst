@@ -1,7 +1,7 @@
 {
-  "name": "businessapp",
+  "name": "HealtyVillage",
   "version": "1.0.0",
-  "description": "BusinessApp",
+  "description": "HealtyVillage",
   "dependencies": {
     "end-of-stream": "^1.1.0",
     "gulp": "^3.5.6",
