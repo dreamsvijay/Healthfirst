@@ -35,7 +35,7 @@ angular.module('healthyvillage', ['ionic', 'healthyvillage.controllers'])
 		if (window.cordova && window.cordova.platformId == 'android') {
 			StatusBar.backgroundColorByHexString("#c12828");
 		}
-			push = PushNotification.init({
+			/*push = PushNotification.init({
 				"android": {
 					"senderID": "824698645594",
 					"icon": "www/img/icon.png"
@@ -77,7 +77,7 @@ angular.module('healthyvillage', ['ionic', 'healthyvillage.controllers'])
 			push.on('error', function (e) {
 				conosle.log("ERROR");
 				console.log(e);
-			});
+			});*/
 	});
 })
 
@@ -99,7 +99,25 @@ angular.module('healthyvillage', ['ionic', 'healthyvillage.controllers'])
 		templateUrl: 'templates/access.html',
 		controller: 'AccessCtrl'
 	})
-
+.state('access.walkthrough', {
+		url: '/walkthrough',
+		views: {
+			'content': {
+				templateUrl: 'templates/appView/walkthrough.html',
+				controller: "WalkthroughCtrl"
+			}
+		}
+	})
+	
+	.state('access.privacy', {
+		url: '/privacy',
+		views: {
+			'content': {
+				templateUrl: 'templates/appView/privacy.html',
+				controller: "PrivacyCtrl"
+			}
+		}
+	})
 	.state('access.login', {
 		url: '/login',
 		views: {
@@ -129,17 +147,7 @@ angular.module('healthyvillage', ['ionic', 'healthyvillage.controllers'])
 			}
 		}
 	})
-
-	.state('access.offline', {
-		url: '/offline',
-		views: {
-			'content': {
-				templateUrl: 'templates/accessView/offline.html',
-				controller: "OfflineCtrl"
-			}
-		}
-	})
-
+	
 	.state('access.forgotpassword', {
 		url: '/forgotpassword',
 		views: {
@@ -150,10 +158,10 @@ angular.module('healthyvillage', ['ionic', 'healthyvillage.controllers'])
 		}
 	})
 
-	.state('app.home', {
+	.state('access.home', {
 		url: '/home',
 		views: {
-			'menuContent': {
+			'content': {
 				templateUrl: 'templates/appView/home.html',
 				controller: "HomeCtrl"
 			}
@@ -341,7 +349,7 @@ angular.module('healthyvillage', ['ionic', 'healthyvillage.controllers'])
 	});
 
 	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/app/home');
+	$urlRouterProvider.otherwise('/access/home');
 
 })
 

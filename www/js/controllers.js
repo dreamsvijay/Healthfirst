@@ -227,6 +227,17 @@ angular.module('healthyvillage.controllers', ['healthyvillage.services', 'ion-ga
 
 })
 
+.controller('WalkthroughCtrl', function ($scope, MyServices, $stateParams, $ionicPopup, $interval, $location, $window, $ionicLoading, $timeout) {
+	$scope.privacy = function () {
+		$location.url("/access/privacy");
+	}
+})
+
+.controller('PrivacyCtrl', function ($scope) {
+
+})
+
+
 .controller('AccessCtrl', function ($scope) {
 
 })
@@ -688,7 +699,7 @@ angular.module('healthyvillage.controllers', ['healthyvillage.services', 'ion-ga
 
 .controller('HomeCtrl', function ($scope, $location, $window, MyServices, $ionicLoading, $timeout, $sce, $ionicSlideBoxDelegate) {
 	addanalytics("Home page");
-	configreload.onallpage();
+	//configreload.onallpage();
 	var showloading = function () {
 		$ionicLoading.show({
 			template: '<ion-spinner class="spinner-positive"></ion-spinner>'
@@ -702,7 +713,7 @@ angular.module('healthyvillage.controllers', ['healthyvillage.services', 'ion-ga
 	var loginstatus = false;
 	var menu = {};
 	menu.setting = false;
-
+	
 	$scope.content = {};
 	MyServices.gethomecontent(function (data) {
 		$scope.content = data;

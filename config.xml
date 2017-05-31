@@ -116,5 +116,5 @@
       </dict>
     </config-file>
   </platform>
-  <icon src="resources/android/icon/icon-96-xhdpi.png"/>
+  <icon src="resources/icon.png"/>
 </widget>
