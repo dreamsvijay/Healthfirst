@@ -156,7 +156,7 @@ angular.module('healthyvillage.controllers', ['healthyvillage.services', 'ion-ga
 		}
 	}
 
-	MyServices.getallfrontmenu(function (data) {
+	/*MyServices.getallfrontmenu(function (data) {
 		MyServices.setconfigdata(data);
 		_.each(data.config[0], function (n) {
 			if (n.value == true) {
@@ -166,7 +166,7 @@ angular.module('healthyvillage.controllers', ['healthyvillage.services', 'ion-ga
 		configreload.func();
 	}, function (err) {
 		$location.url("/access/offline");
-	})
+	})*/
 	var logoutsuccess = function (data, success) {
 		if (data == 'true') {
 			$.jStorage.flush();
@@ -217,23 +217,29 @@ angular.module('healthyvillage.controllers', ['healthyvillage.services', 'ion-ga
 
 	if ($.jStorage.get("user")) {
 
-		MyServices.getsingleuserdetail(function (data) {
+		/*MyServices.getsingleuserdetail(function (data) {
 			$scope.userdetails = data;
 			$scope.userdetails.myimage = {
 				'background-image': "url('" + $filter("profileimg")(data.image) + "')"
 			};
 		}, function (err) {
 			$location.url("/access/offline");
-		});
+		});*/
 
 	}
 
 })
 
-.controller('WalkthroughCtrl', function ($scope, MyServices, $stateParams, $ionicPopup, $interval, $location, $window, $ionicLoading, $timeout) {
+.controller('WalkthroughCtrl', function ($scope, MyServices, $stateParams, $ionicPopup, $interval, $location, $window, $ionicLoading, $timeout,$ionicSlideBoxDelegate) {
 	$scope.privacy = function () {
 		$location.url("/access/privacy");
 	}
+	$scope.slideNext = function($event) {
+		if($event == 1)
+		$location.url("/access/privacy");
+		else
+        $ionicSlideBoxDelegate.next();
+    }
 })
 
 .controller('PrivacyCtrl', function ($scope, MyServices, $stateParams, $ionicPopup, $interval, $location, $window, $ionicLoading, $timeout) {
@@ -333,12 +339,12 @@ angular.module('healthyvillage.controllers', ['healthyvillage.services', 'ion-ga
 		}
 	}
 
-	MyServices.getallfrontmenu(function (data) {
+	/*MyServices.getallfrontmenu(function (data) {
 		MyServices.setconfigdata(data);
 		$scope.setup();
 	}, function (err) {
 		$location.url("/access/offline");
-	})
+	})*/
 
 	// loader
 	$scope.showloading = function () {
@@ -706,7 +712,17 @@ angular.module('healthyvillage.controllers', ['healthyvillage.services', 'ion-ga
 })
 
 .controller('HomeCtrl', function ($scope, $location, $window, MyServices, $ionicLoading, $timeout, $sce, $ionicSlideBoxDelegate) {
-	addanalytics("Home page");
+	var h=$(window).height()-136; 
+		$('.menu-list').height(h);
+		
+		var main_ht = $(".menu-list").css("height").replace("px","");
+		if ($.jStorage.get("user")){
+		$(".menu-list li").each(function(index){ $(this).find('a').css('height',(main_ht/5)+"px").css('line-height',(main_ht/5)+"px");});
+		$(".menu-list li").each(function(index){ $(this).css('height',(main_ht/5)+"px").css('line-height',(main_ht/5)+"px");});
+		}
+		else
+		$(".menu-list li").each(function(index){ $(this).css('height',(main_ht/4)+"px").css('line-height',(main_ht/4)+"px");});
+	//addanalytics("Home page");
 	//configreload.onallpage();
 	var showloading = function () {
 		$ionicLoading.show({
@@ -723,26 +739,26 @@ angular.module('healthyvillage.controllers', ['healthyvillage.services', 'ion-ga
 	menu.setting = false;
 	
 	$scope.content = {};
-	MyServices.gethomecontent(function (data) {
+	/*MyServices.gethomecontent(function (data) {
 		$scope.content = data;
 		$scope.content.content = $sce.trustAsHtml($scope.content.content);
 		//		$ionicLoading.hide();
 	}, function (err) {
 		$location.url("/access/offline");
-	});
+	});*/
 	$scope.setup = function () {
-		var blogdata = JSON.parse(MyServices.getconfigdata().config[0].text);
+		/*var blogdata = JSON.parse(MyServices.getconfigdata().config[0].text);
 		_.each(blogdata, function (n) {
 			if (n.value == true) {
 				loginstatus = true;
 			}
-		});
+		});*/
 		if (loginstatus == false) {
 			menu.setting = false;
 			$.jStorage.deleteKey("user");
 		} else {
 			if (!MyServices.getuser() && MyServices.getuser() == null) {
-				$location.url("/access/login");
+				//$location.url("/access/login");
 				menu.setting = true;
 				//		$ionicLoading.hide();
 			} else {
@@ -751,21 +767,149 @@ angular.module('healthyvillage.controllers', ['healthyvillage.services', 'ion-ga
 		}
 	}
 
-	MyServices.getallfrontmenu(function (data) {
-		MyServices.setconfigdata(data);
-		$scope.setup();
-	}, function (err) {
-		$location.url("/access/offline");
-	})
+	
+})
 
-	MyServices.getallsliders(function (data) {
-		$scope.slides = data;
-		$ionicSlideBoxDelegate.update();
-	}, function (err) {
-		$location.url("/access/offline");
-	});
+.factory('doctorview', function() {
+  doctorview = {};
+  //authorization.firstName = '';
+ // authorization.lastName = '';  
+  return doctorview;
+})
+
+.controller('DoctorCtrl', function ($scope, MyServices, $location, $ionicLoading, $ionicPopup, $timeout, $cordovaFileTransfer, $cordovaImagePicker, $filter, doctorview) { 
+	//addanalytics("Event page");
+	//configreload.onallpage();
+	$ionicLoading.show();
+	$scope.pageno = 1;
+	$scope.events = [];
+	$scope.keepscrolling = true;
+	$scope.msg = "Loading....";
+	$scope.showloading = function () {
+		$ionicLoading.show({
+			template: '<ion-spinner class="spinner-positive"></ion-spinner>'
+		});
+		$timeout(function () {
+			$ionicLoading.hide();
+		}, 5000);
+	};
+
+
+	$scope.loadevents = function (pageno) {
+		MyServices.getalldoctors(pageno, function (data) {
+			$ionicLoading.hide();
+			_.each(data.data.Data, function (n) {
+				$scope.events.push(n);
+			});
+
+			if ($scope.events.length == 0) {
+				$scope.msg = "No data found.";
+			} else {
+				$scope.msg = "";
+			}
+
+			if (data.queryresult.length == 0) {
+				$scope.keepscrolling = false;
+			}
+		}, function (err) { 
+			//$location.url("/access/offline");
+		})
+		//$scope.$broadcast('scroll.infiniteScrollComplete');
+		//$scope.$broadcast('scroll.refreshComplete');
+	}
+
+	$scope.loadevents(1);
+
+	$scope.loadMorePolls = function () {
+		$scope.loadevents(++$scope.pageno);
+	}
+
+	$scope.getdocdetails = function ($event) { 
+		doctorview.name = $event.doctor_first_name+" "+$event.doctor_last_name;
+		doctorview.address = $event.practice_address;
+		doctorview.speciality = $event.doctor_specialty;
+		doctorview.img = $event.doctor_first_name;
+		doctorview.lat = $event.practice_latitude;
+		doctorview.long = $event.practice_longitude;
+		doctorview.id = $event.doctor_id;
+		doctorview.pid = $event.practice_id;
+		$location.url("app/doctordetail/" + 1);
+	}
 
 })
+
+.controller('DoctorDetailCtrl', function ($scope, MyServices, $location, $ionicLoading, $ionicPopup, $timeout, doctorview) { 
+		$scope.doctor = doctorview.name;
+		$scope.docimg=doctorview.img;
+		$scope.address=doctorview.address;
+		$scope.speciality=doctorview.speciality;
+		/*$scope.docimg=doctorview.img;
+		doctorview.name = e.find('.provider-name').text();
+		doctorview.address = e.find('.provider-address').text();
+		doctorview.speciality = e.find('.provider-speciality').text();
+		doctorview.img = e.find('media-left').html();
+		doctorview.lat = e.data('lat');
+		doctorview.long = e.data('long');
+		doctorview.id = e.data('id');
+		doctorview.pid = e.data('pid');*/
+	//configreload.onallpage();
+	/*$scope.showloading = function () {
+		$ionicLoading.show({
+			template: '<ion-spinner class="spinner-positive"></ion-spinner>'
+		});
+		$timeout(function () {
+			$ionicLoading.hide();
+		}, 5000);
+	};
+
+	$scope.msg = "Loading...";
+	$scope.video = {};
+	$scope.image = {};
+
+
+	var init = function () {
+		return $ionicModal.fromTemplateUrl('templates/appView/modal-video.html', {
+			scope: $scope,
+			animation: 'slide-in-up'
+		}).then(function (modal) {
+			$scope.modal = modal;
+
+		});
+	};
+
+	$ionicModal.fromTemplateUrl('templates/appView/modal-image.html', {
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function (modal) {
+		$scope.modal = modal;
+
+	});
+
+	
+
+	$scope.id = $stateParams.id;
+	var getsingleeventscallback = function (data, status) {
+		if (data == "") {
+			$scope.msg = "No data found";
+			addanalytics("Event detail page");
+		} else {
+			$scope.msg = "";
+			addanalytics(data.title);
+		}
+		if (data.eventimages && data.eventimages.length > 0) {
+			data.eventimages = _.chunk(data.eventimages, 2);
+		}
+		if (data.eventvideos && data.eventvideos.length > 0) {
+			data.eventvideos = _.chunk(data.eventvideos, 2);
+		}
+		$scope.eventdetail = data;
+		$ionicSlideBoxDelegate.update();
+	}
+	MyServices.getsingleevents($stateParams.id, getsingleeventscallback, function (err) {
+		$location.url("/access/offline");
+	})*/
+})
+
 
 .controller('AboutCtrl', function ($scope) {
 

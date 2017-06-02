@@ -168,12 +168,21 @@ angular.module('healthyvillage', ['ionic', 'healthyvillage.controllers'])
 		}
 	})
 
-	.state('app.about', {
-		url: '/about',
+	.state('app.doctor', {
+		url: '/doctor',
 		views: {
 			'menuContent': {
-				templateUrl: 'templates/appView/about.html',
-				controller: "AboutCtrl"
+				templateUrl: 'templates/appView/doctor.html',
+				controller: "DoctorCtrl"
+			}
+		}
+	})
+	.state('app.doctordetail', {
+		url: '/doctordetail/:id',
+		views: {
+			'menuContent': {
+				templateUrl: 'templates/appView/doctordetail.html',
+				controller: "DoctorDetailCtrl"
 			}
 		}
 	})

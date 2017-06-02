@@ -1,4 +1,4 @@
-var adminbase = "https://www.dreamguys.co.in/display/busiapp/";
+var adminbase = "https://healthfirst.yosicare.com/dev/hf-app/mobile-app-new";
 var adminurl = adminbase + "json/";
 var adminimage = adminbase + "uploads/";
 var adminhauth = adminbase + "hauth/";
@@ -19,6 +19,21 @@ var TUBMLR_API_URL = 'http://wohlig.co.in/tumblr/?url=http://api.tumblr.com/v2/b
 angular.module('healthyvillage.services', [])
 	.factory('MyServices', function ($http, $filter) {
 		return {
+			getalldoctors:function (pageno, callback, err) {
+				return $http({
+					withCredentials: false,
+					url:  adminbase,
+					method: "POST",
+					headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+					data: $.param({
+						latlong:'',q:'',pageno:pageno,plimit:50,page:'searchDoctor'
+					}),
+					
+				}).success(callback).error(err);
+			},
+			
+			
+			
 			all: function () {
 				return chats;
 			},
