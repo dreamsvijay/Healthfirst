@@ -8,6 +8,7 @@ Date.prototype.addDays = function(days) {
        dat.setDate(dat.getDate() + days);
        return dat;
    }
+Date.prototype.getWeek = function () { return $.datepicker.iso8601Week(this); }
 var startDate = '2012-04-01';
 var endDate = '2012-05-01';
 
@@ -47,7 +48,7 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 				}
 			})
 		
-		/*var start = new Date(data.data.edate);
+		var start = new Date(data.data.edate);
 		//var end = new Date(endDate);
 		var end =(new Date(data.data.edate)).addDays(90);
 		var dateArray = new Array(),$month=new Array(),$month_cnt = new Array();
@@ -86,6 +87,16 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 						}
 					}
 				}
+				
+				if(value['type'] == "random" && value['day'] == weekday[lp_dt.getDay()]){ 
+				if((lp_dt.getMonth()+1) == value['month']){ 
+					if(value['week'] == (0 | lp_dt.getDate() / 7)+1){
+					//alert(weekday[lp_dt.getDay()]+"=="+value['day']);
+					list_date +='<li class="media" data-id="'+value['id']+'" data-time="'+value['time']+'" data-edate="'+(lp_dt.getMonth()+1)+"/"+lp_dt.getDate()+"/"+lp_dt.getFullYear()+'" data-sid="'+value['sid']+'" data-lat="'+value['lat']+'" data-long="'+value['long']+'" data-cont="'+value['cont_name']+'"><a class="media-link" href="#"><div class="media-left"><span class="status-icon"></span></div><div class="media-body media-middle"><div class="event-title">'+value['program']+'</div><div class="event-location">'+value['address']+'</div><div class="event-desc">'+value['description']+'</div></div><div class="media-right media-bottom"><span class="event-time2"><img width="11" height="10" alt="" src="img/clock.png"> '+value['stime']+'</span></div><div class="event_res" style="display:none;">'+value['restrictions']+'</div></a></li>';
+					j=1;
+					}
+				}
+				}
 			}
 		});
 			if(j == 1){
@@ -93,7 +104,7 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 				list_date='';
 			}
 			currentDate = currentDate.addDays(1);
-		}*/
+		}
 		//$('body').append(dateArray);
 		/*var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 		for(var i=0;i<data.data.length;i++){
@@ -163,7 +174,7 @@ function scrollContent(direction) {
 
 
 
-/*$(document).on('click', '.event-list a.media-link', function(e) { $("#loading").show(); 
+$(document).on('click', '.event-list a.media-link', function(e) { $("#loading").show(); 
 			$(".site-title h4").empty().append($(this).find('.event-title').html());
 			//$(".panel-control-left img").attr('src','img/left-arrow.png').css('height',17).css('width',9);
 			var action = 'eventselect'; $("#event_id").val($(this).parent().data('id'));$("#event_sid").val($(this).parent().data('sid'));
@@ -187,7 +198,7 @@ function scrollContent(direction) {
 			//initMap('123 Main St, suite.1, New York, NY',"40.75505860","-73.98167810");
 			setTimeout(function(){ $("#loading").hide();$("#pagecontent").height($(window).height()-150); $(".event_view").show().css('visibility','visible').css('overflow','visible').css('height','inherit');},200);
 		return false;
-		});*/
+		});
 $('#addappointment').click(function(){ 
 	$("#loading").show(); 
 	window.localStorage.setItem('event_dtl',$("#event_id").val()+"=#="+$("#event_sid").val()+"=#="+$(".event_time").html()+"=#="+$(".site-title h4").html()); 
