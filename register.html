@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Health First</title>
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet"> 
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/mobiscroll.custom-3.1.0.min.css">
+</head>
+<body class="signup-page">
+	<header id="pageheader" style="display:none;">
+		<div class="header">
+			<div class="panel-control-left"><a href="index.html"><img alt="Back" src="img/left-arrow.png" height="17" width="9"></a></div>
+			<div class="site-title"><h4>Consent to Communication</h4></div>
+			<div class="panel-control-right dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Menu" src="img/menu-icon.png" width="4" height="16"></a>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="loginlogoheader logo-header" style="">
+        <div class="practicelogo logo-img"><img alt="Health First" src="img/logo.png"></div>
+    </div>
+	<main id="pagecontent" class="mobile-wrapper" style="display:none;">
+    		
+    	<form class="login-form" method="post" autocomplete="off" name="register" id="register" style="display:block;">
+			<input type="hidden" name="cconf" id="cconf" value="" />
+            <div class="form-group">
+                <input class="form-control" type="text" name="fname" id="fname" placeholder="Firstname" maxlength="15" min="5">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="lname" id="lname" placeholder="Lastname" maxlength="15" min="5">
+            </div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-6">
+						<select class="js-example-basic-single" id="gender" name="gender">
+							<option value="">Gender</option>
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+						</select>
+					</div>
+					<div class="col-xs-6">
+						<input type="text" placeholder="DD/MM/YY" id="dob" name="dob" class="form-control cal-icon"><div id="date-error-custom"></div>
+					</div>
+				</div>
+			</div>
+            <div class="form-group" >
+				<input class="form-control" type="email" name="email" id="email" placeholder="Email Address">
+            </div>
+            <div class="form-group" >
+                <input class="form-control" type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input value="Create Account" class="yc-button" name="submit" type="submit">
+            </div>
+            <div class="form-group text-center mb-0" id="show_signin">
+  				<a class="sign-text" href="">Login</a>
+            </div>
+        </form>
+        <form class="login-form" method="post" autocomplete="off" name="sign_in_up" id="sign_in_up" style="display:none;">
+        	<input type="hidden" name="form_typ" id="form_typ" value="i" />
+            <div class="form-group form-field ff_noicon mb-30">
+                <input class="form-control" type="email" name="iemail" id="iemail">
+				<span class="floating-label">Enter Email</span>
+            </div>
+            <div class="form-group form-field ff_noicon">
+				<input class="form-control" type="password" name="ipassword" id="ipassword">
+				<span class="floating-label">Password</span>
+            </div>
+             <div class="form-group mb-0">
+                <input value="Login" class="yc-button primary large" name="isubmit" id="isubmit" type="submit">
+            </div>
+           <!-- <div class="form-group">
+                <div class="text-center">
+                    <a href="" class="forgot-password">Forgot Your Password?</a>
+                </div>
+            </div>-->
+        </form>
+        
+        <div id="htmlContent" style="display:none;">
+			
+            <div class="consent-pop"><div class="media-left media-middle"><span class="smile-icon" ></span></div><div class="media-body media-middle"><h4>Thanks</h4><p >for Registering with <b></b></p></div></div>
+			<div class="consent">
+				<div class="consent-icon"><img src="img/edit.png" alt="" width="78" height="78"></div>
+				<p>We would love to keep you updated regarding Healthy Village activities.</p>
+			</div>
+			<div class="consent-content">
+				<h4>Please choose your consent below:</h4>
+				<div class="form-group">
+					<div class="checkbox checkbox-success checkbox-circle">
+                        <input type="checkbox" id="checkbox3" >
+                        <label for="checkbox3">
+                            I would like to receive Text from Healthy Village
+                        </label>
+                    </div>
+					
+					<div class="md-input" style="display:none;">
+						<input class="md-form-control" value="" type="tel" id="ccphone" name="ccphone" maxlength="14">
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label>Enter Phone Number</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="checkbox checkbox-success checkbox-circle">
+                        <input type="checkbox" id="checkbox2"  >
+                        <label for="checkbox2">
+                            I would like to receive Email from Healthy Village
+                        </label>
+                    </div>
+                    <div class="md-input" style="display:none;">
+						<input class="md-form-control" type="text" id="ccemail" name="ccemail" value="">
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label>Enter Email</label>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</main>
+    <div class="form-group footer-fixed-group mb-0" style="display:none;">
+				<div class="footer-fixed-group-inner">
+					<div class="actions">
+						<input type="submit" value="Next" id="consent_save" class="yc-button primary large">
+					</div>
+				</div>
+			</div>
+      
+     <div class="md-modal md-effect-1" id="appoinmentSuccess">
+		<div class="md-content">
+			<div class="md-body">
+				<div class="apt-icon">
+					<img src="img/tick.png" alt="" width="87" height="87">
+				</div>
+				<h4></h4>
+				<p><span></span></p>
+                <div class="popup-btn"><a href="index.html" class="btn btn-light btn-block">Continue to Home Screen</a></div>
+			</div>
+		</div>
+	</div>
+    <div class="md-modal md-effect-1" id="emailerror">
+		<div class="md-content">
+			<div class="md-body">
+				<div class="apt-icon">
+					<img src="img/tick.png" alt="" width="87" height="87">
+				</div>
+				<h4></h4>
+				<p></p>
+                <div class="popup-btn"><a href="javascript:void(0);" class="btn btn-light btn-block">Close</a></div>
+			</div>
+		</div>
+	</div>
+	<div class="md-overlay"></div>
+    <footer id="pagefooter"> </footer>
+    <div id="loading" style="display: block;">
+        <img src="img/ring.gif" alt="loading" width="66" height="66">
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/select2.js"></script>
+    <script src="js/mobiscroll.custom-3.1.0.min.js"></script>
+    <script src="js/register.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Health First</title>
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+     <link href="css/bootstrap-datepicker.css" rel="stylesheet">
+	<link href="css/theme.css" rel="stylesheet">
+</head>
+<body class="provider-page">
+	<header id="pageheader">
+		<div class="header">
+			<div class="panel-control-left"><a href="index.html"><img alt="Back" src="img/left-arrow.png" height="17" width="9"></a></a></div>
+			<div class="site-title"><h4>Social Needs Assessment</h4></div>
+			<div class="panel-control-right dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Menu" src="img/menu-icon.png" width="4" height="16"></a>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		
+	</header>
+    <main id="pagecontent">
+        <div id="htmlContent">
+			<div id="recentvisit_html">
+				<div class="question-tab">
+					<div class="question-header">
+						<h4>How worried are you about</h4>
+					</div>
+					<form action="" id="question_submit">
+					<input name="action" id="action" value="answer_submit" type="hidden">
+					<input name="total_question_count" id="total_question_count" value="" type="hidden">
+					<div class="tab-content">
+                    	 
+						<div class=" tab-pane active" id="question">
+							<ul class="list-group question-list">    
+																
+								    																				
+							</ul>
+                            <div id="msg" class="survey_msg" style="color:red;text-align: center; margin-top: 10px;"> </div>
+                            <br /><br />
+                            
+							<!--<input type="submit" value="Submit" id="submit_button" disabled="disabled">-->
+                            
+							
+						</div>												
+				<!--  	 <input type="hidden" name="all_question_answer" id="all_question_answer" value=""> -->
+					</div>
+				</form>	
+				</div>
+			</div>
+		</div>
+    </main>
+    <div class="form-group footer-fixed-group mb-0" style="display:none;">
+                                <div class="footer-fixed-group-inner">
+                                    <div class="actions">
+                           			 <input value="Submit" id="submit_button" name="submit_button" type="submit">
+                                    </div>
+                                </div>
+                            </div>
+    <footer id="pagefooter"> </footer>
+    <div id="loading" style="display: none;">
+        <img src="img/ring.gif" alt="loading" width="66" height="66">
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/survey.js"></script>
+</body>
+</html>

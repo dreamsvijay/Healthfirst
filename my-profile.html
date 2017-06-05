@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Health First</title>
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/theme.css" rel="stylesheet">
+</head>
+<body class="myprofile-page">
+	<header id="pageheader">
+		<div class="header">
+			<div class="panel-control-left"><a href="home.html"><img alt="Back" src="img/menu2.png" width="21" height="19"></a></div>
+			<div class="site-title"><h4>My Profile</h4></div>
+			<div class="panel-control-right dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Menu" src="img/menu-icon.png" width="4" height="16"></a>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<main id="pagecontent">
+		<div id="htmlContent">
+			<div id="myprofile_html" class="grid-view">
+				<ul class="main">
+					<li class="top left">
+						<a href="mycare-team.html"><img src="img/mycare-team.png" alt="" width="35" height="24"> <span class="menu-title2">My Care Team</span></a>
+					</li>
+					<li class="top right">
+						<a href=""><img src="img/my-info.png" alt="" width="22" height="25"> <span class="menu-title2">My Info</span></a>
+					</li>
+					<li class="bottom left">
+						<a href="page-survey.html"><img src="img/survey-question.png" alt="" width="34" height="23"> <span class="menu-title2">Communication Preference</span></a>
+					</li>
+					<li class="bottom right">
+						<a href="page-myactivity.html"><img src="img/activity-history.png" alt="" width="19" height="23"> <span class="menu-title2">Activity History</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</main>
+    <footer id="pagefooter"> </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var height = $(window).height();	
+		var headr_height = $("#pageheader").height();
+		var footr_height = $("#pagefooter").height();
+		var setheight = height - headr_height;
+		var trueheight = setheight - footr_height;
+		$(".main").css("height", trueheight);
+	});
+	$(window).resize(function(){
+		var h=$(window).height()-70;
+		$('.main').height(h);
+	});
+	</script>
+</body>
+</html>
