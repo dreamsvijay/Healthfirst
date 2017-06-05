@@ -104,7 +104,10 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 				list_date='';
 			}
 			currentDate = currentDate.addDays(1);
-		}
+		} var eventList = new List('teeet', { 
+			  valueNames: ['event-title'],
+			  
+			});
 		//$('body').append(dateArray);
 		/*var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 		for(var i=0;i<data.data.length;i++){

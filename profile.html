@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Health First</title>
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/theme.css" rel="stylesheet">
+</head>
+<body class="page-view-profile">
+	<header id="pageheader">
+		<div class="header">
+			<div class="panel-control-left"><a href="javascript:void(0);"><img alt="Back" src="img/left-arrow.png" width="9" height="17"></a></div>
+			<div class="site-title"><h4>My Profile</h4></div>
+			<div class="panel-control-right dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Menu" src="img/menu-icon.png" width="4" height="16"></a>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="javascript:void(0);">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<main id="pagecontent" style="display:none;">
+        <div id="htmlContent" class="view-pro-det">
+            	
+                <input type="hidden" id="frm_step" value="1" data-step="form_mpersonal_info" />
+                <div id="view-profile_html">
+                <div class="mobilevp">
+                	<ul class="vp_content">
+							<li class="vp_header">
+								<h2>About me</h2>
+							</li>
+							<li class="vp_container">
+								<h2>First Name</h2>
+								<h4 id="firstname"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Last Name</h2>
+								<h4 id="lastname"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Gender</h2>
+								<h4 id="pgender"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>DOB</h2>
+								<h4 id="pdob"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Address1</h2>
+								<h4 id="address1"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Address2</h2>
+								<h4 id="address2"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Zipcode</h2>
+								<h4 id="zipcode"></h4>
+							</li>
+						</ul>
+                        <ul class="vp_content">
+							<li class="vp_header">
+								<h2>My Insurance</h2>
+							</li>
+							<li class="vp_container">
+								<h2 style="font-size:15px!important;">Primary Insurance</h2>
+							</li>
+							<li class="vp_container">
+                                <h2>Are you a dependent</h2>
+                                <h4 id="ins_dep"></h4>
+                            </li>
+							<li class="vp_container">
+								<h2>Insured First Name</h2>
+								<h4 id="primary_insuredfname"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Insured Last Name</h2>
+								<h4 id="primary_insuredlname"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Insured DOB</h2>
+								<h4 id="primary_insureddob"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Insured Gender</h2>
+								<h4 id="ins_gen"></h4>
+							</li>
+
+							<li class="vp_container">
+								<h2>Relationship to Insured</h2>
+								<h4 id="ins_rel"></h4>
+							</li>
+                            <li class="vp_container">
+                                <h2>Insurance Compeny</h2>
+                                <h4 id="primary_insuranceid"></h4>
+                            </li>
+                            <li class="vp_container">
+                                <h2>Policy Number</h2>
+                                <h4 id="primary_policynumber"></h4>
+                            </li>
+						</ul>
+						<ul class="vp_content" id="sec_ins" style="display:none;">
+							<li class="vp_header">
+								<h2>My Secondary Insurance</h2>
+							</li>
+							<li class="vp_container">
+                                <h2>Are you a dependent</h2>
+                                <h4 id="ins_secdep"></h4>
+                            </li>
+							<li class="vp_container">
+								<h2>Insured First Name</h2>
+								<h4 id="sec_insuredfname"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Insured Last Name</h2>
+								<h4 id="sec_insuredlname"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Insured DOB</h2>
+								<h4 id="sec_insureddob"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Insured Gender</h2>
+								<h4 id="secins_gen"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Relationship to Insured</h2>
+								<h4 id="secins_rel"></h4>
+							</li>
+                            <li class="vp_container">
+                                <h2>Insurance Compeny</h2>
+                                <h4 id="sec_insuranceid"></h4>
+                            </li>
+                            <li class="vp_container">
+                                <h2>Policy Number</h2>
+                                <h4 id="sec_policynumber"></h4>
+                            </li>
+						</ul>
+                		<ul class="vp_content">
+							<li class="vp_header">
+								<h2>Demographics</h2>
+							</li>
+							<li class="vp_container">
+								<h2>Are you currently employed</h2>
+								<h4></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Company Name</h2>
+								<h4 id="employed_company"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>SSN</h2>
+								<h4></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Phone Number</h2>
+								<h4 id="mobilenumber"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Marital Status</h2>
+								<h4 id="dem_mar_sts"></h4>
+							</li>
+							
+                        </ul>
+                        
+                        <ul class="vp_content">
+							<li class="vp_header">
+								<h2>My Contacts</h2>
+							</li>
+							<li class="vp_container">
+								<h2>PCP Name</h2>
+								<h4 id="pcp"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>PCP Phone No.</h2>
+								<h4 id="emc_number"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Emergency First Name</h2>
+								<h4 id="emc_firstname"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Emergency Last Name</h2>
+								<h4 id="emc_lastname"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Emergency Phone No.</h2>
+								<h4 id="pcpcontactnumber"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Emergency Relationship</h2>
+								<h4 id="rel_pcp"></h4>
+							</li>
+						</ul>
+                        
+                        <ul class="vp_content">
+							<li class="vp_header">
+								<h2>Lifestyle</h2>
+							</li>
+							<li class="vp_container">
+                                <h2>Cigarettes(per day)</h2>
+                                <h4 id="lf_cig"></h4>
+                            </li>
+                            <li class="vp_container">
+                                <h2>Alcoholic(per week)</h2>
+                                <h4 id="lf_alc"></h4>
+                            </li>
+							<li class="vp_container">
+                                <h2>Recreational Drugs</h2>
+                                <h4 id="lf_rec"></h4>
+                            </li>
+						</ul>
+                        
+                        <ul class="vp_content">
+							<li class="vp_header">
+								<h2>My Health</h2>
+							</li>
+							<li class="vp_container">
+								<h2>Medical History</h2>
+								<h4 id="pasthist"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Surgeries</h2>
+								<h4 id="md_sug"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Allergies</h2>
+								<h4 id="md_alg"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Family History</h2>
+								<h4 id="md_fam"></h4>
+							</li>
+						</ul>
+                        
+                        <ul class="vp_content">
+							<li class="vp_header">
+								<h2>Pharmacy &amp; Medication</h2>
+							</li>
+							<li class="vp_container">
+								<h2>Pharmacy Name</h2>
+								<h4 id="pharmacy_hid"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Pharmacy Zipcode</h2>
+								<h4 id="pharmacyzipcode"></h4>
+							</li>
+							<li class="vp_container">
+								<h2>Medication Name</h2>
+								<h4 id="medi_his"></h4>
+							</li>
+						</ul>
+                </div>
+            	</div>
+		</div>
+    </main>
+    
+    <footer id="pagefooter"> </footer>
+    <div id="loading" style="text-align: center;">
+        <img src="img/ring.gif" alt="loading" width="66" height="66">
+    </div>
+    <div class="md-overlay md-show"></div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+    <!--<script type='text/javascript' src='js/select2.js'></script>
+    <script src="js/maskedinput-1.2.2.min.js"></script>
+    <script src="js/autocomplete.js"></script>
+    <script type='text/javascript' src='js/bootstrap-datepicker.min.js'></script>-->
+    <!--<script src="plugins/jSignature/jSignature.min.noconflict.js"></script>-->
+    <script src="js/profile.js"></script>
+</body>
+</html>

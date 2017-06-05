@@ -319,7 +319,7 @@ h2.title-cont span {background-color: #fafafa;border: 1px solid #cfcfcf;border-r
 .skip {color: #fff;text-decoration: underline;}
 .walkthrough-item {padding: 0 15px;}
 .walkthrough-img {height: 134px;margin: 30px auto;width: 134px;}
-.walkthrough-text {color: #fff;text-align: center;}
+.walkthrough-text {color: #fff;text-align: center;font-size:13px;}
 #pagecontent .walkthrough-btn input[type="submit"] {margin: 30px auto;}
 .dotstyle{height:40px;padding:10px;text-align:center;}
 .dotstyle ul{position:relative;display:inline-block;margin:0;padding:0;list-style:none;cursor:default;}
@@ -627,4 +627,5 @@ span.timestamp {background-color: #fff;color: #444;padding: 0 11px;font-size: 14
 	.read-more, .grid-view a {font-size: 18px;}
 	.question-header > h4 {font-size:18px !important;}
 	.question-list .radio input[type=checkbox]:not(old) + label,.radio input[type=radio]:not(old) + label{font-size: 17px;}
+	.walkthrough-text {font-size:18px;}
 }
