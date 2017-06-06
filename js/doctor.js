@@ -168,8 +168,9 @@ var now = new Date(),
             max: maxDate,       
 			steps: { 
 			minute: 15,
-				zeroBased: true
+			zeroBased: true,
 		},
+		buttons: ['cancel',  'set' ],
 		invalid: [
 			{ start: '00:00', end: '08:00' }, 
 			{ start: '19:00', end: '23:59' }, 
@@ -248,8 +249,10 @@ var now = new Date(),
 		var rphone  = $('#rphone').val();
 		if ($('#rphone').val().length === 0) {
 			$('#rphone').val('(').val($('#rphone').val());
+			$('#rphone').focus();$(this).next(':input').focus();
 		} var key =0;
-		if(e) key = e.keyCode;
+		if(e) key = e.keyCode; 
+		$("#pagecontent").append($('#rphone').val().length);
 		//var key = e.keyCode || 0;
 		if (key !== 8 && key !== 9) {
 			if ($('#rphone').val().length === 4) {
@@ -261,6 +264,14 @@ var now = new Date(),
 			if ($('#rphone').val().length === 9) {
 				$('#rphone').val($('#rphone').val() + '-');
 			}
+		}
+		
+		if($('#rphone').val().length == 9){ var get_date = $('#rphone').val();
+			$('#rphone').val(get_date.slice(0,-1));
+		}
+		if($('#rphone').val().length == 5){ var get_date = $('#rphone').val();
+			get_date = get_date.slice(0,-1);
+			$('#rphone').val(get_date.slice(0,-1));
 		}
 		var regexp = /\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}/; 
 		if(regexp.test(rphone)){

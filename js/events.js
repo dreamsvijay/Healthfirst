@@ -50,7 +50,7 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 		
 		var start = new Date(data.data.edate);
 		//var end = new Date(endDate);
-		var end =(new Date(data.data.edate)).addDays(90);
+		var end =(new Date(data.data.edate)).addDays(9);
 		var dateArray = new Array(),$month=new Array(),$month_cnt = new Array();
 		var currentDate = start;
 		var weekday = ["sun","mon","tue","wed","thu","fri","sat"];
@@ -108,6 +108,14 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 			  valueNames: ['event-title'],
 			  
 			});
+			eventList.on('updated', function(list) { 
+				if (list.matchingItems.length > 0) {
+					$('#search_res').hide()
+				} else {
+					$('#search_res').show()
+				   
+				}
+			})
 		//$('body').append(dateArray);
 		/*var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 		for(var i=0;i<data.data.length;i++){
@@ -183,7 +191,7 @@ $(document).on('click', '.event-list a.media-link', function(e) { $("#loading").
 			var action = 'eventselect'; $("#event_id").val($(this).parent().data('id'));$("#event_sid").val($(this).parent().data('sid'));
 			$(".event-list").hide();
 			$(".location-box").find('.event_loc').empty().append($(this).find('.event-location').html());
-			$(".event-timebox").find('.event_time').empty().append($(this).parent().data('edate')+", "+$(this).parent().data('time'));
+			$(".event-timebox").find('.event_time').empty().append($(this).parent().data('edate')+"<br />"+$(this).parent().data('time'));
 			$(".desc-content:first p").empty().append($(this).find('.event-desc').html());
 			var event_res = $(this).find('.event_res').html().split("|");
 			$(".restrict-content ul").empty();$(".res_contact p").empty().append('Contact Name : '+$(this).parent().data('cont'));
