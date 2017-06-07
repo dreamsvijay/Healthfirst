@@ -124,13 +124,13 @@ $(document).on('click',"#privacy_html .privacy-footer a",function(){ if($(this).
 		$("#privacy_html").hide();
 		$(".home-menu").show();
 		setTimeout(function(){ $("#loading").hide(); },500);
-	}else{ alert();
-		/*if (navigator.app && navigator.app.exitApp) {
+	}else{ 
+		if (navigator.app && navigator.app.exitApp) {
 			navigator.app.exitApp();
 		} else if (navigator.device && navigator.device.exitApp) {
 			navigator.device.exitApp();
-		}*/
-		window.top.close();
+		}
+		
 	}
 	return false;
 });
