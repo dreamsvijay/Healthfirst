@@ -1,7 +1,5 @@
 var base_url = "https://healthfirst.yosicare.com/dev/hf-app/";
-$(document).ready(function(e) {
-    $("#loading").hide();$("#pagecontent").show();
-});
+$("#loading").hide();$("#pagecontent").show();
 if(window.localStorage.getItem("hf_app")){$("#pageheader").show();$("#emailcheck_html, #privacy_html").hide(); $('body').removeClass('walkthrough-page').addClass('home-page');$("#pagecontent").height($(window).height()-86);}
 $(".walkthrough-item .yc-button").click(function(){
 	$(this).parent().parent().hide(); 
