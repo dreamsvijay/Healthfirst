@@ -170,6 +170,9 @@ var iemail = $("#iemail"), ipassword = $("#ipassword");
 					window.location.href="index.html";
 					
 					}else{
+						$("#emailerror p").empty().append(data.message); 
+						$("#emailerror").addClass('md-show');
+						$(".md-overlay").addClass('md-show');
 						$('#ipassword, #iemail').parent().addClass("error");
 					}
 				}

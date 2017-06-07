@@ -252,7 +252,7 @@ var now = new Date(),
 			$('#rphone').focus();$(this).next(':input').focus();
 		} var key =0;
 		if(e) key = e.keyCode; 
-		$("#pagecontent").append($('#rphone').val().length);
+		
 		//var key = e.keyCode || 0;
 		if (key !== 8 && key !== 9) {
 			if ($('#rphone').val().length === 4) {
