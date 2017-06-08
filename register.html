@@ -75,11 +75,38 @@
              <div class="form-group mb-0">
                 <input value="Login" class="yc-button primary large" name="isubmit" id="isubmit" type="submit">
             </div>
-           <!-- <div class="form-group">
-                <div class="text-center">
-                    <a href="" class="forgot-password">Forgot Your Password?</a>
-                </div>
-            </div>-->
+            <div class="form-group text-center mb-0">
+                    <a href="javascript:void(0);" class="forgot-password">Forgot Your Password?</a>
+            </div>
+        </form>
+        
+        <form class="login-form" method="post" autocomplete="off" name="forgot_pass" id="forgot_pass" style="display:none;">
+        	<input type="hidden" name="form_typ" id="form_typ" value="f" />
+            <div class="form-group form-field ff_noicon mb-30">
+                <input class="form-control" type="email" name="femail" id="femail">
+				<span class="floating-label">Enter Email</span>
+            </div>
+             <div class="form-group">
+                <input value="Submit" class="yc-button primary large" name="fsubmit" id="fsubmit" type="submit">
+            </div>
+            <div class="form-group text-center mb-0">
+                    <a class="sign-text" href="javascript:void(0);">Login</a>
+            </div>
+        </form>
+        
+         <form class="login-form" method="post" autocomplete="off" name="reset_password" id="reset_password" style="display:none;">
+            <div class="form-group form-field ff_noicon">
+				<input class="form-control" type="password" name="opassword" id="opassword">
+				<span class="floating-label">Old Password</span>
+            </div>
+            <div class="form-group form-field ff_noicon">
+				<input class="form-control" type="password" name="npassword" id="npassword">
+				<span class="floating-label">New Password</span>
+            </div>
+             <div class="form-group mb-0">
+                <input value="Update" class="yc-button primary large" name="rsubmit" id="rsubmit" type="submit">
+            </div>
+           
         </form>
         
         <div id="htmlContent" style="display:none;">
@@ -141,6 +168,7 @@
 				<h4></h4>
 				<p><span></span></p>
                 <div class="popup-btn"><a href="index.html" class="btn btn-light btn-block">Continue to Home Screen</a></div>
+                <div class="popup-btn"><a href="javascript:void(0);" class="btn btn-green btn-block resetpass mt-15" style="display:none;">Reset Password</a></div>
 			</div>
 		</div>
 	</div>
