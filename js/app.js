@@ -123,12 +123,14 @@ $(document).on('click',"#privacy_html .privacy-footer a",function(){ if($(this).
 		$(".home-menu").show();
 		setTimeout(function(){ $("#loading").hide(); },500);
 	}else{ 
-		if (navigator.app && navigator.app.exitApp) {
+		/*if (navigator.app && navigator.app.exitApp) {
 			navigator.app.exitApp();
 		} else if (navigator.device && navigator.device.exitApp) {
 			navigator.device.exitApp();
-		}
-		
+		}*/
+		$('body').addClass('decline-page');
+		$("#privacy_html").hide();
+		$("#decline_html").show();
 	}
 	return false;
 });

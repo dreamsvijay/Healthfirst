@@ -45,8 +45,8 @@ var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), no
 					window.localStorage.setItem("pat_phone", data.data.Phone);
 					window.localStorage.setItem("pat_dob", data.data.Dob);
 					window.localStorage.setItem("pat_mail", $("#email").val());
-					if(data.data.Phone) $("#ccphone").val(data.data.Phone).attr('readonly','readonly').parent().addClass('focused');
-					if($("#email").val()) $("#ccemail").val($("#email").val()).attr('readonly','readonly').parent().addClass('focused');
+					if(data.data.Phone) $("#ccphone").val(data.data.Phone).parent().addClass('focused');
+					if($("#email").val()) $("#ccemail").val($("#email").val()).parent().addClass('focused');
 					if(window.localStorage.getItem('doc_req')){ window.localStorage.removeItem('doc_req'); window.location.href="index.html"; }
 					$("body").removeClass('signup-page').addClass('consent-page');
 					$("#register, #sign_in_up, .loginlogoheader").hide();
@@ -126,7 +126,7 @@ var now = new Date(), max = new Date(now.getFullYear() + 100, now.getMonth(), no
 		}
 		
 $("a.sign-text").click(function(){
-	$("#register").hide();
+	$("#register, #forgot_pass").hide();
 	$("#sign_in_up").show();
 	return false;
 });
@@ -328,3 +328,109 @@ $("#emailerror a").click(function(){
 	$("#emailerror").removeClass('md-show');
 	$(".md-overlay").removeClass('md-show');
 });
+
+$(".forgot-password").on('click',function(){
+	$("#sign_in_up").hide();
+	$("#forgot_pass").show();
+});
+
+$("#femail").on('blur focus keyup', validateFemail);
+
+$("#forgot_pass").submit(function(){
+	if(validateFemail()){
+		var dataString ="email="+$("#femail").val()+"&act=f";
+			$.ajax({
+				url:base_url+"mobile-app?page=login",
+				type:"POST",
+				data:dataString,
+				dataType:"json",
+				beforeSend:function(){
+					$("#loading").show();
+				},
+				success:function(data){ 
+					$("#loading").hide();
+					/*window.localStorage.setItem("pat_phone",$("#ccphone").val()); 
+					if(!window.localStorage.getItem("event_dtl")){
+					$("#appoinmentSuccess .md-body h4").hide();
+					$("#appoinmentSuccess .md-body p").empty().append('Your contact preference has been updated');
+					}
+					$("#appoinmentSuccess").addClass('md-show');
+					$(".md-overlay").addClass('md-show');*/
+					if(data.success == "Y"){
+						$("#emailerror p").empty().append(data.data.msg);
+					}else{
+						$("#emailerror p").empty().append(data.message); 
+					}
+						$("#emailerror").addClass('md-show');
+						$(".md-overlay").addClass('md-show');
+						$(".resetpass").show();
+				}
+			});
+	}
+	return false;
+});
+
+function validateFemail(){
+	var femail  = $('#femail').val();
+	var filter = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
+	if(femail == '' || !filter.test(femail))
+	{
+		$('#femail').parent().addClass('focused').addClass("error");return false;
+	}
+	$("#femail").parent().removeClass("error");return true;
+}
+
+$(".resetpass").on("click",function(){
+	$("#appoinmentSuccess, .md-overlay").removeClass('md-show');
+	$("#reset_password").show();
+	$("body").removeClass('consent-page').addClass('signup-page');
+	$("#register").hide();
+	
+});
+
+$("#opassword").on('blur focus keyup', validateOpassword);$("#npassword").on('blur focus keyup', validateNpassword);
+
+$("#reset_password").submit(function(){
+	if(validateOpassword() & validateNpassword()){
+		var dataString ="patient="+window.localStorage.getItem("pat_id")+"&oldpass="+$("#opassword").val()+"&newpass="+$("#npassword").val()+"&act=r";
+			$.ajax({
+				url:base_url+"mobile-app?page=login",
+				type:"POST",
+				data:dataString,
+				dataType:"json",
+				beforeSend:function(){
+					$("#loading").show();
+				},
+				success:function(data){ 
+					$("#loading").hide();
+					
+					if(data.success == "Y"){
+						$("#emailerror p").empty().append(data.data.msg);
+					}else{
+						$("#emailerror p").empty().append(data.message); 
+					}
+						$("#emailerror").addClass('md-show');
+						$(".md-overlay").addClass('md-show');
+				}
+			});
+	}
+	return false;
+});
+
+function validateOpassword(){
+	var opassword  = $('#opassword').val();
+	if(opassword == '')
+	{
+		$('#opassword').parent().addClass('focused').addClass("error");return false;
+	}
+	$("#opassword").parent().removeClass("error");return true;
+}
+
+function validateNpassword(){
+	var npassword  = $('#npassword').val();
+	if(npassword == '')
+	{
+		$('#npassword').parent().addClass('focused').addClass("error");return false;
+	}
+	$("#npassword").parent().removeClass("error");return true;
+}

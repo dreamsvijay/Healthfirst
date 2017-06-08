@@ -14,8 +14,13 @@ $(document).ready(function(e) {
 	function(data){
 		$(".no-result-container").remove();$("#htmlContent").height('inherit'); 
 		$("#loading").hide();$(".reminder-wrap").show();
+		var app_time = new Array;
 		if(data.success == "Y"){
 			for(var i=0;i<data.data.length;i++){
+				if($.inArray(data.data[i]['app_time'],app_time) == "-1"){
+					$(".mycare-list").append('<li class="media event-date-time" ><div class="event-line"><span class="timestamp">'+data.data[i]['app_date']+'</span></div></li>');
+					app_time.push(data.data[i]['app_time']);
+				}
 				$(".mycare-list").append('<li class="media"><a href="javascript:void(0);" class="media-link"><div class="media-left"><img src="img/profile-img.png" class="care-dr-img" alt="" width="47" height="47"></div><div class="media-body media-middle text-nowrap">								<div class="care-dr-name">'+data.data[i]['doctor_first_name']+" "+data.data[i]['doctor_last_name']+'</div><span class="speciality">'+data.data[i]['doctor_specialty']+'</span></div></a></li>');
 			}
 			getMycareteam(page+plimit,50);
