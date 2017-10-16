@@ -50,7 +50,7 @@ if(window.localStorage.getItem("evt_id")){ Eid = window.localStorage.getItem("ev
 		
 		var start = new Date(data.data.edate);
 		//var end = new Date(endDate);
-		var end =(new Date(data.data.edate)).addDays(9);
+		var end =(new Date(data.data.edate)).addDays(30);
 		var dateArray = new Array(),$month=new Array(),$month_cnt = new Array();
 		var currentDate = start;
 		var weekday = ["sun","mon","tue","wed","thu","fri","sat"];
